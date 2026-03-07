@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT Compliance Services Denver | CMMC, ITAR, HIPAA, FINRA | Workplace IT</title>
+  <meta name="description" content="Workplace IT delivers expert IT compliance services in Denver — CMMC, NIST 800-171, ITAR, HIPAA, FINRA, PCI DSS. Stay audit-ready and protect your contracts." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #1a9fd4;
+      --blue-dark: #1480ae;
+      --navy: #0a1628;
+      --navy-mid: #0f2040;
+      --text: #1a1f2e;
+      --text-light: #3a4256;
+      --text-muted: #6b7280;
+      --light-gray: #f4f6f9;
+      --mid-gray: #e2e6ec;
+      --white: #ffffff;
+      --green: #22c55e;
+      --amber: #f59e0b;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Open Sans', sans-serif; color: var(--text); background: var(--white); }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    .nav { background: var(--navy); padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .nav-logo { font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 1.35rem; color: white; letter-spacing: -0.02em; }
+    .nav-logo em { color: var(--blue); font-style: normal; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { font-family: 'Roboto', sans-serif; font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.75); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta { background: var(--blue); color: white !important; padding: 8px 20px; border-radius: 4px; font-weight: 700 !important; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--blue-dark) !important; }
+
+    /* BREADCRUMB */
+    .breadcrumb { background: var(--light-gray); border-bottom: 1px solid var(--mid-gray); padding: 10px 32px; }
+    .breadcrumb-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 8px; font-family: 'Roboto', sans-serif; font-size: 0.78rem; color: var(--text-muted); }
+    .breadcrumb-inner a { color: var(--blue); }
+    .breadcrumb-inner a:hover { text-decoration: underline; }
+    .breadcrumb-sep { color: var(--mid-gray); }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: var(--navy);
+      padding: 72px 32px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(26,159,212,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,159,212,0.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(26,159,212,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(26,159,212,0.15); border: 1px solid rgba(26,159,212,0.3); color: var(--blue); font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 6px 14px; border-radius: 3px; margin-bottom: 20px; }
+    .hero-badge::before { content: '⚖️'; font-size: 0.9rem; }
+    .page-hero h1 { font-family: 'Roboto', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: white; line-height: 1.1; margin-bottom: 20px; }
+    .page-hero h1 em { color: var(--blue); font-style: normal; }
+    .page-hero p { font-family: 'Open Sans', sans-serif; font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 28px; max-width: 560px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: white; font-family: 'Roboto', sans-serif; font-size: 0.9rem; font-weight: 700; padding: 13px 26px; border-radius: 4px; transition: background 0.2s; }
+    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.8); font-family: 'Roboto', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 13px 26px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s; }
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* HERO CARD */
+    .hero-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 28px; }
+    .hero-card-title { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; }
+    .compliance-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .compliance-tag { background: rgba(26,159,212,0.12); border: 1px solid rgba(26,159,212,0.25); color: rgba(255,255,255,0.85); font-family: 'Roboto', sans-serif; font-size: 0.82rem; font-weight: 700; padding: 6px 14px; border-radius: 3px; }
+    .hero-card-note { font-family: 'Open Sans', sans-serif; font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.5; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px; margin-top: 4px; }
+    .hero-card-note strong { color: rgba(255,255,255,0.7); }
+
+    /* STATS STRIP */
+    .stats-strip { background: var(--blue); padding: 28px 32px; }
+    .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .stat-item { text-align: center; }
+    .stat-num { font-family: 'Roboto', sans-serif; font-size: 1.9rem; font-weight: 900; color: white; line-height: 1; margin-bottom: 4px; }
+    .stat-label { font-family: 'Open Sans', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.75); line-height: 1.3; }
+
+    /* SECTION */
+    .section { padding: 72px 32px; }
+    .section-gray { background: var(--light-gray); }
+    .section-navy { background: var(--navy); }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+    .section-title { font-family: 'Roboto', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: var(--text); line-height: 1.15; margin-bottom: 16px; }
+    .section-title-white { color: white; }
+    .section-desc { font-family: 'Open Sans', sans-serif; font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 600px; margin-bottom: 40px; }
+
+    /* CMMC SECTION */
+    .cmmc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .cmmc-content h3 { font-family: 'Roboto', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+    .cmmc-content p { font-family: 'Open Sans', sans-serif; font-size: 0.97rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .checklist li { display: flex; align-items: flex-start; gap: 10px; font-family: 'Open Sans', sans-serif; font-size: 0.93rem; color: var(--text-light); line-height: 1.5; }
+    .checklist li::before { content: '✓'; color: var(--blue); font-weight: 700; font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* RPO BADGE PANEL */
+    .rpo-panel { background: var(--navy); border-radius: 8px; padding: 32px; color: white; }
+    .rpo-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(26,159,212,0.15); border: 1px solid rgba(26,159,212,0.3); border-radius: 6px; padding: 12px 18px; margin-bottom: 20px; }
+    .rpo-badge-icon { font-size: 1.6rem; }
+    .rpo-badge-text { font-family: 'Roboto', sans-serif; }
+    .rpo-badge-text .label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); }
+    .rpo-badge-text .name { font-size: 1rem; font-weight: 900; color: white; line-height: 1.1; }
+    .rpo-panel p { font-family: 'Open Sans', sans-serif; font-size: 0.93rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 20px; }
+    .rpo-steps { display: flex; flex-direction: column; gap: 12px; }
+    .rpo-step { display: flex; align-items: center; gap: 12px; }
+    .rpo-step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--blue); color: white; font-family: 'Roboto', sans-serif; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .rpo-step-text { font-family: 'Open Sans', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+
+    /* COMPLIANCE CARDS GRID */
+    .compliance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .compliance-card { background: var(--white); border: 1px solid var(--mid-gray); border-radius: 8px; padding: 28px; transition: box-shadow 0.2s, border-color 0.2s; }
+    .compliance-card:hover { box-shadow: 0 4px 24px rgba(26,159,212,0.12); border-color: var(--blue); }
+    .compliance-card-icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .compliance-card-framework { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+    .compliance-card h3 { font-family: 'Roboto', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 10px; }
+    .compliance-card p { font-family: 'Open Sans', sans-serif; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+    .compliance-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag-small { background: var(--light-gray); color: var(--text-muted); font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 600; padding: 3px 9px; border-radius: 2px; }
+
+    /* PROCESS SECTION */
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+    .process-grid::before { content: ''; position: absolute; top: 28px; left: calc(12.5% + 16px); right: calc(12.5% + 16px); height: 2px; background: rgba(26,159,212,0.3); z-index: 0; }
+    .process-step { text-align: center; padding: 0 16px; position: relative; z-index: 1; }
+    .process-num { width: 56px; height: 56px; border-radius: 50%; background: var(--blue); color: white; font-family: 'Roboto', sans-serif; font-size: 1.2rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; border: 3px solid var(--navy); }
+    .process-step h3 { font-family: 'Roboto', sans-serif; font-size: 0.95rem; font-weight: 800; color: white; margin-bottom: 8px; }
+    .process-step p { font-family: 'Open Sans', sans-serif; font-size: 0.84rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+    /* WHY SECTION */
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .why-left h2 { font-family: 'Roboto', sans-serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 800; color: var(--text); margin-bottom: 16px; }
+    .why-left p { font-family: 'Open Sans', sans-serif; font-size: 0.97rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
+    .why-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .why-card { background: var(--light-gray); border: 1px solid var(--mid-gray); border-radius: 6px; padding: 20px; }
+    .why-card-icon { font-size: 1.3rem; margin-bottom: 8px; }
+    .why-card h4 { font-family: 'Roboto', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .why-card p { font-family: 'Open Sans', sans-serif; font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 2px; max-width: 800px; margin: 0 auto; }
+    .faq-item { border: 1px solid var(--mid-gray); border-radius: 6px; overflow: hidden; }
+    .faq-q { font-family: 'Roboto', sans-serif; font-size: 0.97rem; font-weight: 700; color: var(--text); padding: 18px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: white; }
+    .faq-q:hover { color: var(--blue); }
+    .faq-q::after { content: '+'; font-size: 1.2rem; color: var(--blue); font-weight: 400; flex-shrink: 0; }
+    .faq-item.open .faq-q::after { content: '−'; }
+    .faq-a { display: none; padding: 0 20px 18px; font-family: 'Open Sans', sans-serif; font-size: 0.93rem; color: var(--text-muted); line-height: 1.7; background: white; border-top: 1px solid var(--mid-gray); }
+    .faq-item.open .faq-a { display: block; }
+
+    /* CTA BAND */
+    .cta-band { background: var(--navy); padding: 64px 32px; text-align: center; position: relative; overflow: hidden; }
+    .cta-band::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 100%, rgba(26,159,212,0.15) 0%, transparent 65%); pointer-events: none; }
+    .cta-band-inner { max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
+    .cta-band h2 { font-family: 'Roboto', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; color: white; margin-bottom: 14px; }
+    .cta-band p { font-family: 'Open Sans', sans-serif; font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 28px; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* FOOTER */
+    .footer { background: #060e1a; padding: 40px 32px 24px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+    .footer-logo { font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 1.2rem; color: white; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .footer-logo em { color: var(--blue); font-style: normal; }
+    .footer-tagline { font-family: 'Open Sans', sans-serif; font-size: 0.83rem; color: rgba(255,255,255,0.4); line-height: 1.5; margin-bottom: 16px; }
+    .footer-contact { font-family: 'Open Sans', sans-serif; font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.8; }
+    .footer-contact a { color: var(--blue); }
+    .footer-col h4 { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li a { font-family: 'Open Sans', sans-serif; font-size: 0.84rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--blue); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-family: 'Open Sans', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+
+    @media (max-width: 768px) {
+      .page-hero-inner, .cmmc-grid, .why-grid { grid-template-columns: 1fr; }
+      .compliance-grid, .why-cards { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .process-grid::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo"><em>W</em>IT &nbsp;WORKPLACE IT</a>
+  <div class="nav-links">
+    <a href="/#services">Services</a>
+    <a href="/#about">About</a>
+    <a href="tel:7206479900">(720) 647-9900</a>
+    <a href="/#contact" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="/">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="/#services">Services</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>IT Compliance</span>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="hero-badge">IT Compliance</div>
+      <h1>Compliance That Protects<br>Your <em>Contracts</em> and<br>Your Future</h1>
+      <p>Stay audit-ready, win more contracts, and satisfy regulators — without drowning in paperwork. We handle every layer of your compliance program, from risk assessments to continuous monitoring.</p>
+      <div class="hero-actions">
+        <a href="/#contact" class="btn-primary">Request a Readiness Assessment →</a>
+        <a href="tel:7206479900" class="btn-outline">📞 (720) 647-9900</a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-card">
+        <div class="hero-card-title">Frameworks We Support</div>
+        <div class="compliance-tags">
+          <span class="compliance-tag">CMMC</span>
+          <span class="compliance-tag">NIST 800-171</span>
+          <span class="compliance-tag">ITAR</span>
+          <span class="compliance-tag">FISMA</span>
+          <span class="compliance-tag">FINRA</span>
+          <span class="compliance-tag">HIPAA</span>
+          <span class="compliance-tag">PCI DSS</span>
+        </div>
+        <div class="hero-card-note">
+          <strong>CMMC Registered Practitioner Organization (RPO)</strong> — Workplace IT is officially recognized to guide defense contractors through CMMC certification.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">RPO</div>
+      <div class="stat-label">CMMC Registered<br>Practitioner Org</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7+</div>
+      <div class="stat-label">Compliance<br>Frameworks</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Audit-Ready<br>Clients</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">$0</div>
+      <div class="stat-label">Penalties from<br>our compliance clients</div>
+    </div>
+  </div>
+</div>
+
+<!-- CMMC SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="cmmc-grid">
+      <div class="cmmc-content">
+        <div class="section-eyebrow">Defense Contractors</div>
+        <h2 class="section-title">CMMC & NIST 800-171<br>Readiness</h2>
+        <p style="font-family:'Open Sans',sans-serif; font-size:0.97rem; color:var(--text-muted); line-height:1.7; margin-bottom:20px;">As a CMMC Registered Practitioner Organization (RPO), Workplace IT guides defense manufacturers through the full compliance journey — from your first gap assessment all the way through audit preparation. We make sure you understand every requirement and implement only what's necessary.</p>
+        <p style="font-family:'Open Sans',sans-serif; font-size:0.97rem; color:var(--text-muted); line-height:1.7; margin-bottom:24px;">Compliance with CMMC and NIST 800-171 isn't just a regulatory hurdle — it's often a condition of your defense contracts. Failing to maintain it can cost you the contract. We make sure that never happens.</p>
+        <ul class="checklist">
+          <li>NIST 800-171 gap assessments</li>
+          <li>Compliance roadmap & POA&M development</li>
+          <li>Policies & procedures documentation</li>
+          <li>Required technology implementation</li>
+          <li>SPRS score calculation & submission</li>
+          <li>Evidence collection & audit preparation</li>
+          <li>Continuous monitoring and maintenance</li>
+        </ul>
+      </div>
+      <div>
+        <div class="rpo-panel">
+          <div class="rpo-badge">
+            <div class="rpo-badge-icon">🛡️</div>
+            <div class="rpo-badge-text">
+              <div class="label">Official Status</div>
+              <div class="name">CMMC Registered<br>Practitioner Organization</div>
+            </div>
+          </div>
+          <p>Our RPO status means we've been vetted and recognized by the CMMC Accreditation Body to help organizations prepare for certification. You're not working with a generalist — you're working with a credentialed partner.</p>
+          <div style="font-family:'Roboto',sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--blue); margin-bottom:12px;">The Journey to Certification</div>
+          <div class="rpo-steps">
+            <div class="rpo-step"><div class="rpo-step-num">1</div><div class="rpo-step-text">Initial scoping & gap assessment</div></div>
+            <div class="rpo-step"><div class="rpo-step-num">2</div><div class="rpo-step-text">Roadmap creation & prioritization</div></div>
+            <div class="rpo-step"><div class="rpo-step-num">3</div><div class="rpo-step-text">Policy & procedure development</div></div>
+            <div class="rpo-step"><div class="rpo-step-num">4</div><div class="rpo-step-text">Technology controls implementation</div></div>
+            <div class="rpo-step"><div class="rpo-step-num">5</div><div class="rpo-step-text">SPRS score submission</div></div>
+            <div class="rpo-step"><div class="rpo-step-num">6</div><div class="rpo-step-text">Evidence collection & C3PAO readiness</div></div>
+            <div class="rpo-step"><div class="rpo-step-num">7</div><div class="rpo-step-text">Ongoing monitoring & maintenance</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MULTI-INDUSTRY COMPLIANCE -->
+<section class="section section-gray">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="section-eyebrow">Multi-Industry Expertise</div>
+      <h2 class="section-title" style="margin:0 auto 16px;">Compliance for Every Regulated Industry</h2>
+      <p class="section-desc" style="margin:0 auto;">From financial services to healthcare to federal contractors — we know the rules that govern your business and how to meet them without disrupting your operations.</p>
+    </div>
+    <div class="compliance-grid">
+      <div class="compliance-card">
+        <div class="compliance-card-icon">🏭</div>
+        <div class="compliance-card-framework">Defense / Federal</div>
+        <h3>ITAR Compliance</h3>
+        <p>International Traffic in Arms Regulations requires strict control over defense-related technical data. We implement the access controls, data handling policies, and audit trails that ITAR demands.</p>
+        <div class="compliance-card-tags">
+          <span class="tag-small">Access Controls</span>
+          <span class="tag-small">Data Segregation</span>
+          <span class="tag-small">Audit Trails</span>
+        </div>
+      </div>
+      <div class="compliance-card">
+        <div class="compliance-card-icon">🏛️</div>
+        <div class="compliance-card-framework">Federal Agencies</div>
+        <h3>FISMA Compliance</h3>
+        <p>Federal Information Security Management Act compliance requires a comprehensive information security program. We build the controls, documentation, and monitoring infrastructure federal agencies require.</p>
+        <div class="compliance-card-tags">
+          <span class="tag-small">Risk Management</span>
+          <span class="tag-small">Continuous Monitoring</span>
+          <span class="tag-small">Incident Response</span>
+        </div>
+      </div>
+      <div class="compliance-card">
+        <div class="compliance-card-icon">📈</div>
+        <div class="compliance-card-framework">Financial Services</div>
+        <h3>FINRA Compliance</h3>
+        <p>Financial Industry Regulatory Authority rules govern how broker-dealers protect client data and maintain records. We help financial firms meet technology-related FINRA obligations and examination readiness.</p>
+        <div class="compliance-card-tags">
+          <span class="tag-small">Records Retention</span>
+          <span class="tag-small">Data Security</span>
+          <span class="tag-small">Exam Readiness</span>
+        </div>
+      </div>
+      <div class="compliance-card">
+        <div class="compliance-card-icon">🏥</div>
+        <div class="compliance-card-framework">Healthcare</div>
+        <h3>HIPAA Compliance</h3>
+        <p>Protected Health Information requires strict administrative, physical, and technical safeguards. We conduct Security Risk Analyses, develop required policies, and implement the technical controls your practice or organization needs.</p>
+        <div class="compliance-card-tags">
+          <span class="tag-small">Security Risk Analysis</span>
+          <span class="tag-small">PHI Protection</span>
+          <span class="tag-small">BAA Management</span>
+        </div>
+      </div>
+      <div class="compliance-card">
+        <div class="compliance-card-icon">💳</div>
+        <div class="compliance-card-framework">Retail / Payments</div>
+        <h3>PCI DSS Compliance</h3>
+        <p>Payment Card Industry Data Security Standards protect cardholder data across your entire technology environment. We scope your cardholder data environment and implement the 12 PCI DSS requirements.</p>
+        <div class="compliance-card-tags">
+          <span class="tag-small">CDE Scoping</span>
+          <span class="tag-small">Vulnerability Scanning</span>
+          <span class="tag-small">Penetration Testing</span>
+        </div>
+      </div>
+      <div class="compliance-card">
+        <div class="compliance-card-icon">🔒</div>
+        <div class="compliance-card-framework">Cross-Industry</div>
+        <h3>NIST Cybersecurity Framework</h3>
+        <p>The NIST CSF provides a voluntary but widely adopted framework for managing cybersecurity risk. Many insurers and enterprise customers now require it. We map your existing controls and close the gaps.</p>
+        <div class="compliance-card-tags">
+          <span class="tag-small">Gap Assessment</span>
+          <span class="tag-small">Control Mapping</span>
+          <span class="tag-small">Risk Register</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section section-navy">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:52px;">
+      <div class="section-eyebrow" style="color:var(--blue);">How It Works</div>
+      <h2 class="section-title section-title-white" style="margin:0 auto 12px;">Your Path to Compliance</h2>
+      <p style="font-family:'Open Sans',sans-serif; font-size:1rem; color:rgba(255,255,255,0.5); max-width:520px; margin:0 auto;">A structured engagement model that takes you from where you are to where you need to be — with no surprises.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-num">1</div>
+        <h3>Discovery & Scoping</h3>
+        <p>We start by understanding your business, your data flows, your existing controls, and which frameworks apply to you.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">2</div>
+        <h3>Gap Assessment</h3>
+        <p>We measure your current state against the required standard and document every gap with clear remediation guidance.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">3</div>
+        <h3>Remediation & Build</h3>
+        <p>We implement controls, write policies, configure technology, and close gaps — in a prioritized sequence that fits your timeline.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">4</div>
+        <h3>Maintain & Monitor</h3>
+        <p>Compliance isn't a one-time project. We monitor your environment continuously and keep you audit-ready year-round.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY WORKPLACE IT -->
+<section class="section">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-left">
+        <div class="section-eyebrow">Why Workplace IT</div>
+        <h2>Compliance Isn't Just Paperwork.<br>It's a Competitive Advantage.</h2>
+        <p>Most IT firms can recite compliance frameworks. Very few can actually implement them. Workplace IT bridges regulatory expertise with real-world technical execution — so you get compliance programs that work in practice, not just on paper.</p>
+        <p>We've guided defense manufacturers, healthcare organizations, financial firms, and professional services companies through audits. We know what auditors look for. We know what gaps get flagged. And we know how to close them efficiently.</p>
+        <a href="/#contact" class="btn-primary" style="margin-top:8px;">Start Your Compliance Journey →</a>
+      </div>
+      <div class="why-cards">
+        <div class="why-card">
+          <div class="why-card-icon">📋</div>
+          <h4>Protect Sensitive Data</h4>
+          <p>CUI, PHI, PII, financial records — we ensure the right controls are in place to protect what matters most.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">✅</div>
+          <h4>Meet Regulatory Demands</h4>
+          <p>We translate complex regulatory language into concrete technical and administrative actions your team can execute.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">🎯</div>
+          <h4>Stay Ahead of Audits</h4>
+          <p>Continuous monitoring and quarterly reviews mean you're never scrambling before an audit. You're always ready.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">📄</div>
+          <h4>Protect Your Contracts</h4>
+          <p>Non-compliance can cost you defense contracts, healthcare relationships, and financial industry partnerships. We prevent that.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">🔐</div>
+          <h4>Improve Security Hygiene</h4>
+          <p>Compliance programs done right genuinely improve your security posture — they're not just checkboxes.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">🤝</div>
+          <h4>A Partner, Not a Vendor</h4>
+          <p>We stay involved after the assessment. When regulations change, we update your program. We're in it with you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-gray">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:40px;">
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-title" style="margin:0 auto;">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q">What is CMMC and do I need it?</div>
+        <div class="faq-a">CMMC (Cybersecurity Maturity Model Certification) is a DoD requirement for defense contractors who handle Controlled Unclassified Information (CUI) or Federal Contract Information (FCI). If you're a prime or subcontractor in the defense supply chain, CMMC will be required in your contracts. The level required depends on the sensitivity of the information you handle.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How long does CMMC compliance take?</div>
+        <div class="faq-a">It depends heavily on your starting point. For organizations with limited existing controls, a full CMMC Level 2 readiness program typically takes 6–12 months. Organizations with existing security programs and IT infrastructure in place can often compress this timeline significantly. We provide a realistic roadmap after our initial gap assessment.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's the difference between CMMC Level 1 and Level 2?</div>
+        <div class="faq-a">CMMC Level 1 covers 17 basic cybersecurity practices aligned with FAR 52.204-21, primarily for organizations handling FCI. Level 2 aligns with the 110 practices in NIST SP 800-171 and applies to organizations handling CUI. Level 2 requires a third-party assessment by a C3PAO (Certified Third-Party Assessment Organization), while Level 1 allows self-assessment.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">We're a small business. Can we realistically achieve compliance?</div>
+        <div class="faq-a">Absolutely. Many of our clients are small to mid-sized defense contractors and professional firms. Compliance doesn't require an enterprise-level IT department — it requires a structured approach, the right tools, and a knowledgeable partner. We scope our engagements right-sized for your organization and build compliance programs that are realistic and maintainable for your team.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What does a HIPAA Security Risk Analysis involve?</div>
+        <div class="faq-a">A HIPAA Security Risk Analysis (SRA) is a required administrative safeguard that identifies where ePHI (electronic Protected Health Information) exists in your environment, what threats and vulnerabilities exist, and what controls are in place to address them. We conduct thorough SRAs, document findings, assign risk ratings, and build remediation plans that satisfy both HHS requirements and real-world auditors.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you help maintain compliance after the initial implementation?</div>
+        <div class="faq-a">Yes — and this is where most IT firms fall short. We provide ongoing compliance maintenance programs that include continuous monitoring, quarterly reviews, annual re-assessments, policy updates as regulations change, and support for audits and examinations. Compliance isn't a project with an end date; it's an ongoing program, and we're built to support you long-term.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Start Your Compliance Journey<br>with Confidence</h2>
+    <p>Request a readiness assessment and get a clear, honest roadmap to certification — no sales pressure, just a real evaluation of where you stand and what it takes to get where you need to be.</p>
+    <div class="cta-actions">
+      <a href="/#contact" class="btn-primary">Request a Readiness Assessment →</a>
+      <a href="tel:7206479900" class="btn-outline">📞 (720) 647-9900</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><em>W</em>IT &nbsp;WORKPLACE IT</div>
+        <div class="footer-tagline">Your IT. Bulletproof. Always On.</div>
+        <div class="footer-contact">
+          1514 Curtis St. Suite 200<br>Denver, CO 80202<br>
+          <a href="tel:7206479900">(720) 647-9900</a><br>
+          <a href="mailto:info@workplaceit.net">info@workplaceit.net</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/managed-it-support.html">Managed IT Support</a></li>
+          <li><a href="/services/cybersecurity.html">Cybersecurity</a></li>
+          <li><a href="/services/it-compliance.html">IT Compliance</a></li>
+          <li><a href="/#services">Video Surveillance</a></li>
+          <li><a href="/#services">VoIP & Cloud PBX</a></li>
+          <li><a href="/#services">Backup & Recovery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Compliance</h4>
+        <ul>
+          <li><a href="/services/it-compliance.html">CMMC</a></li>
+          <li><a href="/services/it-compliance.html">NIST 800-171</a></li>
+          <li><a href="/services/it-compliance.html">ITAR</a></li>
+          <li><a href="/services/it-compliance.html">HIPAA</a></li>
+          <li><a href="/services/it-compliance.html">FINRA</a></li>
+          <li><a href="/services/it-compliance.html">PCI DSS</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/#about">About Us</a></li>
+          <li><a href="/#contact">Contact</a></li>
+          <li><a href="tel:7206479900">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Workplace IT. All rights reserved.</div>
+      <div class="footer-copy">Denver, Colorado</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
