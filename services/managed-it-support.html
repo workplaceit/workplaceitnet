@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Managed IT Support Denver | Workplace IT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --blue: #1a9fd4; --blue-dark: #1480ae; --navy: #0a1628; --light-gray: #f4f6f8; --mid-gray: #e8ecef; --text: #333; --text-light: #666; --text-muted: #999; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Open Sans', sans-serif; color: var(--text); background: #fff; font-size: 15px; line-height: 1.6; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    .top-bar { background: var(--blue); color: #fff; padding: 9px 0; font-size: 0.8rem; }
+    .top-bar-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .top-bar-item { display: flex; align-items: center; gap: 8px; }
+    .top-bar a { color: #fff; }
+    .main-nav { background: #fff; border-bottom: 1px solid var(--mid-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 200; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo-mark { font-family: 'Roboto', sans-serif; font-size: 2rem; font-weight: 900; color: var(--blue); letter-spacing: -0.04em; line-height: 1; }
+    .logo-mark span { color: var(--text); }
+    .logo-sub { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { font-family: 'Roboto', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text); padding: 8px 14px; border-radius: 3px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links .btn-nav { background: var(--blue); color: #fff; }
+    .nav-links .btn-nav:hover { background: var(--blue-dark); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+    @media (max-width: 860px) { .nav-links { display: none; } .hamburger { display: flex; } }
+    .breadcrumb { background: var(--light-gray); border-bottom: 1px solid var(--mid-gray); padding: 12px 0; font-size: 0.8rem; color: var(--text-muted); }
+    .breadcrumb-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; gap: 8px; }
+    .breadcrumb a { color: var(--blue); }
+    .page-hero { position: relative; background: var(--navy); min-height: 360px; display: flex; align-items: center; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: 0; background-color: var(--navy); background-image: linear-gradient(rgba(26,159,212,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(26,159,212,0.18) 1px, transparent 1px); background-size: 40px 40px; }
+    .page-hero-bg::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(26,159,212,0.55) 1.5px, transparent 1.5px); background-size: 40px 40px; background-position: -1px -1px; opacity: 0.35; }
+    .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(26,159,212,0.45) 0%, transparent 55%); }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 60px 32px; width: 100%; }
+    .service-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(26,159,212,0.25); border: 1px solid rgba(26,159,212,0.5); color: rgba(255,255,255,0.9); font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 20px; }
+    .page-hero h1 { font-family: 'Roboto', sans-serif; font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; color: #fff; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; max-width: 640px; }
+    .page-hero h1 em { color: var(--blue); font-style: normal; }
+    .page-hero-desc { color: rgba(255,255,255,0.75); font-size: 1.05rem; max-width: 560px; margin-bottom: 32px; line-height: 1.7; }
+    .hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-pill-blue { display: inline-block; background: var(--blue); color: #fff; font-family: 'Roboto', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 30px; border-radius: 100px; transition: background 0.2s; }
+    .btn-pill-blue:hover { background: var(--blue-dark); }
+    .btn-pill-ghost { display: inline-block; background: transparent; color: #fff; font-family: 'Roboto', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 13px 28px; border-radius: 100px; border: 2px solid rgba(255,255,255,0.45); transition: border-color 0.2s; }
+    .btn-pill-ghost:hover { border-color: #fff; }
+    .stats-strip { background: var(--blue); padding: 28px 0; }
+    .stats-strip-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: repeat(4,1fr); }
+    .stat-item { text-align: center; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.2); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: 'Roboto', sans-serif; font-size: 2rem; font-weight: 900; color: #fff; line-height: 1; }
+    .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.8); margin-top: 5px; font-weight: 600; }
+    .section { padding: 80px 0; }
+    .section-gray { background: var(--light-gray); }
+    .section-navy { background: var(--navy); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .section-eyebrow { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+    .section-eyebrow.white { color: rgba(255,255,255,0.7); }
+    .section-title { font-family: 'Roboto', sans-serif; font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 900; color: var(--text); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .section-title.white { color: #fff; }
+    .section-desc { font-size: 1rem; color: var(--text-light); max-width: 560px; line-height: 1.75; margin-bottom: 40px; }
+    .section-desc.white { color: rgba(255,255,255,0.75); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; gap: 40px; } }
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+    .checklist li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; }
+    .checklist li::before { content: '\2713'; flex-shrink: 0; width: 22px; height: 22px; background: var(--blue); color: #fff; border-radius: 50%; font-size: 0.7rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .checklist li strong { display: block; font-weight: 700; margin-bottom: 2px; }
+    .checklist li span { color: var(--text-light); font-size: 0.88rem; }
+    .visual-panel { background: var(--navy); border-radius: 12px; padding: 36px; position: relative; overflow: hidden; }
+    .visual-panel::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(26,159,212,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(26,159,212,0.12) 1px, transparent 1px); background-size: 30px 30px; }
+    .visual-panel-content { position: relative; z-index: 1; }
+    .vp-icon { font-size: 3rem; margin-bottom: 16px; }
+    .vp-title { font-family: 'Roboto', sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .vp-desc { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 24px; }
+    .vp-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .vp-metric { background: rgba(26,159,212,0.15); border: 1px solid rgba(26,159,212,0.3); border-radius: 8px; padding: 16px; text-align: center; }
+    .vp-metric-num { font-family: 'Roboto', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--blue); }
+    .vp-metric-label { font-size: 0.75rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+    .svc-detail-card { background: #fff; border: 1px solid var(--mid-gray); border-radius: 10px; padding: 28px; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; }
+    .svc-detail-card:hover { box-shadow: 0 8px 28px rgba(26,159,212,0.12); transform: translateY(-3px); border-color: rgba(26,159,212,0.3); }
+    .sdc-icon { font-size: 2rem; margin-bottom: 14px; }
+    .sdc-title { font-family: 'Roboto', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .sdc-desc { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; }
+    .process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 28px; left: calc(12.5% + 8px); right: calc(12.5% + 8px); height: 2px; background: rgba(26,159,212,0.3); }
+    @media (max-width: 860px) { .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; } .process-steps::before { display: none; } }
+    .process-step { text-align: center; padding: 0 16px; position: relative; }
+    .step-circle { width: 56px; height: 56px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-family: 'Roboto', sans-serif; font-size: 1.1rem; font-weight: 900; color: #fff; position: relative; z-index: 1; }
+    .step-title { font-family: 'Roboto', sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .step-desc { font-size: 0.83rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 640px) { .why-grid { grid-template-columns: 1fr; } }
+    .why-card { display: flex; gap: 18px; background: #fff; border: 1px solid var(--mid-gray); border-radius: 10px; padding: 24px; transition: box-shadow 0.2s, border-color 0.2s; }
+    .why-card:hover { box-shadow: 0 4px 20px rgba(26,159,212,0.1); border-color: rgba(26,159,212,0.3); }
+    .why-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+    .why-body h4 { font-family: 'Roboto', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .why-body p { font-size: 0.87rem; color: var(--text-light); line-height: 1.65; }
+    .faq-list { display: flex; flex-direction: column; border: 1px solid var(--mid-gray); border-radius: 10px; overflow: hidden; }
+    .faq-item { border-bottom: 1px solid var(--mid-gray); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; cursor: pointer; font-family: 'Roboto', sans-serif; font-size: 0.95rem; font-weight: 700; background: #fff; transition: background 0.2s; user-select: none; }
+    .faq-q:hover { background: var(--light-gray); }
+    .faq-q.open { color: var(--blue); background: #f0f9ff; }
+    .faq-arrow { transition: transform 0.25s; color: var(--blue); }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 24px 20px; font-size: 0.9rem; color: var(--text-light); line-height: 1.7; background: #f0f9ff; }
+    .faq-a.open { display: block; }
+    .cta-band { background: #1e2d3d; padding: 72px 0; text-align: center; }
+    .cta-band h2 { font-family: 'Roboto', sans-serif; font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 900; color: #fff; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .cta-band p { color: rgba(255,255,255,0.6); font-size: 0.95rem; margin-bottom: 30px; }
+    .btn-pill-white { display: inline-block; background: #fff; color: var(--navy); font-family: 'Roboto', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 32px; border-radius: 100px; transition: background 0.2s; }
+    .btn-pill-white:hover { background: var(--blue); color: #fff; }
+    .footer { background: #13202d; padding: 64px 0 0; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; padding: 0 32px 56px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-logo { font-family: 'Roboto', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--blue); letter-spacing: -0.02em; }
+    .footer-logo span { color: #fff; }
+    .footer-logo-sub { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); display: block; margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.38); line-height: 1.82; max-width: 270px; margin-top: 10px; }
+    .footer-socials { display: flex; gap: 8px; margin-top: 18px; }
+    .fsoc { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; transition: background 0.2s, color 0.2s; }
+    .fsoc:hover { background: var(--blue); color: #fff; }
+    .footer-col h5 { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 9px; }
+    .footer-col a { font-size: 0.85rem; color: rgba(255,255,255,0.42); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--blue); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 20px 32px; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom span, .footer-bottom a { font-size: 0.8rem; color: rgba(255,255,255,0.22); }
+    .footer-bottom a { margin-left: 16px; transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--blue); }
+  </style>
+</head>
+<body>
+<div class="top-bar"><div class="top-bar-inner">
+  <div class="top-bar-item">&#128205; 1514 Curtis St. Suite 200, Denver CO 80202</div>
+  <div class="top-bar-item">&#9993;&#65039; <a href="mailto:info@workplaceit.net">info@workplaceit.net</a></div>
+  <div class="top-bar-item">&#128222; (720) 647-9900</div>
+</div></div>
+<nav class="main-nav"><div class="nav-inner">
+  <a href="/" style="display:flex;align-items:center;gap:10px;">
+    <div><div class="logo-mark">W<span>IT</span></div><span class="logo-sub">Workplace IT</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#testimonials">Testimonials</a></li>
+    <li><a href="/#contact" class="btn-nav">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="breadcrumb"><div class="breadcrumb-inner">
+  <a href="/">Home</a> <span style="opacity:0.4">&#8250;</span>
+  <a href="/#services">Services</a> <span style="opacity:0.4">&#8250;</span>
+  <span>Managed IT Support</span>
+</div></div>
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-inner">
+    <div class="service-badge">&#128187; &nbsp; Managed IT Support</div>
+    <h1>Your IT, <em>Fully Managed</em>.<br>So You Can Focus<br>On Your Business.</h1>
+    <p class="page-hero-desc">Proactive monitoring, responsive helpdesk, and complete technology management &#8212; all under one flat monthly rate. No surprises. No downtime. Just IT that works.</p>
+    <div class="hero-cta-row">
+      <a href="/#contact" class="btn-pill-blue">Get A Free Assessment</a>
+      <a href="tel:7206479900" class="btn-pill-ghost">&#128222; &nbsp;(720) 647-9900</a>
+    </div>
+  </div>
+</section>
+<div class="stats-strip"><div class="stats-strip-inner">
+  <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">Monitoring &amp; Support</div></div>
+  <div class="stat-item"><div class="stat-num">&lt;1hr</div><div class="stat-label">Average Response Time</div></div>
+  <div class="stat-item"><div class="stat-num">99.9%</div><div class="stat-label">Uptime Guarantee</div></div>
+  <div class="stat-item"><div class="stat-num">10+</div><div class="stat-label">Years Serving Denver</div></div>
+</div></div>
+<section class="section"><div class="container"><div class="two-col">
+  <div>
+    <div class="section-eyebrow">What's Included</div>
+    <h2 class="section-title">Complete IT Management,<br>Start to Finish</h2>
+    <p class="section-desc">We take full ownership of your technology environment &#8212; from servers and workstations to cloud infrastructure and end-user support.</p>
+    <ul class="checklist">
+      <li><div><strong>24/7 Network &amp; Endpoint Monitoring</strong><span>We watch your systems around the clock and resolve issues before they become outages.</span></div></li>
+      <li><div><strong>Unlimited Helpdesk Support</strong><span>Your team gets direct access to our Denver-based technicians via phone, email, or chat.</span></div></li>
+      <li><div><strong>Patch Management &amp; Updates</strong><span>OS patches, firmware, and software updates deployed automatically on your schedule.</span></div></li>
+      <li><div><strong>Asset &amp; Inventory Tracking</strong><span>Full visibility into every device, license, and piece of hardware in your environment.</span></div></li>
+      <li><div><strong>Strategic IT Planning (vCIO)</strong><span>Quarterly reviews and roadmap planning so your technology grows with your business.</span></div></li>
+      <li><div><strong>Vendor Management</strong><span>We coordinate with your ISP, software vendors, and hardware providers so you don't have to.</span></div></li>
+    </ul>
+  </div>
+  <div>
+    <div class="visual-panel"><div class="visual-panel-content">
+      <div class="vp-icon">&#128187;</div>
+      <div class="vp-title">Always-On IT Operations</div>
+      <div class="vp-desc">Our remote monitoring and management platform watches every device in your network 24 hours a day, 365 days a year &#8212; so issues get resolved before your team notices them.</div>
+      <div class="vp-metrics">
+        <div class="vp-metric"><div class="vp-metric-num">99.9%</div><div class="vp-metric-label">Uptime SLA</div></div>
+        <div class="vp-metric"><div class="vp-metric-num">&lt;1hr</div><div class="vp-metric-label">Response Time</div></div>
+        <div class="vp-metric"><div class="vp-metric-num">100%</div><div class="vp-metric-label">US-Based Team</div></div>
+        <div class="vp-metric"><div class="vp-metric-num">Flat</div><div class="vp-metric-label">Monthly Rate</div></div>
+      </div>
+    </div></div>
+  </div>
+</div></div></section>
+<section class="section section-gray"><div class="container">
+  <div class="section-eyebrow">Core Services</div>
+  <h2 class="section-title">Everything Your Business Needs</h2>
+  <p class="section-desc">Our managed IT support program covers the full stack &#8212; from user devices to cloud servers.</p>
+  <div class="services-grid">
+    <div class="svc-detail-card"><div class="sdc-icon">&#128269;</div><div class="sdc-title">Proactive Monitoring</div><div class="sdc-desc">Real-time alerts on CPU, memory, disk, and network health across all devices. We catch problems before they cause downtime.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#127911;</div><div class="sdc-title">Helpdesk &amp; End-User Support</div><div class="sdc-desc">Unlimited support tickets for your entire team. Our Denver-based technicians are available by phone, email, and remote session.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#128260;</div><div class="sdc-title">Patch &amp; Update Management</div><div class="sdc-desc">Automated patch cycles for Windows, macOS, and third-party applications &#8212; tested and deployed on your approved schedule.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#127760;</div><div class="sdc-title">Network Management</div><div class="sdc-desc">Routers, switches, firewalls, and Wi-Fi &#8212; all managed and optimized. We handle configuration, firmware, and performance tuning.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#128187;</div><div class="sdc-title">Workstation &amp; Device Management</div><div class="sdc-desc">Onboarding, provisioning, maintenance, and decommissioning of all endpoints including laptops, desktops, and mobile devices.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#128202;</div><div class="sdc-title">Reporting &amp; vCIO Services</div><div class="sdc-desc">Monthly performance reports and quarterly strategic reviews to align your IT investment with your business goals.</div></div>
+  </div>
+</div></section>
+<section class="section section-navy"><div class="container">
+  <div style="text-align:center;margin-bottom:56px;">
+    <div class="section-eyebrow white">How It Works</div>
+    <h2 class="section-title white">Getting Started Is Simple</h2>
+    <p class="section-desc white" style="margin:0 auto;">We make the onboarding process smooth and low-disruption so your team keeps working while we get everything set up.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step"><div class="step-circle">1</div><div class="step-title">Free Assessment</div><div class="step-desc">We audit your current environment, identify gaps, and provide a no-obligation proposal.</div></div>
+    <div class="process-step"><div class="step-circle">2</div><div class="step-title">Onboarding</div><div class="step-desc">Our team installs monitoring agents and documents your full environment &#8212; typically within 5 business days.</div></div>
+    <div class="process-step"><div class="step-circle">3</div><div class="step-title">Active Management</div><div class="step-desc">24/7 monitoring goes live. Your team gets helpdesk access and we begin proactive maintenance immediately.</div></div>
+    <div class="process-step"><div class="step-circle">4</div><div class="step-title">Ongoing Strategy</div><div class="step-desc">Quarterly business reviews, roadmap planning, and continuous improvement keep your IT ahead of the curve.</div></div>
+  </div>
+</div></section>
+<section class="section"><div class="container"><div class="two-col">
+  <div>
+    <div class="section-eyebrow">Why Workplace IT</div>
+    <h2 class="section-title">The Denver IT Partner<br>That Actually Shows Up</h2>
+    <p class="section-desc">Local technicians, transparent pricing, and a team that treats your business like our own.</p>
+    <a href="/#contact" class="btn-pill-blue" style="display:inline-block;margin-top:8px;">Talk To Our Team</a>
+  </div>
+  <div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">&#128205;</div><div class="why-body"><h4>Denver-Based Team</h4><p>Real technicians in your city. On-site visits are fast when you need them.</p></div></div>
+      <div class="why-card"><div class="why-icon">&#128176;</div><div class="why-body"><h4>Flat-Rate Pricing</h4><p>One predictable monthly invoice. No surprise bills for after-hours calls.</p></div></div>
+      <div class="why-card"><div class="why-icon">&#9889;</div><div class="why-body"><h4>Fast Response</h4><p>Under 1-hour average response time. Critical issues get escalated immediately.</p></div></div>
+      <div class="why-card"><div class="why-icon">&#128203;</div><div class="why-body"><h4>Full Accountability</h4><p>Monthly reports show exactly what was done &#8212; no guessing what you're paying for.</p></div></div>
+      <div class="why-card"><div class="why-icon">&#128274;</div><div class="why-body"><h4>Security-First Approach</h4><p>Every managed IT plan includes baseline security monitoring and endpoint protection.</p></div></div>
+      <div class="why-card"><div class="why-icon">&#128200;</div><div class="why-body"><h4>Scalable With You</h4><p>Add users, locations, and services as you grow &#8212; no new contracts needed.</p></div></div>
+    </div>
+  </div>
+</div></div></section>
+<section class="section section-gray"><div class="container">
+  <div style="max-width:760px;margin:0 auto;">
+    <div class="section-eyebrow" style="text-align:center;">Common Questions</div>
+    <h2 class="section-title" style="text-align:center;margin-bottom:40px;">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What's included in managed IT support?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Our managed IT plans include 24/7 monitoring, unlimited helpdesk support, patch management, network management, asset tracking, and quarterly strategic reviews. Everything is bundled into a flat monthly rate &#8212; no extra charges for tickets or after-hours calls.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How quickly do you respond to support requests?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Our average response time is under one hour. Critical issues affecting your entire business are escalated immediately and typically resolved within the same business day. We also proactively detect and fix many issues before you even notice them.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you support both Windows and Mac environments?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Yes &#8212; our team supports mixed Windows and macOS environments, as well as Linux servers. We also support cloud platforms including Microsoft 365, Google Workspace, and major cloud infrastructure providers.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does onboarding work?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">After signing, we start with a full environment assessment and documentation sprint. Our agents are deployed to all devices, monitoring goes live, and your team gets helpdesk access &#8212; all within 5 business days. The process is designed to be low-disruption so your team stays productive.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What's the difference between managed IT and break-fix support?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Break-fix support means you call someone when something breaks &#8212; you pay per incident and have no guaranteed response time. Managed IT means we're continuously monitoring and maintaining your systems to prevent problems from occurring. It's the difference between reactive and proactive IT.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there a minimum contract length?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">We typically offer 12-month agreements which allow us to fully document your environment and deliver the best results. We're confident in our service &#8212; if you'd like to discuss flexible terms, reach out and we'll work with you.</div></div>
+    </div>
+  </div>
+</div></section>
+<div class="cta-band"><div class="container">
+  <h2>Ready for IT That Never Lets You Down?</h2>
+  <p>Start with a free, no-obligation assessment of your current environment.</p>
+  <a href="/#contact" class="btn-pill-white">Get Your Free Assessment</a>
+</div></div>
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-brand">
+    <div class="footer-logo">W<span>IT</span></div>
+    <span class="footer-logo-sub">Workplace IT</span>
+    <p>Denver's proactive IT partner. We keep your business secure, compliant, and running at full speed.</p>
+    <div class="footer-socials">
+      <a href="https://www.facebook.com/workplaceitco/" class="fsoc" target="_blank" rel="noopener">f</a>
+      <a href="https://www.linkedin.com/company/front-range-workplaceit" class="fsoc" target="_blank" rel="noopener">in</a>
+    </div>
+  </div>
+  <div class="footer-col"><h5>Services</h5><ul>
+    <li><a href="/services/managed-it-support.html">Managed IT Support</a></li>
+    <li><a href="/#services">Cybersecurity</a></li>
+    <li><a href="/#services">IT Compliance</a></li>
+    <li><a href="/#services">Video Surveillance</a></li>
+    <li><a href="/#services">VoIP Services</a></li>
+    <li><a href="/#services">Backup &amp; Recovery</a></li>
+    <li><a href="/#services">SaaS Licensing</a></li>
+    <li><a href="/#services">Cloud Management</a></li>
+  </ul></div>
+  <div class="footer-col"><h5>Company</h5><ul>
+    <li><a href="/#about">About Us</a></li>
+    <li><a href="/#values">Our Values</a></li>
+    <li><a href="/#testimonials">Testimonials</a></li>
+    <li><a href="/#contact">Contact Us</a></li>
+  </ul></div>
+  <div class="footer-col"><h5>Contact</h5><ul>
+    <li><a href="tel:7206479900">(720) 647-9900</a></li>
+    <li><a href="#">1514 Curtis St, Suite 200<br>Denver, CO 80202</a></li>
+    <li><a href="mailto:info@workplaceit.net">info@workplaceit.net</a></li>
+  </ul></div>
+</div>
+<div class="footer-bottom">
+  <span>&#169; 2026 Workplace IT. All rights reserved.</span>
+  <div><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a></div>
+</div></footer>
+<script>
+function toggleFaq(el){const a=el.nextElementSibling,o=el.classList.contains('open');document.querySelectorAll('.faq-q').forEach(q=>q.classList.remove('open'));document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));if(!o){el.classList.add('open');a.classList.add('open');}}
+</script>
+</body>
+</html>
