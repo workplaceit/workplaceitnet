@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Management & Services Denver | Workplace IT</title>
+  <meta name="description" content="Workplace IT delivers fully managed cloud services for Denver businesses — hosted Exchange, Active Directory, file storage, virtual servers, Microsoft 365, Azure, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --blue: #1a9fd4; --blue-dark: #1480ae; --navy: #0a1628; --light-gray: #f4f6f8; --mid-gray: #e8ecef; --text: #333; --text-light: #666; --text-muted: #999; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Open Sans', sans-serif; color: var(--text); background: #fff; font-size: 15px; line-height: 1.6; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    .top-bar { background: var(--blue); color: #fff; padding: 9px 0; font-size: 0.8rem; }
+    .top-bar-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .top-bar-item { display: flex; align-items: center; gap: 8px; }
+    .top-bar a { color: #fff; }
+    .main-nav { background: #fff; border-bottom: 1px solid var(--mid-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 200; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo-mark { font-family: 'Roboto', sans-serif; font-size: 2rem; font-weight: 900; color: var(--blue); letter-spacing: -0.04em; line-height: 1; }
+    .logo-mark span { color: var(--text); }
+    .logo-sub { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { font-family: 'Roboto', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text); padding: 8px 14px; border-radius: 3px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links .btn-nav { background: var(--blue); color: #fff; }
+    .nav-links .btn-nav:hover { background: var(--blue-dark); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+    @media (max-width: 860px) { .nav-links { display: none; } .hamburger { display: flex; } }
+    .breadcrumb { background: var(--light-gray); border-bottom: 1px solid var(--mid-gray); padding: 12px 0; font-size: 0.8rem; color: var(--text-muted); }
+    .breadcrumb-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; gap: 8px; }
+    .breadcrumb a { color: var(--blue); }
+    .page-hero { position: relative; background: var(--navy); min-height: 360px; display: flex; align-items: center; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: 0; background-color: var(--navy); background-image: linear-gradient(rgba(26,159,212,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(26,159,212,0.18) 1px, transparent 1px); background-size: 40px 40px; }
+    .page-hero-bg::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(26,159,212,0.55) 1.5px, transparent 1.5px); background-size: 40px 40px; background-position: -1px -1px; opacity: 0.35; }
+    .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(26,159,212,0.45) 0%, transparent 55%); }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 60px 32px; width: 100%; }
+    .service-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(26,159,212,0.25); border: 1px solid rgba(26,159,212,0.5); color: rgba(255,255,255,0.9); font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 20px; }
+    .page-hero h1 { font-family: 'Roboto', sans-serif; font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; color: #fff; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; max-width: 640px; }
+    .page-hero h1 em { color: var(--blue); font-style: normal; }
+    .page-hero-desc { color: rgba(255,255,255,0.75); font-size: 1.05rem; max-width: 560px; margin-bottom: 32px; line-height: 1.7; }
+    .hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-pill-blue { display: inline-block; background: var(--blue); color: #fff; font-family: 'Roboto', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 30px; border-radius: 100px; transition: background 0.2s; }
+    .btn-pill-blue:hover { background: var(--blue-dark); }
+    .btn-pill-ghost { display: inline-block; background: transparent; color: #fff; font-family: 'Roboto', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 13px 28px; border-radius: 100px; border: 2px solid rgba(255,255,255,0.45); transition: border-color 0.2s; }
+    .btn-pill-ghost:hover { border-color: #fff; }
+    .stats-strip { background: var(--blue); padding: 28px 0; }
+    .stats-strip-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: repeat(4,1fr); }
+    .stat-item { text-align: center; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.2); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: 'Roboto', sans-serif; font-size: 2rem; font-weight: 900; color: #fff; line-height: 1; }
+    .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.8); margin-top: 5px; font-weight: 600; }
+    .section { padding: 80px 0; }
+    .section-gray { background: var(--light-gray); }
+    .section-navy { background: var(--navy); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .section-eyebrow { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+    .section-eyebrow.white { color: rgba(255,255,255,0.7); }
+    .section-title { font-family: 'Roboto', sans-serif; font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 900; color: var(--text); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .section-title.white { color: #fff; }
+    .section-desc { font-size: 1rem; color: var(--text-light); max-width: 560px; line-height: 1.75; margin-bottom: 40px; }
+    .section-desc.white { color: rgba(255,255,255,0.75); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; gap: 40px; } }
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+    .checklist li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; }
+    .checklist li::before { content: '\2713'; flex-shrink: 0; width: 22px; height: 22px; background: var(--blue); color: #fff; border-radius: 50%; font-size: 0.7rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .checklist li strong { display: block; font-weight: 700; margin-bottom: 2px; }
+    .checklist li span { color: var(--text-light); font-size: 0.88rem; }
+    .visual-panel { background: var(--navy); border-radius: 12px; padding: 36px; position: relative; overflow: hidden; }
+    .visual-panel::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(26,159,212,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(26,159,212,0.12) 1px, transparent 1px); background-size: 30px 30px; }
+    .visual-panel-content { position: relative; z-index: 1; }
+    .vp-icon { font-size: 3rem; margin-bottom: 16px; }
+    .vp-title { font-family: 'Roboto', sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .vp-desc { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 24px; }
+    .vp-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .vp-metric { background: rgba(26,159,212,0.15); border: 1px solid rgba(26,159,212,0.3); border-radius: 8px; padding: 16px; text-align: center; }
+    .vp-metric-num { font-family: 'Roboto', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--blue); }
+    .vp-metric-label { font-size: 0.75rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+    .svc-detail-card { background: #fff; border: 1px solid var(--mid-gray); border-radius: 10px; padding: 28px; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; }
+    .svc-detail-card:hover { box-shadow: 0 8px 28px rgba(26,159,212,0.12); transform: translateY(-3px); border-color: rgba(26,159,212,0.3); }
+    .sdc-icon { font-size: 2rem; margin-bottom: 14px; }
+    .sdc-title { font-family: 'Roboto', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .sdc-desc { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; }
+    .process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 28px; left: calc(12.5% + 8px); right: calc(12.5% + 8px); height: 2px; background: rgba(26,159,212,0.3); }
+    @media (max-width: 860px) { .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; } .process-steps::before { display: none; } }
+    .process-step { text-align: center; padding: 0 16px; position: relative; }
+    .step-circle { width: 56px; height: 56px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-family: 'Roboto', sans-serif; font-size: 1.1rem; font-weight: 900; color: #fff; position: relative; z-index: 1; }
+    .step-title { font-family: 'Roboto', sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .step-desc { font-size: 0.83rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 640px) { .why-grid { grid-template-columns: 1fr; } }
+    .why-card { display: flex; gap: 18px; background: #fff; border: 1px solid var(--mid-gray); border-radius: 10px; padding: 24px; transition: box-shadow 0.2s, border-color 0.2s; }
+    .why-card:hover { box-shadow: 0 4px 20px rgba(26,159,212,0.1); border-color: rgba(26,159,212,0.3); }
+    .why-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+    .why-body h4 { font-family: 'Roboto', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .why-body p { font-size: 0.87rem; color: var(--text-light); line-height: 1.65; }
+    .faq-list { display: flex; flex-direction: column; border: 1px solid var(--mid-gray); border-radius: 10px; overflow: hidden; }
+    .faq-item { border-bottom: 1px solid var(--mid-gray); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; cursor: pointer; font-family: 'Roboto', sans-serif; font-size: 0.95rem; font-weight: 700; background: #fff; transition: background 0.2s; user-select: none; }
+    .faq-q:hover { background: var(--light-gray); }
+    .faq-q.open { color: var(--blue); background: #f0f9ff; }
+    .faq-arrow { transition: transform 0.25s; color: var(--blue); }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 24px 20px; font-size: 0.9rem; color: var(--text-light); line-height: 1.7; background: #f0f9ff; }
+    .faq-a.open { display: block; }
+    .cta-band { background: #1e2d3d; padding: 72px 0; text-align: center; }
+    .cta-band h2 { font-family: 'Roboto', sans-serif; font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 900; color: #fff; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .cta-band p { color: rgba(255,255,255,0.6); font-size: 0.95rem; margin-bottom: 30px; }
+    .btn-pill-white { display: inline-block; background: #fff; color: var(--navy); font-family: 'Roboto', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 32px; border-radius: 100px; transition: background 0.2s; }
+    .btn-pill-white:hover { background: var(--blue); color: #fff; }
+    .footer { background: #13202d; padding: 64px 0 0; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; padding: 0 32px 56px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-logo { font-family: 'Roboto', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--blue); letter-spacing: -0.02em; }
+    .footer-logo span { color: #fff; }
+    .footer-logo-sub { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); display: block; margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.38); line-height: 1.82; max-width: 270px; margin-top: 10px; }
+    .footer-socials { display: flex; gap: 8px; margin-top: 18px; }
+    .fsoc { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; transition: background 0.2s, color 0.2s; }
+    .fsoc:hover { background: var(--blue); color: #fff; }
+    .footer-col h5 { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 9px; }
+    .footer-col a { font-size: 0.85rem; color: rgba(255,255,255,0.42); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--blue); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 20px 32px; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom span, .footer-bottom a { font-size: 0.8rem; color: rgba(255,255,255,0.22); }
+    .footer-bottom a { margin-left: 16px; transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--blue); }
+  </style>
+  <style>
+    .hero-cloud { background: var(--navy); position: relative; overflow: hidden; padding: 80px 0 72px; }
+    .hero-cloud::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(26,159,212,0.07) 0%, transparent 60%), radial-gradient(ellipse at 75% 50%, rgba(26,159,212,0.1) 0%, transparent 55%); pointer-events: none; }
+    .hero-cloud::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(26,159,212,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(26,159,212,0.06) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+    .service-block { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 72px; }
+    .service-block:last-child { margin-bottom: 0; }
+    @media(max-width: 860px) { .service-block { grid-template-columns: 1fr; gap: 32px; } }
+    .service-label { display: inline-block; background: rgba(26,159,212,0.1); border: 1px solid rgba(26,159,212,0.25); color: var(--blue); font-family: 'Roboto', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 14px; border-radius: 3px; margin-bottom: 16px; }
+    .service-title { font-family: 'Roboto', sans-serif; font-size: 1.45rem; font-weight: 800; color: var(--text-dark); margin-bottom: 14px; line-height: 1.25; }
+    .service-desc { font-family: 'Open Sans', sans-serif; font-size: 0.92rem; color: var(--text-light); line-height: 1.75; margin-bottom: 20px; }
+    .feature-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .feature-list li { display: flex; gap: 10px; align-items: flex-start; font-family: 'Open Sans', sans-serif; font-size: 0.87rem; color: var(--text-light); line-height: 1.5; }
+    .feature-list li::before { content: '✓'; flex-shrink: 0; width: 18px; height: 18px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.65rem; font-weight: 700; margin-top: 1px; }
+    .price-badge { display: inline-block; background: var(--navy); color: var(--blue); font-family: 'Roboto', sans-serif; font-size: 0.82rem; font-weight: 700; padding: 8px 16px; border-radius: 4px; border: 1px solid rgba(26,159,212,0.3); margin-top: 16px; }
+    .cloud-visual { background: var(--navy); border-radius: 10px; padding: 28px; position: relative; overflow: hidden; }
+    .cloud-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 40%, rgba(26,159,212,0.1) 0%, transparent 65%); pointer-events: none; }
+    .cloud-stat-row { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 14px 16px; margin-bottom: 10px; position: relative; z-index: 1; }
+    .cloud-stat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .cloud-stat-label { font-family: 'Roboto', sans-serif; font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.85); flex: 1; }
+    .cloud-stat-val { font-family: 'Roboto', sans-serif; font-size: 0.75rem; font-weight: 700; }
+    .cloud-stat-sub { font-family: 'Open Sans', sans-serif; font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
+  </style>
+</head>
+<body>
+<div class="top-bar"><div class="top-bar-inner">
+  <div class="top-bar-item">&#128205; 1514 Curtis St. Suite 200, Denver CO 80202</div>
+  <div class="top-bar-item">&#9993;&#65039; <a href="mailto:info@workplaceit.net">info@workplaceit.net</a></div>
+  <div class="top-bar-item">&#128222; (720) 647-9900</div>
+</div></div>
+<nav class="main-nav"><div class="nav-inner">
+  <a href="/" style="display:flex;align-items:center;gap:10px;">
+    <div><div class="logo-mark">W<span>IT</span></div><span class="logo-sub">Workplace IT</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#testimonials">Testimonials</a></li>
+    <li><a href="/#contact" class="btn-nav">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+
+
+<!-- BREADCRUMB -->
+<div style="background:var(--light-gray); border-bottom:1px solid var(--mid-gray); padding:12px 0;">
+  <div class="container" style="font-family:'Open Sans',sans-serif; font-size:0.82rem; color:var(--text-muted);">
+    <a href="../index.html" style="color:var(--blue); text-decoration:none;">Home</a>
+    <span style="margin:0 8px;">&rsaquo;</span>
+    <a href="../index.html#services" style="color:var(--blue); text-decoration:none;">Services</a>
+    <span style="margin:0 8px;">&rsaquo;</span>
+    <span>Cloud Management &amp; Services</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero-cloud">
+  <div class="container" style="position:relative; z-index:1;">
+    <div style="max-width:700px;">
+      <div style="display:inline-block; background:rgba(26,159,212,0.15); border:1px solid rgba(26,159,212,0.35); color:var(--blue); font-family:'Roboto',sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; padding:6px 18px; border-radius:3px; margin-bottom:24px;">Cloud Management &amp; Services</div>
+      <h1 style="font-family:'Roboto',sans-serif; font-size:clamp(2rem,4vw,2.9rem); font-weight:900; color:#fff; line-height:1.15; margin:0 0 20px;">Your Infrastructure in the Cloud.<br><em style="color:var(--blue); font-style:normal;">Managed So You Don't Have To.</em></h1>
+      <p style="font-family:'Open Sans',sans-serif; font-size:1.1rem; color:rgba(255,255,255,0.65); line-height:1.7; margin:0 0 36px;">From hosted Exchange and Active Directory to virtual servers and cloud file storage — Workplace IT moves your infrastructure to the cloud and keeps it running, secured, and optimized 24/7. No more on-site servers. No more maintenance headaches.</p>
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="tel:7206479900" style="display:inline-block; background:var(--blue); color:#fff; font-family:'Roboto',sans-serif; font-weight:700; font-size:0.95rem; padding:14px 32px; border-radius:4px; text-decoration:none;">Talk to a Cloud Expert</a>
+        <a href="tel:7206479900" style="display:inline-block; background:transparent; color:rgba(255,255,255,0.8); font-family:'Roboto',sans-serif; font-weight:600; font-size:0.95rem; padding:14px 28px; border-radius:4px; text-decoration:none; border:1px solid rgba(255,255,255,0.2);">(720) 647-9900</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div style="background:var(--blue); padding:28px 0;">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; text-align:center;">
+      <div><div style="font-family:'Roboto',sans-serif; font-size:1.8rem; font-weight:900; color:#fff;">99.9%</div><div style="font-family:'Open Sans',sans-serif; font-size:0.8rem; color:rgba(255,255,255,0.75); margin-top:4px;">Uptime SLA</div></div>
+      <div><div style="font-family:'Roboto',sans-serif; font-size:1.8rem; font-weight:900; color:#fff;">24/7</div><div style="font-family:'Open Sans',sans-serif; font-size:0.8rem; color:rgba(255,255,255,0.75); margin-top:4px;">Monitoring &amp; Support</div></div>
+      <div><div style="font-family:'Roboto',sans-serif; font-size:1.8rem; font-weight:900; color:#fff;">Zero</div><div style="font-family:'Open Sans',sans-serif; font-size:0.8rem; color:rgba(255,255,255,0.75); margin-top:4px;">On-Site Servers Required</div></div>
+      <div><div style="font-family:'Roboto',sans-serif; font-size:1.8rem; font-weight:900; color:#fff;">From $4</div><div style="font-family:'Open Sans',sans-serif; font-size:0.8rem; color:rgba(255,255,255,0.75); margin-top:4px;">Per User / Month</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section section-white">
+  <div class="container">
+    <div class="section-eyebrow">What We Manage</div>
+    <h2 class="section-title">Four Core Cloud Services,<br>Fully Managed by Workplace IT</h2>
+    <p class="section-desc">We offer a wide range of cloud management solutions including Microsoft 365, Google, Datto, and more. Every service is hosted in a hardened private cloud with anti-malware protection and backed by a financially-guaranteed SLA.</p>
+
+    <!-- Exchange Online -->
+    <div class="service-block" style="margin-top:56px;">
+      <div>
+        <div class="service-label">&#9993; Exchange Online</div>
+        <h3 class="service-title">Hosted Cloud Email for Business</h3>
+        <p class="service-desc">Enterprise-grade email hosted in Microsoft's globally redundant cloud. Every mailbox gets 50 GB of storage, premier spam and malware filtering, and collaboration tools built in — all backed by a financially-guaranteed 99.9% uptime SLA.</p>
+        <ul class="feature-list">
+          <li>50 GB mailbox per user, send messages up to 150 MB</li>
+          <li>Premier anti-malware and anti-spam via Exchange Online Protection</li>
+          <li>Shared calendars, global address list, groups, and delegation</li>
+          <li>Data loss prevention (DLP) to block unauthorized sharing of sensitive data</li>
+          <li>Globally redundant servers with disaster recovery</li>
+          <li>Security experts monitoring Exchange around the clock</li>
+          <li>Financially-backed 99.9% uptime SLA</li>
+        </ul>
+        <div class="price-badge">From $4/user/month</div>
+      </div>
+      <div class="cloud-visual">
+        <div style="font-family:'Roboto',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:20px; position:relative; z-index:1;">Exchange Online — Mailbox Status</div>
+        
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">Exchange Online</div>
+            <div class="cloud-stat-sub">50 GB mailbox · last synced 2 min ago</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">Active</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">Anti-Spam Filter</div>
+            <div class="cloud-stat-sub">0 threats in last 24 hours</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">Active</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">DLP Policies</div>
+            <div class="cloud-stat-sub">3 policies · 0 violations today</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">Enforced</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">Uptime SLA</div>
+            <div class="cloud-stat-sub">Financially-backed guarantee</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">99.9%</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#3b82f6; box-shadow:0 0 6px #3b82f6;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">Calendar Sharing</div>
+            <div class="cloud-stat-sub">12 shared calendars active</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#3b82f6;">Enabled</div>
+        </div>
+        <div style="margin-top:20px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.08); display:grid; grid-template-columns:repeat(3,1fr); gap:12px; text-align:center; position:relative; z-index:1;">
+          <div><div style="font-family:'Roboto',sans-serif; font-size:1.3rem; font-weight:900; color:var(--blue);">47</div><div style="font-family:'Open Sans',sans-serif; font-size:0.7rem; color:rgba(255,255,255,0.45);">Active Mailboxes</div></div>
+          <div><div style="font-family:'Roboto',sans-serif; font-size:1.3rem; font-weight:900; color:#22c55e;">0</div><div style="font-family:'Open Sans',sans-serif; font-size:0.7rem; color:rgba(255,255,255,0.45);">Threats Today</div></div>
+          <div><div style="font-family:'Roboto',sans-serif; font-size:1.3rem; font-weight:900; color:#f59e0b;">99.9%</div><div style="font-family:'Open Sans',sans-serif; font-size:0.7rem; color:rgba(255,255,255,0.45);">Uptime This Month</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Directory -->
+    <div style="border-top:1px solid var(--mid-gray); padding-top:72px;" class="service-block">
+      <div>
+        <div class="service-label">&#128101; Hosted Directory</div>
+        <h3 class="service-title">Active Directory Online — Hosted Directory Services</h3>
+        <p class="service-desc">Active Directory is one of the most widely used services on enterprise networks — enabling authentication, authorization, and administrative control. Workplace IT hosts it in a private cloud so you get enterprise AD capabilities without the on-site server overhead.</p>
+        <ul class="feature-list">
+          <li>Fully featured Active Directory hosted in a private cloud</li>
+          <li>Premier anti-malware and anti-spam protection for every tenant</li>
+          <li>250 GB of cloud storage included</li>
+          <li>Network shares and offline sync included</li>
+          <li>Create and manage domains, users, groups, and objects</li>
+          <li>Access control at every level — granular permissions per group</li>
+        </ul>
+        <div class="price-badge">From $50/month</div>
+      </div>
+      <div class="cloud-visual">
+        <div style="font-family:'Roboto',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:20px; position:relative; z-index:1;">Active Directory — Directory Health</div>
+        
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">Directory Service</div>
+            <div class="cloud-stat-sub">Private cloud · 99.9% uptime</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">Online</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">Anti-Malware</div>
+            <div class="cloud-stat-sub">Last scan: 4 min ago</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">Active</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">Cloud Storage</div>
+            <div class="cloud-stat-sub">186 GB used · 64 GB free</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">250 GB</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#3b82f6; box-shadow:0 0 6px #3b82f6;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">Network Shares</div>
+            <div class="cloud-stat-sub">8 shared drives · offline sync on</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#3b82f6;">Synced</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">User Accounts</div>
+            <div class="cloud-stat-sub">0 locked accounts</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">47 Active</div>
+        </div>
+        <div style="margin-top:20px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.08); display:grid; grid-template-columns:repeat(3,1fr); gap:12px; text-align:center; position:relative; z-index:1;">
+          <div><div style="font-family:'Roboto',sans-serif; font-size:1.3rem; font-weight:900; color:var(--blue);">47</div><div style="font-family:'Open Sans',sans-serif; font-size:0.7rem; color:rgba(255,255,255,0.45);">Users</div></div>
+          <div><div style="font-family:'Roboto',sans-serif; font-size:1.3rem; font-weight:900; color:#22c55e;">12</div><div style="font-family:'Open Sans',sans-serif; font-size:0.7rem; color:rgba(255,255,255,0.45);">Groups</div></div>
+          <div><div style="font-family:'Roboto',sans-serif; font-size:1.3rem; font-weight:900; color:#f59e0b;">250 GB</div><div style="font-family:'Open Sans',sans-serif; font-size:0.7rem; color:rgba(255,255,255,0.45);">Storage</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- File Storage -->
+    <div style="border-top:1px solid var(--mid-gray); padding-top:72px;" class="service-block">
+      <div class="cloud-visual">
+        <div style="font-family:'Roboto',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:20px; position:relative; z-index:1;">Cloud File Storage — Storage Status</div>
+        
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">File Storage Service</div>
+            <div class="cloud-stat-sub">Private cloud · enterprise-grade</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">Online</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">Anti-Malware Scan</div>
+            <div class="cloud-stat-sub">All files scanned on upload</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">Active</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#3b82f6; box-shadow:0 0 6px #3b82f6;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">Storage Pool</div>
+            <div class="cloud-stat-sub">312 GB used · 188 GB free</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#3b82f6;">500 GB</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">VPN Connectivity</div>
+            <div class="cloud-stat-sub">AES-256 encrypted tunnel</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">Secure</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">Group Permissions</div>
+            <div class="cloud-stat-sub">6 security groups · 0 violations</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">Enforced</div>
+        </div>
+        <div style="margin-top:20px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.08); display:grid; grid-template-columns:repeat(3,1fr); gap:12px; text-align:center; position:relative; z-index:1;">
+          <div><div style="font-family:'Roboto',sans-serif; font-size:1.3rem; font-weight:900; color:var(--blue);">500 GB</div><div style="font-family:'Open Sans',sans-serif; font-size:0.7rem; color:rgba(255,255,255,0.45);">Starting Storage</div></div>
+          <div><div style="font-family:'Roboto',sans-serif; font-size:1.3rem; font-weight:900; color:#22c55e;">6</div><div style="font-family:'Open Sans',sans-serif; font-size:0.7rem; color:rgba(255,255,255,0.45);">Security Groups</div></div>
+          <div><div style="font-family:'Roboto',sans-serif; font-size:1.3rem; font-weight:900; color:#f59e0b;">VPN</div><div style="font-family:'Open Sans',sans-serif; font-size:0.7rem; color:rgba(255,255,255,0.45);">Secure Access</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="service-label">&#128193; Cloud File Storage</div>
+        <h3 class="service-title">Hosted Cloud File Storage for Business</h3>
+        <p class="service-desc">Enterprise file storage hosted in a private cloud — with secure VPN access, group-based permissions, and anti-malware protection built in. Starting with 500 GB, it scales with your business and eliminates the need for on-site NAS or file servers.</p>
+        <ul class="feature-list">
+          <li>Enterprise file storage management hosted in a private cloud</li>
+          <li>Anti-malware protection for every tenant</li>
+          <li>Starting with 500 GB — scales as you grow</li>
+          <li>Enterprise security with group-based file share access management</li>
+          <li>Secure VPN connectivity for remote and on-site access</li>
+          <li>No on-site NAS or file server hardware required</li>
+        </ul>
+        <div class="price-badge">From $50/month</div>
+      </div>
+    </div>
+
+    <!-- Virtual Servers -->
+    <div style="border-top:1px solid var(--mid-gray); padding-top:72px;" class="service-block">
+      <div>
+        <div class="service-label">&#128736; Virtual Servers</div>
+        <h3 class="service-title">Hosted Virtual Servers — Move Your Infra to the Cloud</h3>
+        <p class="service-desc">Migrate your entire on-site server infrastructure to the cloud — or spin up new virtual servers on demand. Public and dedicated options available, with highly available infrastructure, flexible billing, and anti-malware protection on every server.</p>
+        <ul class="feature-list">
+          <li>Public and dedicated virtual servers available</li>
+          <li>Highly available infrastructure ensuring maximum uptime</li>
+          <li>Migrate entire on-site infrastructure to cloud — no more on-site servers</li>
+          <li>Flexible billing by server or by time usage</li>
+          <li>Every server protected with premier anti-malware and anti-spam</li>
+          <li>Workplace IT manages provisioning, patching, and monitoring</li>
+        </ul>
+        <a href="tel:7206479900" style="display:inline-block; background:var(--blue); color:#fff; font-family:'Roboto',sans-serif; font-weight:700; font-size:0.9rem; padding:13px 28px; border-radius:4px; text-decoration:none; margin-top:20px;">Talk to a Cloud Expert</a>
+      </div>
+      <div class="cloud-visual">
+        <div style="font-family:'Roboto',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:20px; position:relative; z-index:1;">Virtual Server Farm — Live Status</div>
+        
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">Web Server — VM01</div>
+            <div class="cloud-stat-sub">2 vCPU · 8 GB RAM · 99.98% uptime</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">Running</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">App Server — VM02</div>
+            <div class="cloud-stat-sub">4 vCPU · 16 GB RAM · dedicated</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">Running</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">DB Server — VM03</div>
+            <div class="cloud-stat-sub">4 vCPU · 32 GB RAM · dedicated</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">Running</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#f59e0b; box-shadow:0 0 6px #f59e0b;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">Dev Server — VM04</div>
+            <div class="cloud-stat-sub">Paused · billed by time usage</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#f59e0b;">Standby</div>
+        </div>
+        <div class="cloud-stat-row">
+          <div class="cloud-stat-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div>
+          <div style="flex:1;">
+            <div class="cloud-stat-label">Anti-Malware</div>
+            <div class="cloud-stat-sub">All VMs protected · last scan: 8 min</div>
+          </div>
+          <div class="cloud-stat-val" style="color:#22c55e;">Active</div>
+        </div>
+        <div style="margin-top:20px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.08); display:grid; grid-template-columns:repeat(3,1fr); gap:12px; text-align:center; position:relative; z-index:1;">
+          <div><div style="font-family:'Roboto',sans-serif; font-size:1.3rem; font-weight:900; color:var(--blue);">4</div><div style="font-family:'Open Sans',sans-serif; font-size:0.7rem; color:rgba(255,255,255,0.45);">Virtual Servers</div></div>
+          <div><div style="font-family:'Roboto',sans-serif; font-size:1.3rem; font-weight:900; color:#22c55e;">3</div><div style="font-family:'Open Sans',sans-serif; font-size:0.7rem; color:rgba(255,255,255,0.45);">Running</div></div>
+          <div><div style="font-family:'Roboto',sans-serif; font-size:1.3rem; font-weight:900; color:#f59e0b;">99.9%</div><div style="font-family:'Open Sans',sans-serif; font-size:0.7rem; color:rgba(255,255,255,0.45);">Avg Uptime</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CLOUD -->
+<section class="section" style="background:var(--navy);">
+  <div class="container">
+    <div class="section-eyebrow" style="color:var(--blue);">Why Move to the Cloud</div>
+    <h2 class="section-title" style="color:#fff;">Ditch the Server Closet.<br>Let Us Run Your Infrastructure.</h2>
+    <p class="section-desc" style="color:rgba(255,255,255,0.6);">On-site servers are expensive, fragile, and a security liability. Cloud-hosted infrastructure managed by Workplace IT gives you enterprise performance without the overhead.</p>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:40px;">
+      
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:28px;">
+        <div style="font-size:1.5rem; margin-bottom:12px;">💰</div>
+        <div style="font-family:'Roboto',sans-serif; font-size:0.97rem; font-weight:700; color:#fff; margin-bottom:8px;">Eliminate CapEx</div>
+        <div style="font-family:'Open Sans',sans-serif; font-size:0.85rem; color:rgba(255,255,255,0.55); line-height:1.65;">No more server hardware to buy, rack, or replace. Move to a predictable monthly operating expense.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:28px;">
+        <div style="font-size:1.5rem; margin-bottom:12px;">🔒</div>
+        <div style="font-family:'Roboto',sans-serif; font-size:0.97rem; font-weight:700; color:#fff; margin-bottom:8px;">Enterprise Security</div>
+        <div style="font-family:'Open Sans',sans-serif; font-size:0.85rem; color:rgba(255,255,255,0.55); line-height:1.65;">Every hosted service includes anti-malware, anti-spam, DLP, and security monitoring built in — not bolted on.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:28px;">
+        <div style="font-size:1.5rem; margin-bottom:12px;">📈</div>
+        <div style="font-family:'Roboto',sans-serif; font-size:0.97rem; font-weight:700; color:#fff; margin-bottom:8px;">Scales Instantly</div>
+        <div style="font-family:'Open Sans',sans-serif; font-size:0.85rem; color:rgba(255,255,255,0.55); line-height:1.65;">Add users, storage, or servers in minutes. No procurement delays, no capacity planning headaches.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:28px;">
+        <div style="font-size:1.5rem; margin-bottom:12px;">🌐</div>
+        <div style="font-family:'Roboto',sans-serif; font-size:0.97rem; font-weight:700; color:#fff; margin-bottom:8px;">Access from Anywhere</div>
+        <div style="font-family:'Open Sans',sans-serif; font-size:0.85rem; color:rgba(255,255,255,0.55); line-height:1.65;">Cloud infrastructure means your team works from any device, any location — securely.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:28px;">
+        <div style="font-size:1.5rem; margin-bottom:12px;">🛡️</div>
+        <div style="font-family:'Roboto',sans-serif; font-size:0.97rem; font-weight:700; color:#fff; margin-bottom:8px;">Disaster Recovery Built In</div>
+        <div style="font-family:'Open Sans',sans-serif; font-size:0.85rem; color:rgba(255,255,255,0.55); line-height:1.65;">Globally redundant data centers mean a single hardware failure never takes you offline.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:28px;">
+        <div style="font-size:1.5rem; margin-bottom:12px;">🔧</div>
+        <div style="font-family:'Roboto',sans-serif; font-size:0.97rem; font-weight:700; color:#fff; margin-bottom:8px;">Fully Managed</div>
+        <div style="font-family:'Open Sans',sans-serif; font-size:0.85rem; color:rgba(255,255,255,0.55); line-height:1.65;">Workplace IT handles provisioning, patching, monitoring, and support — your team never touches the infrastructure.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:var(--light-gray); padding:56px 0; border-top:1px solid var(--mid-gray);">
+  <div class="container">
+    <div class="section-eyebrow" style="text-align:center;">What Clients Say</div>
+    <h2 class="section-title">Real Businesses. Real Results.</h2>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+      
+      <div style="background:var(--white); border:1px solid var(--mid-gray); border-radius:8px; padding:28px;">
+        <div style="font-family:'Open Sans',sans-serif; font-size:0.95rem; color:var(--text-light); line-height:1.7; margin-bottom:20px; font-style:italic;">"Workplace IT is always responsive to our needs and give our small business the ability to work on our business because we don't have to worry about our technology."</div>
+        <div style="font-family:'Roboto',sans-serif; font-size:0.82rem; font-weight:700; color:var(--blue);">&mdash; B. Lawrence</div>
+      </div>
+      <div style="background:var(--white); border:1px solid var(--mid-gray); border-radius:8px; padding:28px;">
+        <div style="font-family:'Open Sans',sans-serif; font-size:0.95rem; color:var(--text-light); line-height:1.7; margin-bottom:20px; font-style:italic;">"Workplace IT has done an exceptional job. They have always been able to help us troubleshoot any issues we've experienced. Definitely recommend!"</div>
+        <div style="font-family:'Roboto',sans-serif; font-size:0.82rem; font-weight:700; color:var(--blue);">&mdash; A. Sanchez</div>
+      </div>
+      <div style="background:var(--white); border:1px solid var(--mid-gray); border-radius:8px; padding:28px;">
+        <div style="font-family:'Open Sans',sans-serif; font-size:0.95rem; color:var(--text-light); line-height:1.7; margin-bottom:20px; font-style:italic;">"Workplace IT is the best. They are responsive to your every need in a more than timely manner and give you options to your issues. 5 stars."</div>
+        <div style="font-family:'Roboto',sans-serif; font-size:0.82rem; font-weight:700; color:var(--blue);">&mdash; T. Peters</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--blue); padding:64px 0; text-align:center;">
+  <div class="container">
+    <h2 style="font-family:'Roboto',sans-serif; font-size:clamp(1.6rem,3vw,2.2rem); font-weight:800; color:#fff; margin:0 0 16px;">Ready to Move Your Infrastructure to the Cloud?</h2>
+    <p style="font-family:'Open Sans',sans-serif; font-size:1.05rem; color:rgba(255,255,255,0.8); margin:0 auto 36px; max-width:540px; line-height:1.65;">Talk to a cloud expert today. We'll assess your current setup and show you exactly what a managed cloud migration looks like for your business — with pricing, timelines, and zero obligation.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="tel:7206479900" style="display:inline-block; background:#fff; color:var(--blue); font-family:'Roboto',sans-serif; font-weight:800; font-size:1rem; padding:16px 36px; border-radius:4px; text-decoration:none;">Talk to a Cloud Expert</a>
+      <a href="tel:7206479900" style="display:inline-block; background:transparent; color:#fff; font-family:'Roboto',sans-serif; font-weight:600; font-size:1rem; padding:16px 28px; border-radius:4px; text-decoration:none; border:2px solid rgba(255,255,255,0.4);">(720) 647-9900</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-brand">
+    <div class="footer-logo">W<span>IT</span></div>
+    <span class="footer-logo-sub">Workplace IT</span>
+    <p>Denver's proactive IT partner. We keep your business secure, compliant, and running at full speed.</p>
+    <div class="footer-socials">
+      <a href="https://www.facebook.com/workplaceitco/" class="fsoc" target="_blank" rel="noopener">f</a>
+      <a href="https://www.linkedin.com/company/front-range-workplaceit" class="fsoc" target="_blank" rel="noopener">in</a>
+    </div>
+  </div>
+  <div class="footer-col"><h5>Services</h5><ul>
+    <li><a href="/services/managed-it-support.html">Managed IT Support</a></li>
+    <li><a href="/#services">Cybersecurity</a></li>
+    <li><a href="/#services">IT Compliance</a></li>
+    <li><a href="/#services">Video Surveillance</a></li>
+    <li><a href="/#services">VoIP Services</a></li>
+    <li><a href="/#services">Backup &amp; Recovery</a></li>
+    <li><a href="/#services">SaaS Licensing</a></li>
+    <li><a href="/#services">Cloud Management</a></li>
+  </ul></div>
+  <div class="footer-col"><h5>Company</h5><ul>
+    <li><a href="/#about">About Us</a></li>
+    <li><a href="/#values">Our Values</a></li>
+    <li><a href="/#testimonials">Testimonials</a></li>
+    <li><a href="/#contact">Contact Us</a></li>
+  </ul></div>
+  <div class="footer-col"><h5>Contact</h5><ul>
+    <li><a href="tel:7206479900">(720) 647-9900</a></li>
+    <li><a href="#">1514 Curtis St, Suite 200<br>Denver, CO 80202</a></li>
+    <li><a href="mailto:info@workplaceit.net">info@workplaceit.net</a></li>
+  </ul></div>
+</div>
+<div class="footer-bottom">
+  <span>&#169; 2026 Workplace IT. All rights reserved.</span>
+  <div><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a></div>
+</div></footer>
+<script>
+function toggleFaq(el){const a=el.nextElementSibling,o=el.classList.contains('open');document.querySelectorAll('.faq-q').forEach(q=>q.classList.remove('open'));document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));if(!o){el.classList.add('open');a.classList.add('open');}}
+</script>
+</body>
+</html>
+<script>
+function toggleFaq(el){const a=el.nextElementSibling,o=el.classList.contains('open');document.querySelectorAll('.faq-q').forEach(q=>q.classList.remove('open'));document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));if(!o){el.classList.add('open');a.classList.add('open');}}
+</script>
+</body>
+</html>
