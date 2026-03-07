@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workplace IT | Managed IT Services Denver | Cybersecurity & Cloud Support</title>
+  <meta name="description" content="Workplace IT delivers enterprise-grade managed IT support, cybersecurity, cloud services, and IT compliance in Denver, CO. Your technology partner — proactive, accountable, always on." />
+  <meta name="keywords" content="managed IT services Denver, cybersecurity Denver, IT support Colorado, cloud services Denver, IT compliance CMMC ITAR, VoIP services Denver, disaster recovery Colorado" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Workplace IT" />
+  <link rel="canonical" href="https://workplaceit.net/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Workplace IT | Managed IT Services Denver" />
+  <meta property="og:description" content="Proactive IT support, cybersecurity, and cloud solutions for Denver businesses. We keep you running — always." />
+  <meta property="og:url" content="https://workplaceit.net/" />
+  <meta property="og:site_name" content="Workplace IT" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"LocalBusiness","name":"Workplace IT","description":"Managed IT services, cybersecurity, cloud management, and IT compliance for Denver businesses.","url":"https://workplaceit.net","telephone":"+17206479900","address":{"@type":"PostalAddress","streetAddress":"1514 Curtis St. Suite 200","addressLocality":"Denver","addressRegion":"CO","postalCode":"80202","addressCountry":"US"},"areaServed":"Denver, Colorado","serviceType":["Managed IT Support","Cybersecurity","IT Compliance","Cloud Services","VoIP","Disaster Recovery"],"sameAs":["https://www.facebook.com/workplaceitco/","https://www.linkedin.com/company/front-range-workplaceit"]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #1a9fd4;
+      --blue-dark:  #1480ae;
+      --blue-deep:  #0d5c7a;
+      --navy:       #0a1628;
+      --light-gray: #f4f6f8;
+      --mid-gray:   #e8ecef;
+      --text:       #333;
+      --text-light: #666;
+      --text-muted: #999;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      background: #fff;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; }
+
+    /* ===================== TOP BAR ===================== */
+    .top-bar {
+      background: var(--blue);
+      color: #fff;
+      padding: 9px 0;
+      font-size: 0.8rem;
+    }
+    .top-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .top-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tbi-icon { font-size: 0.9rem; opacity: 0.85; }
+
+    /* ===================== NAV ===================== */
+    .main-nav {
+      background: #fff;
+      border-bottom: 1px solid var(--mid-gray);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-mark {
+      font-family: 'Roboto', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--blue);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .logo-mark span { color: var(--text); }
+    .logo-sub {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-top: -2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 3px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links .btn-nav {
+      background: var(--blue);
+      color: #fff;
+      border-radius: 3px;
+      transition: background 0.2s;
+    }
+    .nav-links .btn-nav:hover { background: var(--blue-dark); color: #fff; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .hamburger:hover span { background: var(--blue); }
+
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      position: relative;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    /* CSS tech grid background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-color: var(--navy);
+      background-image:
+        linear-gradient(rgba(26,159,212,0.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,159,212,0.18) 1px, transparent 1px),
+        linear-gradient(rgba(26,159,212,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,159,212,0.06) 1px, transparent 1px);
+      background-size: 40px 40px, 40px 40px, 200px 200px, 200px 200px;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(26,159,212,0.55) 1.5px, transparent 1.5px);
+      background-size: 40px 40px;
+      background-position: -1px -1px;
+      opacity: 0.35;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 65% 90% at 20% 50%, rgba(20,128,174,0.7) 0%, transparent 70%);
+    }
+
+    /* Diagonal blue wash over the right side */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(20,128,174,0.92) 0%,
+        rgba(26,159,212,0.80) 40%,
+        rgba(26,159,212,0.25) 65%,
+        transparent 80%
+      );
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 90px 32px;
+      width: 100%;
+    }
+
+    .hero-content { max-width: 580px; }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: rgba(255,255,255,0.5);
+      flex-shrink: 0;
+    }
+
+    .hero-h1 {
+      font-family: 'Roboto', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: #fff;
+      text-transform: uppercase;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+
+    .hero-p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.82);
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 480px;
+      margin-bottom: 36px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill-white {
+      padding: 12px 34px;
+      background: #fff;
+      color: var(--blue-dark);
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      border: 2px solid #fff;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-pill-white:hover { background: transparent; color: #fff; }
+
+    .btn-pill-outline {
+      padding: 12px 34px;
+      background: transparent;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      border: 2px solid rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+    .btn-pill-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      margin-top: 52px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .hs-num {
+      font-family: 'Roboto', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+    }
+    .hs-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 4px;
+    }
+
+    /* ===================== SHARED SECTION STYLES ===================== */
+    .section { padding: 88px 32px; }
+    .section-light  { background: var(--light-gray); }
+    .section-white  { background: #fff; }
+    .section-blue   { background: var(--blue); }
+    .section-dark   { background: #1e2d3d; }
+    .section-cream  { background: #f0f8fd; }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .sec-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .sec-tag {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .sec-tag-light { color: rgba(255,255,255,0.65); }
+
+    .sec-title {
+      font-family: 'Roboto', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      line-height: 1.15;
+    }
+    .sec-title-light { color: #fff; }
+
+    .sec-rule {
+      width: 50px;
+      height: 3px;
+      background: var(--blue);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+    .sec-rule-light { background: rgba(255,255,255,0.45); }
+
+    .sec-sub {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      max-width: 620px;
+      margin: 16px auto 0;
+      line-height: 1.85;
+    }
+    .sec-sub-light { color: rgba(255,255,255,0.72); }
+
+    /* ===================== SERVICES ===================== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px)  { .services-grid { grid-template-columns: 1fr; } }
+
+    .svc-card {
+      background: #fff;
+      border: 1px solid var(--mid-gray);
+      border-radius: 4px;
+      padding: 36px 24px 28px;
+      text-align: center;
+      transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+    }
+    .svc-card:hover {
+      box-shadow: 0 10px 36px rgba(26,159,212,0.14);
+      transform: translateY(-5px);
+      border-color: var(--blue);
+    }
+    .svc-card.featured {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+    .svc-card.featured .svc-num  { color: rgba(255,255,255,0.6); }
+    .svc-card.featured .svc-name { color: #fff; }
+    .svc-card.featured .svc-desc { color: rgba(255,255,255,0.82); }
+    .svc-card.featured .svc-more { color: rgba(255,255,255,0.8); }
+
+    .svc-icon {
+      font-size: 2.2rem;
+      margin-bottom: 18px;
+      display: block;
+    }
+    .svc-num {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+    .svc-name {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .svc-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .svc-more {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .svc-card:hover .svc-more { color: var(--blue-dark); }
+
+    /* ===================== VALUES ===================== */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.15);
+    }
+    @media (max-width: 900px) { .values-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .values-grid { grid-template-columns: 1fr; } }
+
+    .val-cell {
+      background: rgba(255,255,255,0.07);
+      padding: 44px 28px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .val-cell:hover { background: rgba(255,255,255,0.14); }
+    .val-icon  { font-size: 2.4rem; display: block; margin-bottom: 16px; }
+    .val-tag   { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 7px; }
+    .val-name  { font-family: 'Roboto', sans-serif; font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: #fff; margin-bottom: 12px; }
+    .val-desc  { font-size: 0.85rem; color: rgba(255,255,255,0.72); line-height: 1.8; }
+
+    /* ===================== ABOUT ===================== */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    @media (max-width: 900px) { .about-layout { grid-template-columns: 1fr; gap: 48px; } }
+
+    .about-left .sec-tag  { text-align: left; }
+    .about-left .sec-title { text-align: left; }
+    .about-left .sec-rule  { margin-left: 0; }
+
+    .about-p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-top: 20px;
+    }
+
+    .checklist {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+    }
+    .chk {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--mid-gray);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .chk:first-child { border-top: 1px solid var(--mid-gray); }
+    .chk:hover { color: var(--blue); }
+    .chk-icon {
+      width: 22px; height: 22px;
+      background: #e4f4fb;
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--blue);
+      font-size: 0.68rem;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .btn-blue-pill {
+      display: inline-block;
+      margin-top: 32px;
+      padding: 13px 36px;
+      background: var(--blue);
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-blue-pill:hover { background: var(--blue-dark); }
+
+    /* Terminal card */
+    .terminal {
+      background: #1e2d3d;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.18);
+    }
+    .term-bar {
+      background: #141e29;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .tdot { width: 12px; height: 12px; border-radius: 50%; }
+    .tdot-r { background: #ff5f57; }
+    .tdot-y { background: #ffbd2e; }
+    .tdot-g { background: #28ca41; }
+    .term-label {
+      margin-left: auto;
+      font-family: monospace;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.28);
+      letter-spacing: 0.06em;
+    }
+    .term-body {
+      padding: 24px 22px 28px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      line-height: 2.15;
+    }
+    .t-dim  { color: rgba(255,255,255,0.25); }
+    .t-ok   { color: #28ca41; }
+    .t-val  { color: #64b5f6; font-weight: 600; }
+    .t-key  { color: #ffb74d; }
+    .t-cur  {
+      display: inline-block;
+      width: 7px; height: 13px;
+      background: var(--blue);
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--mid-gray);
+      border: 1px solid var(--mid-gray);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+    .ss-cell {
+      background: #fff;
+      padding: 20px 10px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .ss-cell:hover { background: #e4f4fb; }
+    .ss-num {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .ss-lbl { font-size: 0.66rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+
+    /* ===================== TESTIMONIALS ===================== */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) { .testi-grid { grid-template-columns: 1fr; } }
+
+    .testi-card {
+      background: #fff;
+      border: 1px solid var(--mid-gray);
+      border-radius: 4px;
+      padding: 32px 28px;
+      position: relative;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .testi-card:hover {
+      box-shadow: 0 10px 36px rgba(26,159,212,0.12);
+      transform: translateY(-4px);
+    }
+    .testi-card::before {
+      content: '"';
+      font-family: 'Roboto', sans-serif;
+      font-size: 6rem;
+      font-weight: 900;
+      color: #e4f4fb;
+      position: absolute;
+      top: 8px; right: 20px;
+      line-height: 1;
+    }
+    .testi-stars { color: #f5a623; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 16px; }
+    .testi-text  { font-size: 0.9rem; color: var(--text-light); line-height: 1.82; margin-bottom: 22px; }
+    .testi-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px solid var(--mid-gray);
+    }
+    .testi-av {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .testi-name { font-size: 0.88rem; font-weight: 700; color: var(--text); }
+    .testi-role { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
+    /* ===================== NEWSLETTER ===================== */
+    .nl-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (max-width: 860px) { .nl-layout { grid-template-columns: 1fr; gap: 40px; } }
+
+    .nl-title {
+      font-family: 'Roboto', sans-serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .nl-sub { color: rgba(255,255,255,0.72); font-size: 0.9rem; line-height: 1.75; margin-bottom: 24px; }
+
+    .nl-form { display: flex; gap: 0; }
+    .nl-input {
+      flex: 1;
+      padding: 13px 18px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.28);
+      border-right: none;
+      border-radius: 50px 0 0 50px;
+      color: #fff;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: background 0.2s;
+    }
+    .nl-input:focus { background: rgba(255,255,255,0.2); }
+    .nl-input::placeholder { color: rgba(255,255,255,0.55); }
+    .nl-btn {
+      padding: 13px 26px;
+      background: #fff;
+      color: var(--blue);
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid #fff;
+      border-radius: 0 50px 50px 0;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nl-btn:hover { background: var(--blue-dark); color: #fff; border-color: var(--blue-dark); }
+
+    .nl-list { list-style: none; }
+    .nl-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.78);
+    }
+    .nl-list li:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+    .nl-list li::before {
+      content: '✓';
+      width: 20px; height: 20px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    /* ===================== CONTACT ===================== */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 72px;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; gap: 48px; } }
+
+    .contact-info-title {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+    }
+    .contact-info-sub { font-size: 0.9rem; color: var(--text-light); line-height: 1.75; margin-bottom: 30px; }
+
+    .cd-list { display: flex; flex-direction: column; }
+    .cd-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--mid-gray);
+    }
+    .cd-item:first-child { border-top: 1px solid var(--mid-gray); }
+    .cd-ico {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: #e4f4fb;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .cd-lbl { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 3px; }
+    .cd-val { font-size: 0.9rem; color: var(--text); line-height: 1.6; }
+    .cd-val a { color: var(--blue); transition: color 0.2s; }
+    .cd-val a:hover { color: var(--blue-dark); }
+
+    .cf-card {
+      background: #fff;
+      border: 1px solid var(--mid-gray);
+      border-radius: 6px;
+      padding: 36px 32px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+    }
+    .cf-heading {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--blue);
+      margin-bottom: 24px;
+    }
+    .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 560px) { .cf-row { grid-template-columns: 1fr; } }
+    .cf-grp { margin-bottom: 14px; }
+    .cf-lbl { display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-light); margin-bottom: 5px; }
+    .cf-inp, .cf-txt {
+      width: 100%;
+      padding: 11px 14px;
+      background: var(--light-gray);
+      border: 1px solid var(--mid-gray);
+      border-radius: 4px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      outline: none;
+      resize: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .cf-inp:focus, .cf-txt:focus { border-color: var(--blue); background: #fff; }
+    .cf-inp::placeholder, .cf-txt::placeholder { color: #b0b8c0; }
+    .cf-submit {
+      width: 100%;
+      padding: 13px;
+      background: var(--blue);
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .cf-submit:hover { background: var(--blue-dark); }
+
+    /* ===================== CTA BAND ===================== */
+    .cta-band {
+      background: #1e2d3d;
+      padding: 72px 32px;
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #fff;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+    .cta-band p { color: rgba(255,255,255,0.6); font-size: 0.95rem; margin-bottom: 30px; }
+
+    /* ===================== FOOTER ===================== */
+    .footer {
+      background: #13202d;
+      color: rgba(255,255,255,0.5);
+      padding: 64px 32px 28px;
+    }
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 28px;
+    }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
+
+    .footer-logo { font-family: 'Roboto', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--blue); letter-spacing: -0.02em; }
+    .footer-logo span { color: #fff; }
+    .footer-logo-sub { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); display: block; margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.38); line-height: 1.82; max-width: 270px; margin-top: 10px; }
+
+    .footer-socials { display: flex; gap: 8px; margin-top: 18px; }
+    .fsoc {
+      width: 34px; height: 34px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .fsoc:hover { border-color: var(--blue); background: var(--blue); color: #fff; }
+
+    .footer-col h5 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--blue);
+      display: inline-block;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 9px; }
+    .footer-col a { font-size: 0.85rem; color: rgba(255,255,255,0.42); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--blue); }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.22);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.22); margin-left: 16px; transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--blue); }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 680px) {
+      .section { padding: 64px 20px; }
+      .hero-inner { padding: 72px 20px; }
+      .top-bar-inner { gap: 20px; }
+      .nav-inner { padding: 0 20px; }
+      .footer { padding: 56px 20px 24px; }
+      .cf-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== TOP BAR ========== -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-item"><span class="tbi-icon">📍</span> 1514 Curtis St. Suite 200, Denver CO 80202</div>
+    <div class="top-bar-item"><span class="tbi-icon">✉️</span> info@workplaceit.net</div>
+    <div class="top-bar-item"><span class="tbi-icon">📞</span> (720) 647-9900</div>
+  </div>
+</div>
+
+<!-- ========== NAV ========== -->
+<nav class="main-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div>
+        <div class="logo-mark">W<span>IT</span></div>
+        <span class="logo-sub">Workplace IT</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact" class="btn-nav">Contact Us</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero" aria-label="Hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Denver's Premier Managed IT Partner</div>
+      <h1 class="hero-h1">Your IT.<br>Bulletproof.<br>Always On.</h1>
+      <p class="hero-p">We don't just fix problems — we prevent them. Workplace IT is Denver's proactive technology partner, keeping your business secure, compliant, and unstoppable.</p>
+      <div class="hero-btns">
+        <a href="#about" class="btn-pill-white">Learn More</a>
+        <a href="#contact" class="btn-pill-outline">Contact Us</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hs-num">10+</div><div class="hs-label">Years in Denver</div></div>
+        <div><div class="hs-num">99.9%</div><div class="hs-label">Uptime Guarantee</div></div>
+        <div><div class="hs-num">24/7</div><div class="hs-label">Monitoring</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICES ========== -->
+<section id="services" class="section section-light" aria-labelledby="svc-heading">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-tag">What We Do</div>
+      <h2 class="sec-title" id="svc-heading">Our Services</h2>
+      <div class="sec-rule"></div>
+      <p class="sec-sub">From day-to-day helpdesk to enterprise-grade cybersecurity — every service designed to eliminate downtime and keep your business running at full speed.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <span class="svc-icon">🖥️</span>
+        <div class="svc-num">01</div>
+        <div class="svc-name">Managed IT Support</div>
+        <div class="svc-desc">Proactive monitoring, helpdesk support, and complete IT management so your team can focus on what matters.</div>
+        <a href="#contact" class="svc-more">Learn More →</a>
+      </div>
+      <div class="svc-card featured">
+        <span class="svc-icon">🔒</span>
+        <div class="svc-num">02</div>
+        <div class="svc-name">Cybersecurity</div>
+        <div class="svc-desc">Advanced threat detection, continuous monitoring, staff training, and rapid incident response to shield your business.</div>
+        <a href="#contact" class="svc-more">Learn More →</a>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">📋</span>
+        <div class="svc-num">03</div>
+        <div class="svc-name">IT Compliance</div>
+        <div class="svc-desc">CMMC, ITAR, FISMA, FINRA and beyond. Audit-ready with risk assessments, policy creation, and continuous monitoring.</div>
+        <a href="#contact" class="svc-more">Learn More →</a>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">📷</span>
+        <div class="svc-num">04</div>
+        <div class="svc-name">Video Surveillance</div>
+        <div class="svc-desc">Cloud-based cameras with AI analytics and zero hardware headaches — fully managed by Workplace IT.</div>
+        <a href="#contact" class="svc-more">Learn More →</a>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">📞</span>
+        <div class="svc-num">05</div>
+        <div class="svc-name">VoIP &amp; Cloud PBX</div>
+        <div class="svc-desc">Enterprise VoIP solutions with better quality, more features, and lower costs than traditional phone systems.</div>
+        <a href="#contact" class="svc-more">Learn More →</a>
+      </div>
+      <div class="svc-card featured">
+        <span class="svc-icon">🔄</span>
+        <div class="svc-num">06</div>
+        <div class="svc-name">Backup &amp; Recovery</div>
+        <div class="svc-desc">Daily file-level backups to complete business continuity — scalable options for every need and budget.</div>
+        <a href="#contact" class="svc-more">Learn More →</a>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">📦</span>
+        <div class="svc-num">07</div>
+        <div class="svc-name">SaaS Licensing</div>
+        <div class="svc-desc">End-to-end license management — better pricing, better support, and complete visibility. Stop overpaying.</div>
+        <a href="#contact" class="svc-more">Learn More →</a>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">☁️</span>
+        <div class="svc-num">08</div>
+        <div class="svc-name">Cloud Management</div>
+        <div class="svc-desc">Cloud-hosted email, applications, servers, and desktops — fully architected and managed by our team.</div>
+        <a href="#contact" class="svc-more">Learn More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== VALUES ========== -->
+<section id="values" class="section section-blue" aria-labelledby="val-heading">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-tag sec-tag-light">Our Core Values</div>
+      <h2 class="sec-title sec-title-light" id="val-heading">The Standards We Live By</h2>
+      <div class="sec-rule sec-rule-light"></div>
+      <p class="sec-sub sec-sub-light">Technology changes fast. Our commitment to you doesn't. These aren't words on a wall — they're how we operate every single day.</p>
+    </div>
+    <div class="values-grid">
+      <div class="val-cell">
+        <span class="val-icon">🏆</span>
+        <div class="val-tag">Value 01</div>
+        <div class="val-name">Pride</div>
+        <div class="val-desc">No shortcuts. No half-measures. We treat every project as if our reputation depends on it — because it does.</div>
+      </div>
+      <div class="val-cell">
+        <span class="val-icon">✅</span>
+        <div class="val-tag">Value 02</div>
+        <div class="val-name">Accountability</div>
+        <div class="val-desc">We say what we'll do, then we do it. When something goes wrong, we own it and fix it. No blame-shifting.</div>
+      </div>
+      <div class="val-cell">
+        <span class="val-icon">⚡</span>
+        <div class="val-tag">Value 03</div>
+        <div class="val-name">Professional Response</div>
+        <div class="val-desc">Fast, clear, expert communication every time you reach out. You'll never wonder where your ticket stands.</div>
+      </div>
+      <div class="val-cell">
+        <span class="val-icon">🤝</span>
+        <div class="val-tag">Value 04</div>
+        <div class="val-name">Partnership</div>
+        <div class="val-desc">We're not a vendor — we're an extension of your team. Your growth and uptime: we take it personally.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="section section-white" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-left">
+        <div class="sec-tag">Why Workplace IT</div>
+        <h2 class="sec-title" id="about-heading">We Don't Wait For Problems. We Eliminate Them.</h2>
+        <div class="sec-rule"></div>
+        <p class="about-p">Most IT companies react. We prevent. Our proactive approach means your team stays productive while we stay one step ahead of every threat, outage, and inefficiency. Based right here in Denver — we're your neighbors, not an offshore call center.</p>
+        <div class="checklist">
+          <div class="chk"><div class="chk-icon">✓</div>Proactive 24/7 Monitoring</div>
+          <div class="chk"><div class="chk-icon">✓</div>1-Hour Response SLA</div>
+          <div class="chk"><div class="chk-icon">✓</div>Denver-Based Team</div>
+          <div class="chk"><div class="chk-icon">✓</div>SOC-Backed Security Operations</div>
+          <div class="chk"><div class="chk-icon">✓</div>Monthly Reporting &amp; vCIO Strategy</div>
+          <div class="chk"><div class="chk-icon">✓</div>100% Patch Compliance</div>
+        </div>
+        <a href="#contact" class="btn-blue-pill">Get a Free Consultation</a>
+      </div>
+      <div class="about-right">
+        <div class="terminal">
+          <div class="term-bar">
+            <div class="tdot tdot-r"></div>
+            <div class="tdot tdot-y"></div>
+            <div class="tdot tdot-g"></div>
+            <div class="term-label">workplace-it · system status</div>
+          </div>
+          <div class="term-body">
+            <div><span class="t-dim">// live dashboard — Denver CO</span></div>
+            <div><span class="t-ok">✓</span> monitoring &nbsp;&nbsp;<span class="t-val">247 endpoints</span></div>
+            <div><span class="t-ok">✓</span> threats &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">1,482 blocked today</span></div>
+            <div><span class="t-ok">✓</span> uptime SLA &nbsp;<span class="t-val">99.97%</span></div>
+            <div><span class="t-ok">✓</span> patches &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">100% compliant</span></div>
+            <div><span class="t-ok">✓</span> backups &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">all green</span></div>
+            <div><span class="t-key">→</span> next audit &nbsp;<span class="t-dim">Mar 15, 2026</span></div>
+            <div><span class="t-dim">$ </span><span class="t-cur"></span></div>
+          </div>
+        </div>
+        <div class="stat-strip">
+          <div class="ss-cell"><div class="ss-num">10+</div><div class="ss-lbl">Years</div></div>
+          <div class="ss-cell"><div class="ss-num">99.9%</div><div class="ss-lbl">Uptime</div></div>
+          <div class="ss-cell"><div class="ss-num">24/7</div><div class="ss-lbl">Support</div></div>
+          <div class="ss-cell"><div class="ss-num">&lt;1hr</div><div class="ss-lbl">Response</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section id="testimonials" class="section section-light" aria-labelledby="testi-heading">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-tag">What People Are Saying</div>
+      <h2 class="sec-title" id="testi-heading">Trusted By Denver Businesses</h2>
+      <div class="sec-rule"></div>
+      <p class="sec-sub">Real results from real clients who rely on Workplace IT to keep their businesses secure and running at full speed.</p>
+    </div>
+    <div class="testi-grid">
+      <article class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Workplace IT completely transformed how we handle technology. We went from constant outages to zero downtime in our first year. They're proactive, fast, and genuinely care about our business."</p>
+        <div class="testi-footer">
+          <div class="testi-av">MR</div>
+          <div>
+            <div class="testi-name">Mark Reynolds</div>
+            <div class="testi-role">CEO, Reynolds Logistics</div>
+          </div>
+        </div>
+      </article>
+      <article class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Their cybersecurity audit found vulnerabilities we didn't even know existed. Within 30 days, we were fully protected and CMMC compliant. Incredibly knowledgeable and responsive team."</p>
+        <div class="testi-footer">
+          <div class="testi-av">SL</div>
+          <div>
+            <div class="testi-name">Sarah Lindstrom</div>
+            <div class="testi-role">COO, Alpine Defense Partners</div>
+          </div>
+        </div>
+      </article>
+      <article class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"We switched after our previous provider left us hanging during a major outage. The contrast was night and day — they treat us like a true partner, not just a ticket number."</p>
+        <div class="testi-footer">
+          <div class="testi-av">TG</div>
+          <div>
+            <div class="testi-name">Tom Garfield</div>
+            <div class="testi-role">Director of Operations, Summit Capital</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== NEWSLETTER ========== -->
+<section id="newsletter" class="section section-blue" aria-label="Newsletter signup">
+  <div class="container">
+    <div class="nl-layout">
+      <div>
+        <div class="sec-tag sec-tag-light">Stay Informed</div>
+        <div class="nl-title">Get IT Insights<br>In Your Inbox</div>
+        <div class="nl-sub">Tips, security alerts, and best practices from our team — no spam, just signal. Join hundreds of Denver business leaders staying one step ahead.</div>
+        <div class="nl-form">
+          <input type="email" class="nl-input" placeholder="Enter your email address..." aria-label="Email address" />
+          <button class="nl-btn" type="button">Subscribe</button>
+        </div>
+      </div>
+      <div>
+        <div class="sec-tag sec-tag-light">What You'll Receive</div>
+        <ul class="nl-list">
+          <li>Monthly cybersecurity threat digests</li>
+          <li>IT best practices for Denver businesses</li>
+          <li>Compliance updates (CMMC, ITAR, FINRA)</li>
+          <li>Tech tips that save your team time</li>
+          <li>Early access to Workplace IT events</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="section section-white" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-tag">Get In Touch</div>
+      <h2 class="sec-title" id="contact-heading">We're Here To Help</h2>
+      <div class="sec-rule"></div>
+      <p class="sec-sub">No hard sells. Just an honest conversation about where your technology stands and how we can help.</p>
+    </div>
+    <div class="contact-layout">
+      <div>
+        <div class="contact-info-title">Contact Information</div>
+        <div class="contact-info-sub">Reach out any time. Our Denver-based team is ready to answer your questions and help you get started.</div>
+        <div class="cd-list">
+          <div class="cd-item">
+            <div class="cd-ico">📞</div>
+            <div><div class="cd-lbl">Phone</div><div class="cd-val"><a href="tel:7206479900">(720) 647-9900</a></div></div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-ico">📍</div>
+            <div><div class="cd-lbl">Address</div><div class="cd-val">1514 Curtis St. Suite 200<br>Denver, CO 80202</div></div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-ico">🕐</div>
+            <div><div class="cd-lbl">Hours</div><div class="cd-val">24/7 Monitoring<br>Mon–Fri 8am–6pm MST</div></div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-ico">🌐</div>
+            <div><div class="cd-lbl">Social</div><div class="cd-val"><a href="https://www.facebook.com/workplaceitco/" target="_blank" rel="noopener">Facebook</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/company/front-range-workplaceit" target="_blank" rel="noopener">LinkedIn</a></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cf-card">
+        <div class="cf-heading">Send Us A Message</div>
+        <div class="cf-row">
+          <div class="cf-grp"><label class="cf-lbl" for="fn">First Name</label><input class="cf-inp" id="fn" type="text" placeholder="John" /></div>
+          <div class="cf-grp"><label class="cf-lbl" for="ln">Last Name</label><input class="cf-inp" id="ln" type="text" placeholder="Smith" /></div>
+        </div>
+        <div class="cf-grp"><label class="cf-lbl" for="em">Email Address</label><input class="cf-inp" id="em" type="email" placeholder="john@company.com" /></div>
+        <div class="cf-grp"><label class="cf-lbl" for="co">Company</label><input class="cf-inp" id="co" type="text" placeholder="Your Company Name" /></div>
+        <div class="cf-grp"><label class="cf-lbl" for="mg">Message</label><textarea class="cf-txt" id="mg" rows="4" placeholder="Tell us about your IT environment or challenges..."></textarea></div>
+        <button class="cf-submit" type="button">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA BAND ========== -->
+<div class="cta-band" role="complementary">
+  <div class="container">
+    <h2>Ready To Stop Worrying About IT?</h2>
+    <p>Join hundreds of Denver businesses who trust Workplace IT to keep them secure and running 24/7.</p>
+    <a href="#contact" class="btn-pill-white">Start With A Free Assessment</a>
+  </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">W<span>IT</span></div>
+      <span class="footer-logo-sub">Workplace IT</span>
+      <p>Denver's proactive IT partner. We keep your business secure, compliant, and running at full speed — so you don't have to think about technology.</p>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/workplaceitco/" class="fsoc" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+        <a href="https://www.linkedin.com/company/front-range-workplaceit" class="fsoc" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Managed IT Support</a></li>
+        <li><a href="#services">Cybersecurity</a></li>
+        <li><a href="#services">IT Compliance</a></li>
+        <li><a href="#services">Video Surveillance</a></li>
+        <li><a href="#services">VoIP Services</a></li>
+        <li><a href="#services">Backup &amp; Recovery</a></li>
+        <li><a href="#services">SaaS Licensing</a></li>
+        <li><a href="#services">Cloud Management</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#values">Our Values</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:7206479900">(720) 647-9900</a></li>
+        <li><a href="#">1514 Curtis St, Suite 200<br>Denver, CO 80202</a></li>
+        <li><a href="mailto:info@workplaceit.net">info@workplaceit.net</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Workplace IT. All rights reserved.</span>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  document.querySelector('.hamburger').addEventListener('click', function() {
+    const nl = document.querySelector('.nav-links');
+    const isOpen = nl.style.display === 'flex';
+    nl.style.cssText = isOpen
+      ? ''
+      : 'display:flex; flex-direction:column; position:fixed; top:107px; left:0; right:0; background:#fff; padding:16px 32px 24px; border-bottom:2px solid #e8ecef; gap:4px; z-index:199; box-shadow:0 8px 24px rgba(0,0,0,0.1);';
+  });
+
+  // Nav shadow on scroll
+  window.addEventListener('scroll', function() {
+    document.querySelector('.main-nav').style.boxShadow =
+      window.scrollY > 10 ? '0 4px 20px rgba(0,0,0,0.1)' : '0 2px 8px rgba(0,0,0,0.06)';
+  });
+</script>
+
+</body>
+</html>
