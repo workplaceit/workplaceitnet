@@ -332,7 +332,11 @@
     .section { padding: 88px 32px; }
     .section-light  { background: var(--light-gray); }
     .section-white  { background: #fff; }
-    .section-blue   { background: var(--blue); }
+    .section-blue {
+      background: linear-gradient(135deg, #0d2137 0%, #0a1628 40%, #081422 100%);
+      position: relative;
+      overflow: hidden;
+    }
     .section-dark   { background: #1e2d3d; }
     .section-cream  { background: #f0f8fd; }
 
@@ -392,18 +396,31 @@
     @media (max-width: 560px)  { .services-grid { grid-template-columns: 1fr; } }
 
     .svc-card {
-      background: #fff;
-      border: 1px solid var(--mid-gray);
-      border-radius: 4px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
       padding: 36px 24px 28px;
       text-align: center;
-      transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+      transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s, background 0.3s;
+      position: relative;
+      overflow: hidden;
     }
     .svc-card:hover {
-      box-shadow: 0 10px 36px rgba(26,159,212,0.14);
-      transform: translateY(-5px);
-      border-color: var(--blue);
+      background: rgba(26,159,212,0.08);
+      border-color: rgba(26,159,212,0.45);
+      box-shadow: 0 0 32px rgba(26,159,212,0.18), 0 8px 32px rgba(0,0,0,0.3);
+      transform: translateY(-4px);
     }
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--blue), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .svc-card:hover::before { opacity: 1; }
     .svc-card.featured {
       background: var(--blue);
       border-color: var(--blue);
@@ -413,7 +430,7 @@
     .svc-card.featured .svc-desc { color: rgba(255,255,255,0.82); }
     .svc-card.featured .svc-more { color: rgba(255,255,255,0.8); }
 
-    .svc-icon { display:flex; align-items:center; justify-content:center; width:56px; height:56px; background:rgba(26,159,212,0.1); border-radius:12px; margin:0 auto 16px; padding:10px; }
+    .svc-icon { display:flex; align-items:center; justify-content:center; width:56px; height:56px; background:rgba(26,159,212,0.15); border:1px solid rgba(26,159,212,0.25); border-radius:12px; margin:0 auto 16px; padding:10px; }
     .svc-num {
       font-family: 'Roboto', sans-serif;
       font-size: 0.65rem;
@@ -429,13 +446,13 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--text);
+      color: #ffffff;
       margin-bottom: 12px;
       line-height: 1.3;
     }
     .svc-desc {
       font-size: 0.85rem;
-      color: var(--text-light);
+      color: rgba(255,255,255,0.58);
       line-height: 1.75;
       margin-bottom: 16px;
     }
@@ -460,15 +477,18 @@
     @media (max-width: 520px) { .values-grid { grid-template-columns: 1fr; } }
 
     .val-cell {
-      background: rgba(255,255,255,0.07);
-      padding: 44px 28px;
+      background: rgba(255,255,255,0.05);
+      padding: 48px 32px;
       text-align: center;
-      transition: background 0.2s;
+      transition: background 0.25s, transform 0.25s;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
     }
     .val-cell:hover { background: rgba(255,255,255,0.14); }
-    .val-icon { display:flex; align-items:center; justify-content:center; width:64px; height:64px; background:rgba(255,255,255,0.15); border-radius:14px; margin:0 auto 20px; padding:10px; }
+    .val-icon { display:flex; align-items:center; justify-content:center; width:72px; height:72px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:16px; margin:0 auto 24px; padding:12px; }
     .val-tag   { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 7px; }
-    .val-name  { font-family: 'Roboto', sans-serif; font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: #fff; margin-bottom: 12px; }
+    .val-name  { font-family: 'Roboto', sans-serif; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px; }
     .val-desc  { font-size: 0.85rem; color: rgba(255,255,255,0.72); line-height: 1.8; }
 
     /* ===================== ABOUT ===================== */
@@ -923,6 +943,45 @@
       .footer { padding: 56px 20px 24px; }
       .cf-card { padding: 28px 20px; }
     }
+      .section-navy { background: var(--navy); }
+    .section-navy .sec-title { color: #fff; }
+    .section-navy .sec-tag { color: var(--blue); border-color: rgba(26,159,212,0.3); background: rgba(26,159,212,0.08); }
+    .section-navy .sec-sub { color: rgba(255,255,255,0.55); }
+    .section-navy .sec-rule { background: var(--blue); }
+      .val-cell:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-3px);
+    }
+    .val-cell::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .val-cell:hover::after { opacity: 1; }
+      .section-blue::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(ellipse at 20% 50%, rgba(26,159,212,0.12) 0%, transparent 55%), radial-gradient(ellipse at 80% 50%, rgba(26,159,212,0.08) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .section-blue::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(26,159,212,0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+    .section-blue .container { position: relative; z-index: 1; }
+    .section-blue .sec-title { color: #fff; }
+    .section-blue .sec-tag { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); }
+    .section-blue .sec-sub { color: rgba(255,255,255,0.65); }
+    .section-blue .sec-rule { background: rgba(255,255,255,0.4); }
   </style>
 </head>
 <body>
@@ -981,7 +1040,7 @@
 </section>
 
 <!-- ========== SERVICES ========== -->
-<section id="services" class="section section-light" aria-labelledby="svc-heading">
+<section id="services" class="section section-navy" aria-labelledby="svc-heading">
   <div class="container">
     <div class="sec-header">
       <div class="sec-tag">What We Do</div>
