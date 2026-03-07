@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cybersecurity Services Denver | Workplace IT</title>
-  <meta name="description" content="Advanced cybersecurity for Denver businesses. Threat detection, endpoint protection, security training, and compliance from Workplace IT." />
+  <meta name="description" content="Advanced cybersecurity for Denver businesses. SentinelOne EDR, Email Secure, Managed Secure, threat detection, vulnerability testing and incident response from Workplace IT." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://workplaceit.net/services/cybersecurity" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,6 +56,7 @@
     .stat-item:last-child { border-right: none; }
     .stat-num { font-family: 'Roboto', sans-serif; font-size: 2rem; font-weight: 900; color: #fff; line-height: 1; }
     .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.8); margin-top: 5px; font-weight: 600; }
+    @media (max-width: 640px) { .stats-strip-inner { grid-template-columns: 1fr 1fr; } .stat-item:nth-child(2) { border-right: none; } }
     .section { padding: 80px 0; }
     .section-gray { background: var(--light-gray); }
     .section-navy { background: var(--navy); }
@@ -83,6 +84,27 @@
     .vp-metric { background: rgba(26,159,212,0.15); border: 1px solid rgba(26,159,212,0.3); border-radius: 8px; padding: 16px; text-align: center; }
     .vp-metric-num { font-family: 'Roboto', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--blue); }
     .vp-metric-label { font-size: 0.75rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
+
+    /* Product cards */
+    .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 16px; }
+    @media (max-width: 760px) { .product-grid { grid-template-columns: 1fr; } }
+    .product-card { background: #fff; border: 2px solid var(--mid-gray); border-radius: 12px; padding: 32px; transition: border-color 0.2s, box-shadow 0.2s; }
+    .product-card:hover { border-color: var(--blue); box-shadow: 0 8px 32px rgba(26,159,212,0.12); }
+    .product-card-badge { display: inline-block; background: var(--blue); color: #fff; font-family: 'Roboto', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; }
+    .product-card h3 { font-family: 'Roboto', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--text); margin-bottom: 10px; }
+    .product-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; margin-bottom: 18px; }
+    .product-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .product-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.87rem; color: var(--text-light); }
+    .product-features li::before { content: '\2713'; flex-shrink: 0; width: 18px; height: 18px; background: rgba(26,159,212,0.15); color: var(--blue); border-radius: 50%; font-size: 0.65rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+
+    /* Vendor logos strip */
+    .vendor-strip { background: var(--light-gray); border-top: 1px solid var(--mid-gray); border-bottom: 1px solid var(--mid-gray); padding: 32px 0; }
+    .vendor-strip-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .vendor-label { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-align: center; margin-bottom: 24px; }
+    .vendor-logos { display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap; }
+    .vendor-logo { font-family: 'Roboto', sans-serif; font-size: 1.1rem; font-weight: 900; color: var(--text-light); letter-spacing: -0.02em; opacity: 0.65; transition: opacity 0.2s; }
+    .vendor-logo:hover { opacity: 1; color: var(--blue); }
+
     .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
     @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
@@ -97,13 +119,6 @@
     .threat-icon { font-size: 2.2rem; margin-bottom: 12px; }
     .threat-name { font-family: 'Roboto', sans-serif; font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
     .threat-desc { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.55; }
-    .process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; }
-    .process-steps::before { content: ''; position: absolute; top: 28px; left: calc(12.5% + 8px); right: calc(12.5% + 8px); height: 2px; background: rgba(26,159,212,0.3); }
-    @media (max-width: 860px) { .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; } .process-steps::before { display: none; } }
-    .process-step { text-align: center; padding: 0 16px; position: relative; }
-    .step-circle { width: 56px; height: 56px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-family: 'Roboto', sans-serif; font-size: 1.1rem; font-weight: 900; color: #fff; position: relative; z-index: 1; }
-    .step-title { font-family: 'Roboto', sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
-    .step-desc { font-size: 0.83rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
     .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     @media (max-width: 640px) { .why-grid { grid-template-columns: 1fr; } }
     .why-card { display: flex; gap: 18px; background: #fff; border: 1px solid var(--mid-gray); border-radius: 10px; padding: 24px; transition: box-shadow 0.2s, border-color 0.2s; }
@@ -149,11 +164,13 @@
   </style>
 </head>
 <body>
+
 <div class="top-bar"><div class="top-bar-inner">
   <div class="top-bar-item">&#128205; 1514 Curtis St. Suite 200, Denver CO 80202</div>
   <div class="top-bar-item">&#9993;&#65039; <a href="mailto:info@workplaceit.net">info@workplaceit.net</a></div>
   <div class="top-bar-item">&#128222; (720) 647-9900</div>
 </div></div>
+
 <nav class="main-nav"><div class="nav-inner">
   <a href="/" style="display:flex;align-items:center;gap:10px;">
     <div><div class="logo-mark">W<span>IT</span></div><span class="logo-sub">Workplace IT</span></div>
@@ -167,76 +184,128 @@
   </ul>
   <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
 </div></nav>
+
 <div class="breadcrumb"><div class="breadcrumb-inner">
   <a href="/">Home</a> <span style="opacity:0.4">&#8250;</span>
   <a href="/#services">Services</a> <span style="opacity:0.4">&#8250;</span>
   <span>Cybersecurity</span>
 </div></div>
 
+<!-- HERO -->
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-inner">
     <div class="service-badge">&#128274; &nbsp; Cybersecurity</div>
     <h1>Stop Threats <em>Before They</em><br>Stop Your Business.</h1>
-    <p class="page-hero-desc">Advanced threat detection, continuous monitoring, and rapid incident response &#8212; keeping your business protected around the clock from the cyberthreats that never sleep.</p>
+    <p class="page-hero-desc">Advanced email protection, managed security solutions, vulnerability testing, and incident response &#8212; keeping your business protected around the clock from threats that never sleep.</p>
     <div class="hero-cta-row">
-      <a href="/#contact" class="btn-pill-blue">Get A Security Assessment</a>
+      <a href="/#contact" class="btn-pill-blue">Get A Free Security Assessment</a>
       <a href="tel:7206479900" class="btn-pill-ghost">&#128222; &nbsp;(720) 647-9900</a>
     </div>
   </div>
 </section>
 
+<!-- STATS -->
 <div class="stats-strip"><div class="stats-strip-inner">
   <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">Threat Monitoring</div></div>
-  <div class="stat-item"><div class="stat-num">300B+</div><div class="stat-label">Threats Blocked Daily</div></div>
+  <div class="stat-item"><div class="stat-num">365</div><div class="stat-label">Days a Year Coverage</div></div>
   <div class="stat-item"><div class="stat-num">&lt;15min</div><div class="stat-label">Incident Response</div></div>
-  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">US-Based SOC Team</div></div>
+  <div class="stat-item"><div class="stat-num">Zero-Day</div><div class="stat-label">Threat Protection</div></div>
 </div></div>
 
+<!-- PROTECTION OVERVIEW -->
 <section class="section"><div class="container"><div class="two-col">
   <div>
-    <div class="section-eyebrow">What's Included</div>
-    <h2 class="section-title">Layered Security That<br>Leaves No Gaps</h2>
-    <p class="section-desc">Cyberattacks don't target just one thing &#8212; so neither does our protection. We deploy multiple overlapping security layers to keep your business safe at every level.</p>
+    <div class="section-eyebrow">Our Approach</div>
+    <h2 class="section-title">Protecting Your Company<br>From Cyber Attacks</h2>
+    <p class="section-desc">Workplace IT's protection suite includes industry leaders such as SentinelOne, Elastic, CheckPoint, and Avanan. Our solutions deliver real-time, cloud-based protection against both known and unknown malware &#8212; with minimal impact on your endpoints or your team's productivity.</p>
     <ul class="checklist">
-      <li><div><strong>Endpoint Detection &amp; Response (EDR)</strong><span>Real-time monitoring and automated response on every device to stop threats the moment they appear.</span></div></li>
-      <li><div><strong>Next-Gen Firewall Management</strong><span>Enterprise-grade firewalls configured, monitored, and updated to block intrusions and unauthorized access.</span></div></li>
-      <li><div><strong>Email Security &amp; Anti-Phishing</strong><span>Advanced filtering that stops phishing, spoofing, and malware before it reaches your team's inbox.</span></div></li>
-      <li><div><strong>Security Awareness Training</strong><span>Regular phishing simulations and training so your employees become your strongest line of defense.</span></div></li>
-      <li><div><strong>Dark Web Monitoring</strong><span>We scan the dark web 24/7 for your credentials and alert you immediately if anything is found.</span></div></li>
-      <li><div><strong>Incident Response &amp; Remediation</strong><span>When something happens, our team responds fast &#8212; containing, investigating, and recovering within minutes.</span></div></li>
+      <li><div><strong>Cloud-Based Zero-Day Protection</strong><span>Immediate protection against zero-day threats using cloud-based security intelligence updated in real time.</span></div></li>
+      <li><div><strong>Sandboxing Detection</strong><span>Speeds up the clock on data in real time to detect malicious software that other solutions can't catch.</span></div></li>
+      <li><div><strong>AI-Powered Prevention &amp; Detection</strong><span>Threat hunting across user endpoints, containers, cloud workloads, and IoT devices &#8212; all in one platform.</span></div></li>
+      <li><div><strong>Enterprise-Grade Platform</strong><span>Our full protection stack is monitored by our team 24/7, 365 days a year &#8212; never dark, never idle.</span></div></li>
+      <li><div><strong>Expert-Led Threat Hunting</strong><span>Highly trained engineers with decades of real-world experience who catch the threats algorithms miss.</span></div></li>
+      <li><div><strong>Vulnerability Testing</strong><span>Proactive scanning and testing of your environment to find and fix weaknesses before attackers exploit them.</span></div></li>
     </ul>
   </div>
   <div>
     <div class="visual-panel"><div class="visual-panel-content">
       <div class="vp-icon">&#128274;</div>
       <div class="vp-title">Security Operations Center</div>
-      <div class="vp-desc">Our US-based SOC analysts monitor your environment around the clock, correlating threat intelligence across millions of endpoints to catch attacks before they cause damage.</div>
+      <div class="vp-desc">Our US-based SOC team monitors your environment around the clock using threat intelligence from SentinelOne, Elastic, CheckPoint, and Avanan &#8212; stopping attacks before they cause damage.</div>
       <div class="vp-metrics">
         <div class="vp-metric"><div class="vp-metric-num">24/7</div><div class="vp-metric-label">SOC Monitoring</div></div>
         <div class="vp-metric"><div class="vp-metric-num">&lt;15m</div><div class="vp-metric-label">Response Time</div></div>
-        <div class="vp-metric"><div class="vp-metric-num">99%</div><div class="vp-metric-label">Threat Detection Rate</div></div>
+        <div class="vp-metric"><div class="vp-metric-num">AI</div><div class="vp-metric-label">Powered Detection</div></div>
         <div class="vp-metric"><div class="vp-metric-num">Zero</div><div class="vp-metric-label">Trust Architecture</div></div>
       </div>
     </div></div>
   </div>
 </div></div></section>
 
+<!-- VENDOR LOGOS -->
+<div class="vendor-strip"><div class="vendor-strip-inner">
+  <div class="vendor-label">Powered by industry-leading security platforms</div>
+  <div class="vendor-logos">
+    <div class="vendor-logo">SentinelOne</div>
+    <div class="vendor-logo">Elastic</div>
+    <div class="vendor-logo">CheckPoint</div>
+    <div class="vendor-logo">Avanan</div>
+  </div>
+</div></div>
+
+<!-- FLAGSHIP PRODUCTS -->
 <section class="section section-gray"><div class="container">
+  <div class="section-eyebrow">Our Products</div>
+  <h2 class="section-title">Two Powerful Solutions,<br>Built for Your Business</h2>
+  <p class="section-desc">Workplace IT packages its cybersecurity expertise into two flagship products that cover the full threat landscape &#8212; from your inbox to your entire network.</p>
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="product-card-badge">Email Security</div>
+      <h3>Email Secure</h3>
+      <p>Advanced security for cloud collaboration suites including Microsoft 365, Google Workspace, and Slack. Deploys in 30 seconds via API with no MX record changes required. Multi-layered protection eliminates the need for multiple security tools.</p>
+      <ul class="product-features">
+        <li>Phishing &amp; spear-phishing prevention</li>
+        <li>Malware &amp; ransomware attachment blocking</li>
+        <li>Account takeover protection</li>
+        <li>Data loss prevention (DLP)</li>
+        <li>Microsoft 365, Google Workspace &amp; Slack</li>
+        <li>30-second API deployment &#8212; no MX changes</li>
+      </ul>
+    </div>
+    <div class="product-card">
+      <div class="product-card-badge">Managed Security</div>
+      <h3>Managed Secure</h3>
+      <p>Your ultimate defense shield &#8212; delivering real-time threat protection, 24/7 centralized monitoring, lightning-fast incident response, and powerful compliance reporting. Built to keep your business one step ahead of cyber threats.</p>
+      <ul class="product-features">
+        <li>Real-time threat protection &amp; response</li>
+        <li>24/7 centralized security monitoring</li>
+        <li>Cutting-edge threat intelligence feeds</li>
+        <li>Continuous updates &amp; patch management</li>
+        <li>Fully customized alerting &amp; escalation</li>
+        <li>Compliance reporting for audits</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- CORE SERVICES GRID -->
+<section class="section"><div class="container">
   <div class="section-eyebrow">Core Services</div>
   <h2 class="section-title">Complete Cybersecurity Coverage</h2>
   <p class="section-desc">From endpoints to email to the dark web &#8212; we protect every attack surface your business exposes.</p>
   <div class="services-grid">
-    <div class="svc-detail-card"><div class="sdc-icon">&#128187;</div><div class="sdc-title">Endpoint Detection &amp; Response</div><div class="sdc-desc">AI-powered EDR on every workstation, laptop, and server. Detects, isolates, and remediates threats in real time &#8212; even on remote devices.</div></div>
-    <div class="svc-detail-card"><div class="sdc-icon">&#128195;</div><div class="sdc-title">Email Security</div><div class="sdc-desc">Multi-layer filtering for phishing, business email compromise, ransomware attachments, and spoofed sender addresses before they reach your inbox.</div></div>
-    <div class="svc-detail-card"><div class="sdc-icon">&#128293;</div><div class="sdc-title">Firewall &amp; Network Security</div><div class="sdc-desc">Next-gen firewall deployment, configuration, and ongoing management. Intrusion detection, traffic analysis, and segmentation to contain breaches.</div></div>
-    <div class="svc-detail-card"><div class="sdc-icon">&#128373;&#65039;</div><div class="sdc-title">Dark Web Monitoring</div><div class="sdc-desc">Continuous scanning of dark web marketplaces and forums for your company credentials, IP addresses, and sensitive data. Instant alerts when found.</div></div>
-    <div class="svc-detail-card"><div class="sdc-icon">&#127891;</div><div class="sdc-title">Security Awareness Training</div><div class="sdc-desc">Monthly phishing simulations, interactive training modules, and reporting so you know exactly how security-aware your workforce is.</div></div>
-    <div class="svc-detail-card"><div class="sdc-icon">&#128680;</div><div class="sdc-title">Incident Response</div><div class="sdc-desc">A dedicated response team that activates within 15 minutes of a confirmed incident &#8212; containing damage, collecting evidence, and restoring operations fast.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#128187;</div><div class="sdc-title">Endpoint Detection &amp; Response (EDR)</div><div class="sdc-desc">SentinelOne-powered AI on every device &#8212; workstations, laptops, servers, and IoT. Detects, isolates, and remediates threats in real time, including never-before-seen attacks.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#128195;</div><div class="sdc-title">Email Security</div><div class="sdc-desc">Avanan-powered multi-layer filtering for phishing, business email compromise, ransomware attachments, and spoofed senders. Covers Microsoft 365, Google Workspace, and Slack.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#128293;</div><div class="sdc-title">Firewall &amp; Network Security</div><div class="sdc-desc">CheckPoint next-gen firewalls deployed, configured, and managed. Intrusion detection, traffic analysis, and network segmentation to contain and stop breaches fast.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#128373;&#65039;</div><div class="sdc-title">Dark Web Monitoring</div><div class="sdc-desc">Continuous scanning of dark web marketplaces and forums for your credentials and sensitive data. Instant alerts the moment anything is found, so you can act before attackers do.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#127891;</div><div class="sdc-title">Security Awareness Training</div><div class="sdc-desc">Monthly phishing simulations and interactive training modules. Your team becomes your strongest security layer &#8212; with reporting that shows improvement over time.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#128680;</div><div class="sdc-title">Vulnerability Testing &amp; Incident Response</div><div class="sdc-desc">Proactive testing to find gaps before attackers do, plus a dedicated response team that activates within 15 minutes of a confirmed incident to contain, investigate, and recover.</div></div>
   </div>
 </div></section>
 
+<!-- THREAT LANDSCAPE -->
 <section class="section section-navy"><div class="container">
   <div style="text-align:center;margin-bottom:48px;">
     <div class="section-eyebrow white">Threat Landscape</div>
@@ -245,12 +314,13 @@
   </div>
   <div class="threat-grid">
     <div class="threat-card"><div class="threat-icon">&#128123;</div><div class="threat-name">Ransomware</div><div class="threat-desc">Attacks that encrypt your data and demand payment to restore access.</div></div>
-    <div class="threat-card"><div class="threat-icon">&#127918;</div><div class="threat-name">Phishing</div><div class="threat-desc">Deceptive emails designed to steal credentials or deploy malware.</div></div>
-    <div class="threat-card"><div class="threat-icon">&#128565;</div><div class="threat-name">Insider Threats</div><div class="threat-desc">Malicious or accidental data exposure from within your organization.</div></div>
-    <div class="threat-card"><div class="threat-icon">&#128272;</div><div class="threat-name">Credential Theft</div><div class="threat-desc">Stolen passwords and login data sold on dark web marketplaces.</div></div>
+    <div class="threat-card"><div class="threat-icon">&#127918;</div><div class="threat-name">Phishing &amp; BEC</div><div class="threat-desc">Deceptive emails designed to steal credentials, money, or deploy malware.</div></div>
+    <div class="threat-card"><div class="threat-icon">&#128565;</div><div class="threat-name">Zero-Day Exploits</div><div class="threat-desc">Brand-new attack methods with no existing signatures or patches available.</div></div>
+    <div class="threat-card"><div class="threat-icon">&#128272;</div><div class="threat-name">Credential Theft</div><div class="threat-desc">Stolen passwords and login data sold on dark web marketplaces and forums.</div></div>
   </div>
 </div></section>
 
+<!-- WHY WORKPLACE IT -->
 <section class="section"><div class="container"><div class="two-col">
   <div>
     <div class="section-eyebrow">Why Workplace IT</div>
@@ -265,32 +335,35 @@
       <div class="why-card"><div class="why-icon">&#9889;</div><div class="why-body"><h4>Fast Response</h4><p>Under 15-minute response to confirmed incidents. Every minute matters during an active attack.</p></div></div>
       <div class="why-card"><div class="why-icon">&#128200;</div><div class="why-body"><h4>Proactive, Not Reactive</h4><p>We hunt for threats before they trigger an alert &#8212; not just respond after the damage is done.</p></div></div>
       <div class="why-card"><div class="why-icon">&#127891;</div><div class="why-body"><h4>Employee Training</h4><p>Your people are your biggest risk and your best defense. We train them to spot and stop attacks.</p></div></div>
-      <div class="why-card"><div class="why-icon">&#128274;</div><div class="why-body"><h4>Zero Trust Architecture</h4><p>Modern security frameworks that assume no user or device is trusted by default &#8212; ever.</p></div></div>
+      <div class="why-card"><div class="why-icon">&#128274;</div><div class="why-body"><h4>Industry-Leading Tools</h4><p>SentinelOne, Elastic, CheckPoint, and Avanan &#8212; the same platforms protecting Fortune 500 companies.</p></div></div>
     </div>
   </div>
 </div></div></section>
 
+<!-- FAQ -->
 <section class="section section-gray"><div class="container">
   <div style="max-width:760px;margin:0 auto;">
     <div class="section-eyebrow" style="text-align:center;">Common Questions</div>
     <h2 class="section-title" style="text-align:center;margin-bottom:40px;">Frequently Asked Questions</h2>
     <div class="faq-list">
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is managed cybersecurity?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Managed cybersecurity means an expert team continuously monitors, manages, and responds to security threats on your behalf. Rather than relying on one-time tools or hoping nothing goes wrong, you have dedicated professionals actively protecting your environment 24/7.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is managed cybersecurity?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Managed cybersecurity means an expert team continuously monitors, manages, and responds to security threats on your behalf &#8212; 24/7, 365 days a year. Rather than relying on one-time tools or hoping nothing goes wrong, you have dedicated professionals actively protecting your environment around the clock.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">My business is small &#8212; am I really a target?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Absolutely. Over 43% of cyberattacks target small businesses, precisely because they're seen as easier targets with weaker defenses. Attackers use automated tools that don't discriminate by company size &#8212; if you have data or money, you're a target.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What's the difference between antivirus and EDR?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Traditional antivirus matches files against a known list of threats &#8212; it's reactive and can't catch new or unknown attacks. EDR (Endpoint Detection and Response) uses behavioral analysis and AI to detect suspicious activity in real time, even from threats that have never been seen before.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do you handle a ransomware attack?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Our SOC activates within 15 minutes of detecting ransomware behavior. We immediately isolate affected systems to stop the spread, assess the scope of encryption, begin recovery from clean backups, collect forensic evidence, and work to identify the attack vector so it can't happen again.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is Email Secure and how does it work?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Email Secure is Workplace IT's branded email protection product powered by Avanan. It deploys in 30 seconds via API to your Microsoft 365, Google Workspace, or Slack account &#8212; no MX record changes required. It prevents phishing, malware, data leaks, and account takeovers with multi-layered AI-powered analysis.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is Managed Secure?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Managed Secure is our flagship managed security product &#8212; a comprehensive defense platform that includes real-time threat protection, 24/7 centralized monitoring, incident response, threat intelligence, and compliance reporting. It's fully customized for your environment and monitored by our SOC team around the clock.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you help with compliance requirements?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Yes. Our cybersecurity services are built to align with major compliance frameworks including CMMC, ITAR, FISMA, FINRA, HIPAA, and SOC 2. We document controls, maintain audit trails, and provide the reports your auditors need.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How often do you run security awareness training?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">We run monthly phishing simulations and quarterly training modules at minimum. Training frequency can be adjusted based on your risk profile and compliance requirements. You'll receive monthly reports showing click rates, completion rates, and improvement over time.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does vulnerability testing work?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Our vulnerability testing involves scanning your network, applications, and endpoints for known weaknesses and misconfigurations. We then provide a prioritized remediation report so your team &#8212; or ours &#8212; can address the highest-risk issues first. Testing can be done on a scheduled or continuous basis.</div></div>
     </div>
   </div>
 </div></section>
 
+<!-- CTA -->
 <div class="cta-band"><div class="container">
   <h2>Is Your Business Protected Against Today's Threats?</h2>
   <p>Get a free cybersecurity assessment and find out where your gaps are &#8212; before attackers do.</p>
   <a href="/#contact" class="btn-pill-white">Get Your Free Security Assessment</a>
 </div></div>
 
+<!-- FOOTER -->
 <footer class="footer"><div class="footer-grid">
   <div class="footer-brand">
     <div class="footer-logo">W<span>IT</span></div>
@@ -327,6 +400,7 @@
   <span>&#169; 2026 Workplace IT. All rights reserved.</span>
   <div><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a></div>
 </div></footer>
+
 <script>
 function toggleFaq(el){const a=el.nextElementSibling,o=el.classList.contains('open');document.querySelectorAll('.faq-q').forEach(q=>q.classList.remove('open'));document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));if(!o){el.classList.add('open');a.classList.add('open');}}
 </script>
