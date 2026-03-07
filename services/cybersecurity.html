@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cybersecurity Services Denver | Workplace IT</title>
+  <meta name="description" content="Advanced cybersecurity for Denver businesses. Threat detection, endpoint protection, security training, and compliance from Workplace IT." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://workplaceit.net/services/cybersecurity" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --blue: #1a9fd4; --blue-dark: #1480ae; --navy: #0a1628; --light-gray: #f4f6f8; --mid-gray: #e8ecef; --text: #333; --text-light: #666; --text-muted: #999; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Open Sans', sans-serif; color: var(--text); background: #fff; font-size: 15px; line-height: 1.6; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    .top-bar { background: var(--blue); color: #fff; padding: 9px 0; font-size: 0.8rem; }
+    .top-bar-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .top-bar-item { display: flex; align-items: center; gap: 8px; }
+    .top-bar a { color: #fff; }
+    .main-nav { background: #fff; border-bottom: 1px solid var(--mid-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 200; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo-mark { font-family: 'Roboto', sans-serif; font-size: 2rem; font-weight: 900; color: var(--blue); letter-spacing: -0.04em; line-height: 1; }
+    .logo-mark span { color: var(--text); }
+    .logo-sub { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { font-family: 'Roboto', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text); padding: 8px 14px; border-radius: 3px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links .btn-nav { background: var(--blue); color: #fff; }
+    .nav-links .btn-nav:hover { background: var(--blue-dark); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+    @media (max-width: 860px) { .nav-links { display: none; } .hamburger { display: flex; } }
+    .breadcrumb { background: var(--light-gray); border-bottom: 1px solid var(--mid-gray); padding: 12px 0; font-size: 0.8rem; color: var(--text-muted); }
+    .breadcrumb-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; gap: 8px; }
+    .breadcrumb a { color: var(--blue); }
+    .page-hero { position: relative; background: var(--navy); min-height: 360px; display: flex; align-items: center; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: 0; background-color: var(--navy); background-image: linear-gradient(rgba(26,159,212,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(26,159,212,0.18) 1px, transparent 1px); background-size: 40px 40px; }
+    .page-hero-bg::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(26,159,212,0.55) 1.5px, transparent 1.5px); background-size: 40px 40px; background-position: -1px -1px; opacity: 0.35; }
+    .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(26,159,212,0.45) 0%, transparent 55%); }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 60px 32px; width: 100%; }
+    .service-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(26,159,212,0.25); border: 1px solid rgba(26,159,212,0.5); color: rgba(255,255,255,0.9); font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 20px; }
+    .page-hero h1 { font-family: 'Roboto', sans-serif; font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; color: #fff; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; max-width: 640px; }
+    .page-hero h1 em { color: var(--blue); font-style: normal; }
+    .page-hero-desc { color: rgba(255,255,255,0.75); font-size: 1.05rem; max-width: 560px; margin-bottom: 32px; line-height: 1.7; }
+    .hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-pill-blue { display: inline-block; background: var(--blue); color: #fff; font-family: 'Roboto', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 30px; border-radius: 100px; transition: background 0.2s; }
+    .btn-pill-blue:hover { background: var(--blue-dark); }
+    .btn-pill-ghost { display: inline-block; background: transparent; color: #fff; font-family: 'Roboto', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 13px 28px; border-radius: 100px; border: 2px solid rgba(255,255,255,0.45); transition: border-color 0.2s; }
+    .btn-pill-ghost:hover { border-color: #fff; }
+    .stats-strip { background: var(--blue); padding: 28px 0; }
+    .stats-strip-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: repeat(4,1fr); }
+    .stat-item { text-align: center; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.2); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: 'Roboto', sans-serif; font-size: 2rem; font-weight: 900; color: #fff; line-height: 1; }
+    .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.8); margin-top: 5px; font-weight: 600; }
+    .section { padding: 80px 0; }
+    .section-gray { background: var(--light-gray); }
+    .section-navy { background: var(--navy); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .section-eyebrow { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+    .section-eyebrow.white { color: rgba(255,255,255,0.7); }
+    .section-title { font-family: 'Roboto', sans-serif; font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 900; color: var(--text); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .section-title.white { color: #fff; }
+    .section-desc { font-size: 1rem; color: var(--text-light); max-width: 560px; line-height: 1.75; margin-bottom: 40px; }
+    .section-desc.white { color: rgba(255,255,255,0.75); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; gap: 40px; } }
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+    .checklist li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; }
+    .checklist li::before { content: '\2713'; flex-shrink: 0; width: 22px; height: 22px; background: var(--blue); color: #fff; border-radius: 50%; font-size: 0.7rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .checklist li strong { display: block; font-weight: 700; margin-bottom: 2px; }
+    .checklist li span { color: var(--text-light); font-size: 0.88rem; }
+    .visual-panel { background: var(--navy); border-radius: 12px; padding: 36px; position: relative; overflow: hidden; }
+    .visual-panel::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(26,159,212,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(26,159,212,0.12) 1px, transparent 1px); background-size: 30px 30px; }
+    .visual-panel-content { position: relative; z-index: 1; }
+    .vp-icon { font-size: 3rem; margin-bottom: 16px; }
+    .vp-title { font-family: 'Roboto', sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .vp-desc { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 24px; }
+    .vp-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .vp-metric { background: rgba(26,159,212,0.15); border: 1px solid rgba(26,159,212,0.3); border-radius: 8px; padding: 16px; text-align: center; }
+    .vp-metric-num { font-family: 'Roboto', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--blue); }
+    .vp-metric-label { font-size: 0.75rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+    .svc-detail-card { background: #fff; border: 1px solid var(--mid-gray); border-radius: 10px; padding: 28px; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; }
+    .svc-detail-card:hover { box-shadow: 0 8px 28px rgba(26,159,212,0.12); transform: translateY(-3px); border-color: rgba(26,159,212,0.3); }
+    .sdc-icon { font-size: 2rem; margin-bottom: 14px; }
+    .sdc-title { font-family: 'Roboto', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .sdc-desc { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; }
+    .threat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    @media (max-width: 900px) { .threat-grid { grid-template-columns: 1fr 1fr; } }
+    .threat-card { background: rgba(26,159,212,0.08); border: 1px solid rgba(26,159,212,0.2); border-radius: 10px; padding: 24px; text-align: center; }
+    .threat-icon { font-size: 2.2rem; margin-bottom: 12px; }
+    .threat-name { font-family: 'Roboto', sans-serif; font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .threat-desc { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.55; }
+    .process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 28px; left: calc(12.5% + 8px); right: calc(12.5% + 8px); height: 2px; background: rgba(26,159,212,0.3); }
+    @media (max-width: 860px) { .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; } .process-steps::before { display: none; } }
+    .process-step { text-align: center; padding: 0 16px; position: relative; }
+    .step-circle { width: 56px; height: 56px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-family: 'Roboto', sans-serif; font-size: 1.1rem; font-weight: 900; color: #fff; position: relative; z-index: 1; }
+    .step-title { font-family: 'Roboto', sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .step-desc { font-size: 0.83rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 640px) { .why-grid { grid-template-columns: 1fr; } }
+    .why-card { display: flex; gap: 18px; background: #fff; border: 1px solid var(--mid-gray); border-radius: 10px; padding: 24px; transition: box-shadow 0.2s, border-color 0.2s; }
+    .why-card:hover { box-shadow: 0 4px 20px rgba(26,159,212,0.1); border-color: rgba(26,159,212,0.3); }
+    .why-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+    .why-body h4 { font-family: 'Roboto', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .why-body p { font-size: 0.87rem; color: var(--text-light); line-height: 1.65; }
+    .faq-list { display: flex; flex-direction: column; border: 1px solid var(--mid-gray); border-radius: 10px; overflow: hidden; }
+    .faq-item { border-bottom: 1px solid var(--mid-gray); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; cursor: pointer; font-family: 'Roboto', sans-serif; font-size: 0.95rem; font-weight: 700; background: #fff; transition: background 0.2s; user-select: none; }
+    .faq-q:hover { background: var(--light-gray); }
+    .faq-q.open { color: var(--blue); background: #f0f9ff; }
+    .faq-arrow { transition: transform 0.25s; color: var(--blue); }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 24px 20px; font-size: 0.9rem; color: var(--text-light); line-height: 1.7; background: #f0f9ff; }
+    .faq-a.open { display: block; }
+    .cta-band { background: #1e2d3d; padding: 72px 0; text-align: center; }
+    .cta-band h2 { font-family: 'Roboto', sans-serif; font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 900; color: #fff; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .cta-band p { color: rgba(255,255,255,0.6); font-size: 0.95rem; margin-bottom: 30px; }
+    .btn-pill-white { display: inline-block; background: #fff; color: var(--navy); font-family: 'Roboto', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 32px; border-radius: 100px; transition: background 0.2s; }
+    .btn-pill-white:hover { background: var(--blue); color: #fff; }
+    .footer { background: #13202d; padding: 64px 0 0; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; padding: 0 32px 56px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-logo { font-family: 'Roboto', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--blue); letter-spacing: -0.02em; }
+    .footer-logo span { color: #fff; }
+    .footer-logo-sub { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); display: block; margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.38); line-height: 1.82; max-width: 270px; margin-top: 10px; }
+    .footer-socials { display: flex; gap: 8px; margin-top: 18px; }
+    .fsoc { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; transition: background 0.2s, color 0.2s; }
+    .fsoc:hover { background: var(--blue); color: #fff; }
+    .footer-col h5 { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 9px; }
+    .footer-col a { font-size: 0.85rem; color: rgba(255,255,255,0.42); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--blue); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 20px 32px; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom span, .footer-bottom a { font-size: 0.8rem; color: rgba(255,255,255,0.22); }
+    .footer-bottom a { margin-left: 16px; transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--blue); }
+  </style>
+</head>
+<body>
+<div class="top-bar"><div class="top-bar-inner">
+  <div class="top-bar-item">&#128205; 1514 Curtis St. Suite 200, Denver CO 80202</div>
+  <div class="top-bar-item">&#9993;&#65039; <a href="mailto:info@workplaceit.net">info@workplaceit.net</a></div>
+  <div class="top-bar-item">&#128222; (720) 647-9900</div>
+</div></div>
+<nav class="main-nav"><div class="nav-inner">
+  <a href="/" style="display:flex;align-items:center;gap:10px;">
+    <div><div class="logo-mark">W<span>IT</span></div><span class="logo-sub">Workplace IT</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#testimonials">Testimonials</a></li>
+    <li><a href="/#contact" class="btn-nav">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="breadcrumb"><div class="breadcrumb-inner">
+  <a href="/">Home</a> <span style="opacity:0.4">&#8250;</span>
+  <a href="/#services">Services</a> <span style="opacity:0.4">&#8250;</span>
+  <span>Cybersecurity</span>
+</div></div>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-inner">
+    <div class="service-badge">&#128274; &nbsp; Cybersecurity</div>
+    <h1>Stop Threats <em>Before They</em><br>Stop Your Business.</h1>
+    <p class="page-hero-desc">Advanced threat detection, continuous monitoring, and rapid incident response &#8212; keeping your business protected around the clock from the cyberthreats that never sleep.</p>
+    <div class="hero-cta-row">
+      <a href="/#contact" class="btn-pill-blue">Get A Security Assessment</a>
+      <a href="tel:7206479900" class="btn-pill-ghost">&#128222; &nbsp;(720) 647-9900</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip"><div class="stats-strip-inner">
+  <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">Threat Monitoring</div></div>
+  <div class="stat-item"><div class="stat-num">300B+</div><div class="stat-label">Threats Blocked Daily</div></div>
+  <div class="stat-item"><div class="stat-num">&lt;15min</div><div class="stat-label">Incident Response</div></div>
+  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">US-Based SOC Team</div></div>
+</div></div>
+
+<section class="section"><div class="container"><div class="two-col">
+  <div>
+    <div class="section-eyebrow">What's Included</div>
+    <h2 class="section-title">Layered Security That<br>Leaves No Gaps</h2>
+    <p class="section-desc">Cyberattacks don't target just one thing &#8212; so neither does our protection. We deploy multiple overlapping security layers to keep your business safe at every level.</p>
+    <ul class="checklist">
+      <li><div><strong>Endpoint Detection &amp; Response (EDR)</strong><span>Real-time monitoring and automated response on every device to stop threats the moment they appear.</span></div></li>
+      <li><div><strong>Next-Gen Firewall Management</strong><span>Enterprise-grade firewalls configured, monitored, and updated to block intrusions and unauthorized access.</span></div></li>
+      <li><div><strong>Email Security &amp; Anti-Phishing</strong><span>Advanced filtering that stops phishing, spoofing, and malware before it reaches your team's inbox.</span></div></li>
+      <li><div><strong>Security Awareness Training</strong><span>Regular phishing simulations and training so your employees become your strongest line of defense.</span></div></li>
+      <li><div><strong>Dark Web Monitoring</strong><span>We scan the dark web 24/7 for your credentials and alert you immediately if anything is found.</span></div></li>
+      <li><div><strong>Incident Response &amp; Remediation</strong><span>When something happens, our team responds fast &#8212; containing, investigating, and recovering within minutes.</span></div></li>
+    </ul>
+  </div>
+  <div>
+    <div class="visual-panel"><div class="visual-panel-content">
+      <div class="vp-icon">&#128274;</div>
+      <div class="vp-title">Security Operations Center</div>
+      <div class="vp-desc">Our US-based SOC analysts monitor your environment around the clock, correlating threat intelligence across millions of endpoints to catch attacks before they cause damage.</div>
+      <div class="vp-metrics">
+        <div class="vp-metric"><div class="vp-metric-num">24/7</div><div class="vp-metric-label">SOC Monitoring</div></div>
+        <div class="vp-metric"><div class="vp-metric-num">&lt;15m</div><div class="vp-metric-label">Response Time</div></div>
+        <div class="vp-metric"><div class="vp-metric-num">99%</div><div class="vp-metric-label">Threat Detection Rate</div></div>
+        <div class="vp-metric"><div class="vp-metric-num">Zero</div><div class="vp-metric-label">Trust Architecture</div></div>
+      </div>
+    </div></div>
+  </div>
+</div></div></section>
+
+<section class="section section-gray"><div class="container">
+  <div class="section-eyebrow">Core Services</div>
+  <h2 class="section-title">Complete Cybersecurity Coverage</h2>
+  <p class="section-desc">From endpoints to email to the dark web &#8212; we protect every attack surface your business exposes.</p>
+  <div class="services-grid">
+    <div class="svc-detail-card"><div class="sdc-icon">&#128187;</div><div class="sdc-title">Endpoint Detection &amp; Response</div><div class="sdc-desc">AI-powered EDR on every workstation, laptop, and server. Detects, isolates, and remediates threats in real time &#8212; even on remote devices.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#128195;</div><div class="sdc-title">Email Security</div><div class="sdc-desc">Multi-layer filtering for phishing, business email compromise, ransomware attachments, and spoofed sender addresses before they reach your inbox.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#128293;</div><div class="sdc-title">Firewall &amp; Network Security</div><div class="sdc-desc">Next-gen firewall deployment, configuration, and ongoing management. Intrusion detection, traffic analysis, and segmentation to contain breaches.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#128373;&#65039;</div><div class="sdc-title">Dark Web Monitoring</div><div class="sdc-desc">Continuous scanning of dark web marketplaces and forums for your company credentials, IP addresses, and sensitive data. Instant alerts when found.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#127891;</div><div class="sdc-title">Security Awareness Training</div><div class="sdc-desc">Monthly phishing simulations, interactive training modules, and reporting so you know exactly how security-aware your workforce is.</div></div>
+    <div class="svc-detail-card"><div class="sdc-icon">&#128680;</div><div class="sdc-title">Incident Response</div><div class="sdc-desc">A dedicated response team that activates within 15 minutes of a confirmed incident &#8212; containing damage, collecting evidence, and restoring operations fast.</div></div>
+  </div>
+</div></section>
+
+<section class="section section-navy"><div class="container">
+  <div style="text-align:center;margin-bottom:48px;">
+    <div class="section-eyebrow white">Threat Landscape</div>
+    <h2 class="section-title white">The Threats We Protect You From</h2>
+    <p class="section-desc white" style="margin:0 auto;">Denver businesses face the same sophisticated threats as Fortune 500 companies &#8212; but often without the same resources. We level the playing field.</p>
+  </div>
+  <div class="threat-grid">
+    <div class="threat-card"><div class="threat-icon">&#128123;</div><div class="threat-name">Ransomware</div><div class="threat-desc">Attacks that encrypt your data and demand payment to restore access.</div></div>
+    <div class="threat-card"><div class="threat-icon">&#127918;</div><div class="threat-name">Phishing</div><div class="threat-desc">Deceptive emails designed to steal credentials or deploy malware.</div></div>
+    <div class="threat-card"><div class="threat-icon">&#128565;</div><div class="threat-name">Insider Threats</div><div class="threat-desc">Malicious or accidental data exposure from within your organization.</div></div>
+    <div class="threat-card"><div class="threat-icon">&#128272;</div><div class="threat-name">Credential Theft</div><div class="threat-desc">Stolen passwords and login data sold on dark web marketplaces.</div></div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container"><div class="two-col">
+  <div>
+    <div class="section-eyebrow">Why Workplace IT</div>
+    <h2 class="section-title">Cybersecurity Built<br>for Denver Businesses</h2>
+    <p class="section-desc">We don't sell you a product and disappear. Our team actively manages your security posture &#8212; adapting as threats evolve and your business grows.</p>
+    <a href="/#contact" class="btn-pill-blue" style="display:inline-block;margin-top:8px;">Talk To Our Security Team</a>
+  </div>
+  <div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">&#128205;</div><div class="why-body"><h4>Local Denver Team</h4><p>On-site incident response when you need boots on the ground &#8212; not a call center overseas.</p></div></div>
+      <div class="why-card"><div class="why-icon">&#128203;</div><div class="why-body"><h4>Compliance-Ready</h4><p>We align your security with CMMC, ITAR, FISMA, FINRA, and other frameworks your industry requires.</p></div></div>
+      <div class="why-card"><div class="why-icon">&#9889;</div><div class="why-body"><h4>Fast Response</h4><p>Under 15-minute response to confirmed incidents. Every minute matters during an active attack.</p></div></div>
+      <div class="why-card"><div class="why-icon">&#128200;</div><div class="why-body"><h4>Proactive, Not Reactive</h4><p>We hunt for threats before they trigger an alert &#8212; not just respond after the damage is done.</p></div></div>
+      <div class="why-card"><div class="why-icon">&#127891;</div><div class="why-body"><h4>Employee Training</h4><p>Your people are your biggest risk and your best defense. We train them to spot and stop attacks.</p></div></div>
+      <div class="why-card"><div class="why-icon">&#128274;</div><div class="why-body"><h4>Zero Trust Architecture</h4><p>Modern security frameworks that assume no user or device is trusted by default &#8212; ever.</p></div></div>
+    </div>
+  </div>
+</div></div></section>
+
+<section class="section section-gray"><div class="container">
+  <div style="max-width:760px;margin:0 auto;">
+    <div class="section-eyebrow" style="text-align:center;">Common Questions</div>
+    <h2 class="section-title" style="text-align:center;margin-bottom:40px;">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is managed cybersecurity?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Managed cybersecurity means an expert team continuously monitors, manages, and responds to security threats on your behalf. Rather than relying on one-time tools or hoping nothing goes wrong, you have dedicated professionals actively protecting your environment 24/7.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">My business is small &#8212; am I really a target?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Absolutely. Over 43% of cyberattacks target small businesses, precisely because they're seen as easier targets with weaker defenses. Attackers use automated tools that don't discriminate by company size &#8212; if you have data or money, you're a target.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What's the difference between antivirus and EDR?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Traditional antivirus matches files against a known list of threats &#8212; it's reactive and can't catch new or unknown attacks. EDR (Endpoint Detection and Response) uses behavioral analysis and AI to detect suspicious activity in real time, even from threats that have never been seen before.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do you handle a ransomware attack?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Our SOC activates within 15 minutes of detecting ransomware behavior. We immediately isolate affected systems to stop the spread, assess the scope of encryption, begin recovery from clean backups, collect forensic evidence, and work to identify the attack vector so it can't happen again.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you help with compliance requirements?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Yes. Our cybersecurity services are built to align with major compliance frameworks including CMMC, ITAR, FISMA, FINRA, HIPAA, and SOC 2. We document controls, maintain audit trails, and provide the reports your auditors need.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How often do you run security awareness training?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">We run monthly phishing simulations and quarterly training modules at minimum. Training frequency can be adjusted based on your risk profile and compliance requirements. You'll receive monthly reports showing click rates, completion rates, and improvement over time.</div></div>
+    </div>
+  </div>
+</div></section>
+
+<div class="cta-band"><div class="container">
+  <h2>Is Your Business Protected Against Today's Threats?</h2>
+  <p>Get a free cybersecurity assessment and find out where your gaps are &#8212; before attackers do.</p>
+  <a href="/#contact" class="btn-pill-white">Get Your Free Security Assessment</a>
+</div></div>
+
+<footer class="footer"><div class="footer-grid">
+  <div class="footer-brand">
+    <div class="footer-logo">W<span>IT</span></div>
+    <span class="footer-logo-sub">Workplace IT</span>
+    <p>Denver's proactive IT partner. We keep your business secure, compliant, and running at full speed.</p>
+    <div class="footer-socials">
+      <a href="https://www.facebook.com/workplaceitco/" class="fsoc" target="_blank" rel="noopener">f</a>
+      <a href="https://www.linkedin.com/company/front-range-workplaceit" class="fsoc" target="_blank" rel="noopener">in</a>
+    </div>
+  </div>
+  <div class="footer-col"><h5>Services</h5><ul>
+    <li><a href="/services/managed-it-support.html">Managed IT Support</a></li>
+    <li><a href="/services/cybersecurity.html">Cybersecurity</a></li>
+    <li><a href="/#services">IT Compliance</a></li>
+    <li><a href="/#services">Video Surveillance</a></li>
+    <li><a href="/#services">VoIP Services</a></li>
+    <li><a href="/#services">Backup &amp; Recovery</a></li>
+    <li><a href="/#services">SaaS Licensing</a></li>
+    <li><a href="/#services">Cloud Management</a></li>
+  </ul></div>
+  <div class="footer-col"><h5>Company</h5><ul>
+    <li><a href="/#about">About Us</a></li>
+    <li><a href="/#values">Our Values</a></li>
+    <li><a href="/#testimonials">Testimonials</a></li>
+    <li><a href="/#contact">Contact Us</a></li>
+  </ul></div>
+  <div class="footer-col"><h5>Contact</h5><ul>
+    <li><a href="tel:7206479900">(720) 647-9900</a></li>
+    <li><a href="#">1514 Curtis St, Suite 200<br>Denver, CO 80202</a></li>
+    <li><a href="mailto:info@workplaceit.net">info@workplaceit.net</a></li>
+  </ul></div>
+</div>
+<div class="footer-bottom">
+  <span>&#169; 2026 Workplace IT. All rights reserved.</span>
+  <div><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a></div>
+</div></footer>
+<script>
+function toggleFaq(el){const a=el.nextElementSibling,o=el.classList.contains('open');document.querySelectorAll('.faq-q').forEach(q=>q.classList.remove('open'));document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));if(!o){el.classList.add('open');a.classList.add('open');}}
+</script>
+</body>
+</html>
