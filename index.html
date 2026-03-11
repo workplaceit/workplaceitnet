@@ -916,6 +916,77 @@
       .cf-card { padding: 28px 20px; }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://workplaceit.net",
+    "name": "Workplace IT",
+    "description": "Denver's trusted managed IT services provider. Expert cybersecurity, cloud management, compliance, VoIP, and 24/7 IT support for Colorado businesses.",
+    "url": "https://workplaceit.net",
+    "telephone": "(720) 647-9900",
+    "email": "info@workplaceit.net",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1514 Curtis St. Suite 200",
+      "addressLocality": "Denver",
+      "addressRegion": "CO",
+      "postalCode": "80202",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 39.7392,
+      "longitude": -104.9903
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "Colorado"
+    },
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 39.7392,
+        "longitude": -104.9903
+      },
+      "geoRadius": "80000"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Managed IT Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Managed IT Support"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cybersecurity"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "IT Compliance"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Video Surveillance as a Service"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "VoIP & Cloud PBX"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Backup & Disaster Recovery"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SaaS Licensing"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cloud Management & Services"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Structured Cabling"}}
+      ]
+    },
+    "sameAs": [
+      "https://www.facebook.com/workplaceitco",
+      "https://www.linkedin.com/company/front-range-workplaceit"
+    ],
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "17:00"
+    },
+    "priceRange": "$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.4",
+      "reviewCount": "16",
+      "bestRating": "5"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -1244,7 +1315,7 @@
   window.initGooglePlaces = initPlaces;
 })();
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOoaKaDB_U5ZganXsXxgY5Rfmw5Qq_VDs&libraries=places&callback=initGooglePlaces" async defer></script>
+<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOoaKaDB_U5ZganXsXxgY5Rfmw5Qq_VDs&libraries=places&callback=initGooglePlaces" async defer></script>
 
 <!-- ========== NEWSLETTER ========== -->
 <section id="newsletter" class="section section-blue" aria-label="Newsletter signup">
