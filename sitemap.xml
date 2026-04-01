@@ -10,4 +10,9 @@
   <url><loc>https://workplaceit.net/services/saas-licensing.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://workplaceit.net/services/cloud-management.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://workplaceit.net/services/structured-cabling.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://workplaceit.net/blog/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://workplaceit.net/blog/managed-it-services-denver.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://workplaceit.net/blog/cmmc-compliance-denver-contractors.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://workplaceit.net/blog/ransomware-protection-denver-businesses.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://workplaceit.net/blog/voip-vs-traditional-phone-denver.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
