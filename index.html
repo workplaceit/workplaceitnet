@@ -1379,14 +1379,22 @@
       </div>
       <div class="cf-card">
         <div class="cf-heading">Send Us A Message</div>
-        <div class="cf-row">
-          <div class="cf-grp"><label class="cf-lbl" for="fn">First Name</label><input class="cf-inp" id="fn" type="text" placeholder="John" /></div>
-          <div class="cf-grp"><label class="cf-lbl" for="ln">Last Name</label><input class="cf-inp" id="ln" type="text" placeholder="Smith" /></div>
+        <div id="cf-success" style="display:none;text-align:center;padding:2rem 1rem;">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">✅</div>
+          <h3 style="font-family:'Roboto',sans-serif;color:var(--navy);margin-bottom:.5rem;">Message Received!</h3>
+          <p style="color:#555;">Thanks for reaching out. Our Denver team will get back to you within one business day.</p>
         </div>
-        <div class="cf-grp"><label class="cf-lbl" for="em">Email Address</label><input class="cf-inp" id="em" type="email" placeholder="john@company.com" /></div>
-        <div class="cf-grp"><label class="cf-lbl" for="co">Company</label><input class="cf-inp" id="co" type="text" placeholder="Your Company Name" /></div>
-        <div class="cf-grp"><label class="cf-lbl" for="mg">Message</label><textarea class="cf-txt" id="mg" rows="4" placeholder="Tell us about your IT environment or challenges..."></textarea></div>
-        <button class="cf-submit" type="button">Send Message</button>
+        <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/#contact">
+          <input type="hidden" name="form-name" value="contact" />
+          <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+          <div class="cf-row">
+            <div class="cf-grp"><label class="cf-lbl" for="fn">First Name</label><input class="cf-inp" id="fn" name="first-name" type="text" placeholder="John" required /></div>
+            <div class="cf-grp"><label class="cf-lbl" for="ln">Last Name</label><input class="cf-inp" id="ln" name="last-name" type="text" placeholder="Smith" required /></div>
+          </div>
+          <div class="cf-grp"><label class="cf-lbl" for="em">Email Address</label><input class="cf-inp" id="em" name="email" type="email" placeholder="john@company.com" required /></div>
+          <div class="cf-grp"><label class="cf-lbl" for="co">Company</label><input class="cf-inp" id="co" name="company" type="text" placeholder="Your Company Name" /></div>
+          <div class="cf-grp"><label class="cf-lbl" for="mg">Message</label><textarea class="cf-txt" id="mg" name="message" rows="4" placeholder="Tell us about your IT environment or challenges..." required></textarea></div>
+          <button class="cf-submit" type="submit">Send Message</button>
       </div>
     </div>
   </div>
@@ -1471,5 +1479,29 @@
   });
 </script>
 
+
+  <script>
+    (function() {
+      var form = document.getElementById('contact-form');
+      if (!form) return;
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = form.querySelector('.cf-submit');
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        var data = new FormData(form);
+        fetch('/', { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams(data).toString() })
+          .then(function() {
+            form.style.display = 'none';
+            document.getElementById('cf-success').style.display = 'block';
+          })
+          .catch(function() {
+            btn.textContent = 'Send Message';
+            btn.disabled = false;
+            alert('Something went wrong. Please try again or call us at (720) 647-9900.');
+          });
+      });
+    })();
+  </script>
 </body>
 </html>
