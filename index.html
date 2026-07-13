@@ -1240,91 +1240,6 @@
   </div>
 </section>
 
-<script>
-(function() {
-  const PLACE_ID = 'ChIJ3wAZmk2Pa4cRYXUnJL2VUAY';
-
-  function timeAgo(ts) {
-    const sec = Math.floor(Date.now()/1000) - ts;
-    if (sec < 3600)    return Math.floor(sec/60)    + 'm ago';
-    if (sec < 86400)   return Math.floor(sec/3600)  + 'h ago';
-    if (sec < 2592000) return Math.floor(sec/86400) + 'd ago';
-    if (sec < 31536000) return Math.floor(sec/2592000) + 'mo ago';
-    return Math.floor(sec/31536000) + 'y ago';
-  }
-
-  function truncate(text, max) {
-    if (text.length <= max) return text;
-    return text.substring(0, max).replace(/\s+\S*$/, '') + '&hellip;';
-  }
-
-  function renderReviews(place) {
-    const grid    = document.getElementById('google-reviews-grid');
-    const ratingNum = document.getElementById('g-rating-num');
-    const starsEl   = document.getElementById('g-stars');
-    const countEl   = document.getElementById('g-count');
-
-    if (place.rating) {
-      ratingNum.textContent = place.rating.toFixed(1);
-      const full = Math.round(place.rating);
-      starsEl.textContent = '★'.repeat(full) + '☆'.repeat(5 - full);
-    }
-    if (place.user_ratings_total) {
-      countEl.textContent = '(' + place.user_ratings_total + ' reviews)';
-    }
-
-    const reviews = (place.reviews || [])
-      .filter(rv => rv.rating >= 4)
-      .sort((a,b) => b.time - a.time)
-      .slice(0, 3);
-
-    if (!reviews.length) {
-      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-light);font-family:Open Sans,sans-serif;">No reviews yet.</div>';
-      return;
-    }
-
-    const colors = ['#1a9fd4','#0a7abf','#22c55e','#f59e0b','#8b5cf6'];
-    grid.innerHTML = reviews.map(rv => {
-      const initials = rv.author_name.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
-      const bg = colors[rv.author_name.charCodeAt(0) % colors.length];
-      return '<div style="background:#fff;border:1px solid var(--mid-gray);border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:14px;">'
-        + '<div style="display:flex;align-items:center;gap:12px;">'
-        +   '<img src="' + rv.profile_photo_url + '" width="44" height="44" style="border-radius:50%;object-fit:cover;flex-shrink:0;" alt="' + rv.author_name + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';" />'
-        +   '<div style="width:44px;height:44px;border-radius:50%;background:' + bg + ';display:none;align-items:center;justify-content:center;font-family:Roboto,sans-serif;font-size:0.9rem;font-weight:700;color:#fff;flex-shrink:0;">' + initials + '</div>'
-        +   '<div>'
-        +     '<div style="font-family:Roboto,sans-serif;font-size:0.9rem;font-weight:700;color:var(--text);">' + rv.author_name + '</div>'
-        +     '<div style="font-size:0.75rem;color:var(--text-light);font-family:Open Sans,sans-serif;">' + timeAgo(rv.time) + '</div>'
-        +   '</div>'
-        +   '<img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="margin-left:auto;opacity:0.5;" />'
-        + '</div>'
-        + '<div style="color:#f59e0b;font-size:1rem;letter-spacing:2px;">' + '★'.repeat(rv.rating) + '☆'.repeat(5-rv.rating) + '</div>'
-        + '<div style="font-family:Open Sans,sans-serif;font-size:0.88rem;color:var(--text-light);line-height:1.75;">' + truncate(rv.text, 220) + '</div>'
-        + '</div>';
-    }).join('');
-  }
-
-  function initPlaces() {
-    const mapDiv = document.createElement('div');
-    const map = new google.maps.Map(mapDiv, { center: {lat:39.744,lng:-104.99}, zoom:15 });
-    const service = new google.maps.places.PlacesService(map);
-    service.getDetails({
-      placeId: PLACE_ID,
-      fields: ['name','rating','reviews','user_ratings_total']
-    }, function(place, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        renderReviews(place);
-      } else {
-        const grid = document.getElementById('google-reviews-grid');
-        if (grid) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-light);">Could not load reviews.</div>';
-      }
-    });
-  }
-
-  window.initGooglePlaces = initPlaces;
-})();
-</script>
-<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOoaKaDB_U5ZganXsXxgY5Rfmw5Qq_VDs&libraries=places&callback=initGooglePlaces" async defer></script>
-
 <!-- ========== NEWSLETTER ========== -->
 <section id="newsletter" class="section section-blue" aria-label="Newsletter signup">
   <div class="container">
@@ -1523,5 +1438,89 @@
       });
     })();
   </script>
+<script>
+(function() {
+  const PLACE_ID = 'ChIJ3wAZmk2Pa4cRYXUnJL2VUAY';
+
+  function timeAgo(ts) {
+    const sec = Math.floor(Date.now()/1000) - ts;
+    if (sec < 3600)    return Math.floor(sec/60)    + 'm ago';
+    if (sec < 86400)   return Math.floor(sec/3600)  + 'h ago';
+    if (sec < 2592000) return Math.floor(sec/86400) + 'd ago';
+    if (sec < 31536000) return Math.floor(sec/2592000) + 'mo ago';
+    return Math.floor(sec/31536000) + 'y ago';
+  }
+
+  function truncate(text, max) {
+    if (text.length <= max) return text;
+    return text.substring(0, max).replace(/\s+\S*$/, '') + '&hellip;';
+  }
+
+  function renderReviews(place) {
+    const grid    = document.getElementById('google-reviews-grid');
+    const ratingNum = document.getElementById('g-rating-num');
+    const starsEl   = document.getElementById('g-stars');
+    const countEl   = document.getElementById('g-count');
+
+    if (place.rating) {
+      ratingNum.textContent = place.rating.toFixed(1);
+      const full = Math.round(place.rating);
+      starsEl.textContent = '★'.repeat(full) + '☆'.repeat(5 - full);
+    }
+    if (place.user_ratings_total) {
+      countEl.textContent = '(' + place.user_ratings_total + ' reviews)';
+    }
+
+    const reviews = (place.reviews || [])
+      .filter(rv => rv.rating >= 4)
+      .sort((a,b) => b.time - a.time)
+      .slice(0, 3);
+
+    if (!reviews.length) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-light);font-family:Open Sans,sans-serif;">No reviews yet.</div>';
+      return;
+    }
+
+    const colors = ['#1a9fd4','#0a7abf','#22c55e','#f59e0b','#8b5cf6'];
+    grid.innerHTML = reviews.map(rv => {
+      const initials = rv.author_name.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+      const bg = colors[rv.author_name.charCodeAt(0) % colors.length];
+      return '<div style="background:#fff;border:1px solid var(--mid-gray);border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:14px;">'
+        + '<div style="display:flex;align-items:center;gap:12px;">'
+        +   '<img src="' + rv.profile_photo_url + '" width="44" height="44" style="border-radius:50%;object-fit:cover;flex-shrink:0;" alt="' + rv.author_name + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';" />'
+        +   '<div style="width:44px;height:44px;border-radius:50%;background:' + bg + ';display:none;align-items:center;justify-content:center;font-family:Roboto,sans-serif;font-size:0.9rem;font-weight:700;color:#fff;flex-shrink:0;">' + initials + '</div>'
+        +   '<div>'
+        +     '<div style="font-family:Roboto,sans-serif;font-size:0.9rem;font-weight:700;color:var(--text);">' + rv.author_name + '</div>'
+        +     '<div style="font-size:0.75rem;color:var(--text-light);font-family:Open Sans,sans-serif;">' + timeAgo(rv.time) + '</div>'
+        +   '</div>'
+        +   '<img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="margin-left:auto;opacity:0.5;" />'
+        + '</div>'
+        + '<div style="color:#f59e0b;font-size:1rem;letter-spacing:2px;">' + '★'.repeat(rv.rating) + '☆'.repeat(5-rv.rating) + '</div>'
+        + '<div style="font-family:Open Sans,sans-serif;font-size:0.88rem;color:var(--text-light);line-height:1.75;">' + truncate(rv.text, 220) + '</div>'
+        + '</div>';
+    }).join('');
+  }
+
+  function initPlaces() {
+    const mapDiv = document.createElement('div');
+    const map = new google.maps.Map(mapDiv, { center: {lat:39.744,lng:-104.99}, zoom:15 });
+    const service = new google.maps.places.PlacesService(map);
+    service.getDetails({
+      placeId: PLACE_ID,
+      fields: ['name','rating','reviews','user_ratings_total']
+    }, function(place, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        renderReviews(place);
+      } else {
+        const grid = document.getElementById('google-reviews-grid');
+        if (grid) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-light);">Could not load reviews.</div>';
+      }
+    });
+  }
+
+  window.initGooglePlaces = initPlaces;
+})();
+</script>
+<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOoaKaDB_U5ZganXsXxgY5Rfmw5Qq_VDs&libraries=places&callback=initGooglePlaces" async defer></script>
 </body>
 </html>
