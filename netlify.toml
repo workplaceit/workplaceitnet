@@ -1,7 +1,65 @@
 [build]
   publish = "."
 
+# Compression
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true
+
+# Security & caching headers
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Type = "text/html; charset=utf-8"
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "upgrade-insecure-requests"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirects: HTTP to HTTPS handled by Netlify automatically
+# Redirect stub pages to real pages
+[[redirects]]
+  from = "/managed-it"
+  to = "/services/managed-it-support.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/managed-it.html"
+  to = "/services/managed-it-support.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/managed-it-support"
+  to = "/services/managed-it-support.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/managed-it-support.html"
+  to = "/services/managed-it-support.html"
+  status = 301
+  force = true
