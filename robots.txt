@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block redirect stub pages
+Disallow: /managed-it.html
+Disallow: /managed-it-support.html
+
+Sitemap: https://workplaceit.net/sitemap.xml
