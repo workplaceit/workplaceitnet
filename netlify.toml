@@ -1,14 +1,12 @@
 [build]
   publish = "."
 
-# Compression
 [build.processing]
   skip_processing = false
 
 [build.processing.html]
   pretty_urls = false
 
-# Security & caching headers
 [[headers]]
   for = "/*"
   [headers.values]
@@ -38,8 +36,6 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Redirects: HTTP to HTTPS handled by Netlify automatically
-# Redirect stub pages to real pages
 [[redirects]]
   from = "/managed-it"
   to = "/services/managed-it-support.html"
@@ -47,19 +43,7 @@
   force = true
 
 [[redirects]]
-  from = "/managed-it.html"
-  to = "/services/managed-it-support.html"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/managed-it-support"
-  to = "/services/managed-it-support.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/managed-it-support.html"
   to = "/services/managed-it-support.html"
   status = 301
   force = true
