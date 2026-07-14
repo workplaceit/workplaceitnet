@@ -6,7 +6,7 @@
   skip_processing = false
 
 [build.processing.html]
-  pretty_urls = true
+  pretty_urls = false
 
 # Security & caching headers
 [[headers]]
