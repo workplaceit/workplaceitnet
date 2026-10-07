@@ -13,7 +13,7 @@ def gh_get(path):
     with urllib.request.urlopen(req) as r:
         return json.load(r)
 
-def gh_create_or_update(path, content, msg):
+def gh_save(path, content, msg):
     url = f"https://api.github.com/repos/{REPO}/contents/{path}"
     encoded = base64.b64encode(content.encode("utf-8")).decode("ascii")
     sha = None
@@ -24,15 +24,15 @@ def gh_create_or_update(path, content, msg):
     except: pass
     body = {"message": msg, "content": encoded}
     if sha: body["sha"] = sha
-    req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
+    data = json.dumps(body).encode("utf-8")
+    req = urllib.request.Request(url, data=data,
         headers={"Authorization": f"token {TOKEN}", "Content-Type": "application/json"},
         method="PUT")
     with urllib.request.urlopen(req) as r:
         return json.load(r)
 
-def decode(data):
-    raw = data["content"].replace("\n", "").replace("\r", "")
-    return base64.b64decode(raw).decode("utf-8", errors="replace")
+def decode(d):
+    return base64.b64decode(d["content"].replace("\n","").replace("\r","")).decode("utf-8", errors="replace")
 
 def list_html(path=""):
     items = []
@@ -44,7 +44,7 @@ def list_html(path=""):
         for e in entries:
             if e["type"] == "file" and e["name"].endswith(".html"):
                 items.append(e["path"])
-            elif e["type"] == "dir" and e["name"] not in [".git", ".github", "node_modules", "seo-reports"]:
+            elif e["type"] == "dir" and e["name"] not in [".git",".github","node_modules","seo-reports"]:
                 items.extend(list_html(e["path"]))
     except Exception as ex:
         print(f"list error {path}: {ex}")
@@ -52,24 +52,37 @@ def list_html(path=""):
 
 def ask_claude(prompt):
     if not ANTHROPIC:
-        return "Skipped: ANTHROPIC_API_KEY not set."
-    payload = json.dumps({
-        "model": "claude-sonnet-4-6", "max_tokens": 800,
-        "system": "SEO expert for Workplace IT, a Denver MSP. Be concise and actionable.",
+        print("WARNING: ANTHROPIC_API_KEY not set")
+        return "No API key — skipping Claude analysis."
+    # Build request carefully
+    body = {
+        "model": "claude-sonnet-4-6",
+        "max_tokens": 500,
         "messages": [{"role": "user", "content": prompt}]
-    }).encode("utf-8")
-    req = urllib.request.Request("https://api.anthropic.com/v1/messages", data=payload, headers={
-        "x-api-key": ANTHROPIC,
-        "anthropic-version": "2023-06-01",
-        "content-type": "application/json"
-    })
+    }
+    data = json.dumps(body, ensure_ascii=True).encode("utf-8")
+    req = urllib.request.Request(
+        "https://api.anthropic.com/v1/messages",
+        data=data,
+        headers={
+            "x-api-key": ANTHROPIC.strip(),
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+            "accept": "application/json"
+        },
+        method="POST"
+    )
     try:
-        with urllib.request.urlopen(req) as r:
-            return json.load(r)["content"][0]["text"]
+        with urllib.request.urlopen(req, timeout=30) as r:
+            result = json.load(r)
+            return result["content"][0]["text"]
     except urllib.error.HTTPError as e:
-        err_body = e.read().decode("utf-8", errors="replace")
-        print(f"Claude API error {e.code}: {err_body[:300]}")
-        return f"Claude analysis unavailable (API error {e.code}). Check ANTHROPIC_API_KEY secret."
+        body = e.read().decode("utf-8", errors="replace")
+        print(f"Claude API {e.code}: {body[:500]}")
+        return f"Claude unavailable ({e.code}): {body[:200]}"
+    except Exception as e:
+        print(f"Claude error: {e}")
+        return f"Claude unavailable: {e}"
 
 def audit_page(fname, content):
     issues = []
@@ -82,38 +95,29 @@ def audit_page(fname, content):
     t = t_m.group(1).strip() if t_m else ""
     d = d_m.group(1).strip() if d_m else ""
     robots = rob_m.group(1) if rob_m else ""
-    h1 = re.sub(r"<[^>]+>", "", h1_m.group(1)).strip() if h1_m else ""
+    h1 = re.sub(r"<[^>]+>","",h1_m.group(1)).strip() if h1_m else ""
     og_t = ogt_m.group(1) if ogt_m else ""
     can = can_m.group(1) if can_m else ""
-    if "noindex" in robots:
-        return []
-    if t and len(t) > 65: issues.append(f"Title too long ({len(t)} chars)")
-    if d and len(d) > 162: issues.append(f"Desc too long ({len(d)} chars)")
+    if "noindex" in robots: return []
+    if t and len(t) > 65: issues.append(f"Title too long ({len(t)})")
+    if d and len(d) > 162: issues.append(f"Desc too long ({len(d)})")
     if og_t and t and og_t != t: issues.append("og:title mismatch")
     if not can: issues.append("Missing canonical")
     if not t: issues.append("MISSING TITLE")
     if not d: issues.append("MISSING DESC")
     if not h1: issues.append("MISSING H1")
-    wc = len(re.sub(r"<[^>]+>", " ", content).split())
-    if wc < 300: issues.append(f"LOW WORD COUNT ({wc})")
+    wc = len(re.sub(r"<[^>]+>"," ",content).split())
+    if wc < 300: issues.append(f"LOW WORDS ({wc})")
     return issues
-
-def check_sitemap(all_html):
-    try:
-        data = gh_get("sitemap.xml")
-        sitemap = decode(data)
-        return [f for f in all_html if f"{BASE}/{f}" not in sitemap]
-    except Exception as e:
-        print(f"Sitemap check error: {e}")
-        return []
 
 def main():
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
-    print(f"Workplace IT SEO Agent - {now}")
-    print(f"ANTHROPIC_API_KEY set: {'Yes' if ANTHROPIC else 'NO - missing!'}")
+    print(f"=== Workplace IT SEO Agent v4 - {now} ===")
+    print(f"API key present: {'YES' if ANTHROPIC else 'NO'}")
+    print(f"API key length: {len(ANTHROPIC)}")
 
     all_html = list_html()
-    print(f"Found {len(all_html)} pages")
+    print(f"Found {len(all_html)} HTML pages")
 
     for fname in all_html:
         try:
@@ -125,46 +129,39 @@ def main():
         except Exception as e:
             print(f"Error {fname}: {e}")
 
-    sitemap_missing = check_sitemap(all_html)
-    auto_fixable = {k: [i for i in v if any(x in i for x in ["too long", "mismatch", "canonical"])]
-                    for k, v in ISSUES.items()
-                    if any(x in i for x in ["too long", "mismatch", "canonical"] for i in v)}
-    manual_needed = {k: [i for i in v if any(x in i for x in ["MISSING", "LOW"])]
-                     for k, v in ISSUES.items()
-                     if any(x in i for x in ["MISSING", "LOW"] for i in v)}
+    manual = {k:[i for i in v if "MISSING" in i or "LOW" in i] for k,v in ISSUES.items() if any("MISSING" in i or "LOW" in i for i in v)}
+    fixable = {k:[i for i in v if "too long" in i or "mismatch" in i or "canonical" in i] for k,v in ISSUES.items() if any("too long" in i or "mismatch" in i or "canonical" in i for i in v)}
 
-    print(f"Pages with issues: {len(ISSUES)} | Need manual: {len(manual_needed)}")
+    print(f"Issues found: {len(ISSUES)} pages | Manual: {len(manual)} | Auto-fixable: {len(fixable)}")
+    print("Calling Claude API...")
 
-    analysis = ask_claude(
-        f"Weekly SEO audit for workplaceit.net (Denver MSP).\n"
-        f"Date:{now} Pages:{len(all_html)} Issues:{len(ISSUES)} Manual:{len(manual_needed)}\n"
-        f"Top manual issues:{json.dumps(dict(list(manual_needed.items())[:5]),indent=2)}\n"
-        f"Missing from sitemap:{sitemap_missing[:3]}\n"
-        "Give: 1) Health score 1-10 2) Top 3 fixes this week 3) One growth tip. Under 150 words."
+    summary = (
+        f"workplaceit.net SEO audit {now}. "
+        f"Pages:{len(all_html)} Issues:{len(ISSUES)} Manual:{len(manual)}. "
+        f"Top issues: {list(manual.items())[:3]}. "
+        f"Give health score 1-10, top 3 fixes, one tip. Under 100 words."
     )
-    print(f"\nAnalysis:\n{analysis}")
+    analysis = ask_claude(summary)
+    print(f"Analysis: {analysis}")
 
     report = (
-        f"# SEO Report - {datetime.now().strftime('%Y-%m-%d')}\n\n"
-        f"**Pages:** {len(all_html)} | **Issues:** {len(ISSUES)} | **Manual:** {len(manual_needed)}\n\n"
-        f"## Claude's Analysis\n{analysis}\n\n"
-        f"## Needs Manual Fixes\n"
-        + ("\n".join(f"- **{k}**: {v}" for k, v in manual_needed.items()) or "- None")
-        + f"\n\n## Auto-Fixable (title/desc/canonical)\n"
-        + ("\n".join(f"- **{k}**: {v}" for k, v in auto_fixable.items()) or "- None")
-        + f"\n\n## Missing from Sitemap\n"
-        + ("\n".join(f"- {f}" for f in sitemap_missing) or "- None")
-        + "\n\n---\n*WIT SEO Agent - runs every Sunday 2am MT*\n"
+        f"# SEO Report {datetime.now().strftime('%Y-%m-%d')}\n\n"
+        f"Pages:{len(all_html)} | Issues:{len(ISSUES)} | Manual:{len(manual)}\n\n"
+        f"## Analysis\n{analysis}\n\n"
+        f"## Manual Fixes Needed\n" +
+        ("\n".join(f"- **{k}**: {v}" for k,v in manual.items()) or "- None") +
+        f"\n\n## Auto-Fixable\n" +
+        ("\n".join(f"- **{k}**: {v}" for k,v in fixable.items()) or "- None") +
+        "\n\n---\n*WIT SEO Agent*\n"
     )
 
     try:
-        gh_create_or_update("seo-reports/latest.md", report,
-                            f"SEO Report {datetime.now().strftime('%Y-%m-%d')}")
-        print("Report saved!")
+        gh_save("seo-reports/latest.md", report, f"SEO Report {datetime.now().strftime('%Y-%m-%d')}")
+        print("Report saved to seo-reports/latest.md")
     except Exception as e:
         print(f"Report save error: {e}")
 
-    print("Done!")
+    print("=== Done ===")
 
 if __name__ == "__main__":
     main()
