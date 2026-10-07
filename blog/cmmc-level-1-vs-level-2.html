@@ -1,0 +1,342 @@
+<p>test
+  line2</p><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CMMC Level 1 vs Level 2: Which Do You Need? | Workplace IT</title>
+  <meta name="description" content="CMMC Level 1 vs Level 2 compared: FCI vs CUI, 15 vs 110 requirements, self-assessment vs C3PAO, POA&amp;M rules, and how to tell which level your contracts require."/>
+  <meta property="og:title" content="CMMC Level 1 vs Level 2: Which Do You Need? | Workplace IT"/>
+  <meta property="og:description" content="Level 1 or Level 2? Compare CMMC requirements, assessments, scoring, and timelines, and learn how to tell which level your DoD contracts require."/>
+  <meta property="og:url" content="https://workplaceit.net/blog/cmmc-level-1-vs-level-2.html"/>
+  <meta property="og:type" content="article"/>
+  <link rel="canonical" href="https://workplaceit.net/blog/cmmc-level-1-vs-level-2.html"/>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"CMMC Level 1 vs Level 2: Which One Does Your Business Need?","description":"Level 1 or Level 2? Compare CMMC requirements, assessments, scoring, and timelines, and learn how to tell which level your DoD contracts require.","datePublished":"2026-10-07","dateModified":"2026-10-07","mainEntityOfPage":"https://workplaceit.net/blog/cmmc-level-1-vs-level-2.html","image":"https://workplaceit.net/images/workplace-it-denver-og.jpg","author":{"@type":"Organization","name":"Workplace IT"},"publisher":{"@type":"Organization","name":"Workplace IT","url":"https://workplaceit.net"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is CMMC Level 1 a stepping stone to Level 2?","acceptedAnswer":{"@type":"Answer","text":"In practice, yes. All 15 Level 1 requirements are included in Level 2, so meeting Level 1 is a solid foundation. But there's no requirement to certify at Level 1 first. If you handle CUI, go straight to Level 2."}},{"@type":"Question","name":"Can I do a Level 2 self-assessment instead of hiring a C3PAO?","acceptedAnswer":{"@type":"Answer","text":"Only if the contract allows it. The solicitation specifies whether a Level 2 self-assessment or a C3PAO certification assessment is required. Most contracts involving CUI will require the third-party assessment as Phase 2 begins."}},{"@type":"Question","name":"What happens if my SPRS score is below 88?","acceptedAnswer":{"@type":"Answer","text":"You can't achieve Conditional Level 2 status, and you won't be eligible for awards that require Level 2. You'll need to remediate gaps until you reach at least 88, with only POA&M-eligible items left open, before being assessed."}},{"@type":"Question","name":"Do I need GCC High for Level 2?","acceptedAnswer":{"@type":"Answer","text":"Not by name, but any cloud service storing or processing CUI must meet FedRAMP Moderate or equivalent. Microsoft 365 GCC High is the most common way small contractors meet that bar, especially when ITAR data is involved."}}]}]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--blue:#1a9fd4;--blue-dark:#1480ae;--navy:#0a1628;--white:#ffffff;--off-white:#f8f9fa;--mid-gray:#dee2e6;--text:#333;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Open Sans',sans-serif;color:var(--text);background:#fff;}
+    a{color:var(--blue);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    /* Nav */
+    nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;}
+    .nav-logo{color:#fff;font-family:'Roboto',sans-serif;font-size:1.4rem;font-weight:900;letter-spacing:1px;text-decoration:none;}
+    .nav-logo span{color:var(--blue);}
+    .nav-links{display:flex;gap:1.5rem;list-style:none;}
+    .nav-links a{color:rgba(255,255,255,0.85);font-size:.9rem;text-decoration:none;transition:color .2s;}
+    .nav-links a:hover{color:#fff;}
+    .nav-cta{background:var(--blue);color:#fff !important;padding:.4rem 1rem;border-radius:3px;}
+    /* Breadcrumb */
+    .breadcrumb{background:var(--off-white);padding:.75rem 2rem;font-size:.85rem;border-bottom:1px solid var(--mid-gray);}
+    .breadcrumb a{color:var(--blue);}
+    .breadcrumb span{color:#666;margin:0 .4rem;}
+    /* Hero */
+    .post-hero{background:linear-gradient(135deg,var(--navy) 0%,#1a3a5c 100%);padding:3.5rem 2rem;text-align:center;}
+    .post-category{display:inline-block;background:var(--blue);color:#fff;font-size:.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.3rem .8rem;border-radius:2px;margin-bottom:1rem;}
+    .post-hero h1{font-family:'Roboto',sans-serif;color:#fff;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;max-width:800px;margin:0 auto 1rem;}
+    .post-meta{color:rgba(255,255,255,0.65);font-size:.85rem;}
+    .post-meta span{margin:0 .5rem;}
+    .post-intro{color:rgba(255,255,255,0.85);font-size:1.05rem;max-width:700px;margin:1rem auto 0;line-height:1.7;}
+    /* Content */
+    .post-wrap{max-width:800px;margin:0 auto;padding:3rem 2rem;}
+    .post-wrap h2{font-family:'Roboto',sans-serif;color:var(--navy);font-size:1.4rem;font-weight:700;margin:2rem 0 .75rem;padding-bottom:.4rem;border-bottom:2px solid var(--blue);}
+    .post-wrap h3{font-family:'Roboto',sans-serif;color:var(--navy);font-size:1.1rem;font-weight:700;margin:1.5rem 0 .5rem;}
+    .post-wrap p{line-height:1.8;margin-bottom:1.2rem;color:#444;}
+    .post-wrap ul,.post-wrap ol{margin:0 0 1.2rem 1.5rem;}
+    .post-wrap ul li,.post-wrap ol li{line-height:1.8;margin-bottom:.5rem;color:#444;}
+    .post-wrap em{color:#555;}
+    /* Callout box */
+    .callout{background:#e8f6fd;border-left:4px solid var(--blue);border-radius:0 6px 6px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+    .callout p{margin:0;color:#1a3a5c;}
+    /* Level table */
+    .level-table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+    .level-table th{background:var(--navy);color:#fff;font-family:'Roboto',sans-serif;font-size:.85rem;padding:.75rem 1rem;text-align:left;}
+    .level-table td{padding:.75rem 1rem;border-bottom:1px solid var(--mid-gray);font-size:.9rem;color:#444;vertical-align:top;}
+    .level-table tr:nth-child(even) td{background:var(--off-white);}
+    .level-badge{display:inline-block;padding:.2rem .6rem;border-radius:3px;font-size:.75rem;font-weight:700;font-family:'Roboto',sans-serif;}
+    .badge-1{background:#d4edda;color:#155724;}
+    .badge-2{background:#cce5ff;color:#004085;}
+    .badge-3{background:#f8d7da;color:#721c24;}
+    /* CTA Box */
+    .post-cta{background:linear-gradient(135deg,var(--navy),#1a3a5c);color:#fff;border-radius:8px;padding:2rem;margin:3rem 0;text-align:center;}
+    .post-cta h3{font-family:'Roboto',sans-serif;font-size:1.3rem;margin-bottom:.75rem;}
+    .post-cta p{color:rgba(255,255,255,0.8);margin-bottom:1.25rem;}
+    .post-cta a{display:inline-block;background:var(--blue);color:#fff;padding:.7rem 1.8rem;border-radius:3px;font-weight:700;text-decoration:none;}
+    .post-cta a:hover{background:var(--blue-dark);}
+    /* Related */
+    .related{background:var(--off-white);padding:3rem 2rem;border-top:1px solid var(--mid-gray);}
+    .related h2{font-family:'Roboto',sans-serif;color:var(--navy);font-size:1.2rem;text-align:center;margin-bottom:1.5rem;}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;max-width:900px;margin:0 auto;}
+    .related-card{background:#fff;border-radius:6px;padding:1.25rem;border:1px solid var(--mid-gray);}
+    .related-card .cat{font-size:.75rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem;}
+    .related-card h3{font-family:'Roboto',sans-serif;font-size:.95rem;color:var(--navy);margin-bottom:.5rem;line-height:1.4;}
+    .related-card a{font-size:.85rem;color:var(--blue);font-weight:600;}
+    /* Footer */
+    footer{background:var(--navy);color:rgba(255,255,255,0.7);padding:3rem 2rem 1.5rem;}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;max-width:1200px;margin:0 auto 2rem;}
+    .footer-brand p{font-size:.88rem;line-height:1.7;margin-top:.5rem;}
+    .footer-col h4{color:#fff;font-family:'Roboto',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.5px;}
+    .footer-col ul{list-style:none;}
+    .footer-col ul li{margin-bottom:.4rem;}
+    .footer-col ul li a{color:rgba(255,255,255,0.65);font-size:.88rem;text-decoration:none;}
+    .footer-col ul li a:hover{color:#fff;}
+    .footer-bottom{text-align:center;font-size:.8rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;max-width:1200px;margin:0 auto;}
+  </style>
+  <meta property="og:image" content="https://workplaceit.net/images/workplace-it-denver-og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@WorkplaceIT" />
+  <meta name="twitter:title" content="CMMC Level 1 vs Level 2: Which Do You Need? | Workplace IT" />
+  <meta name="twitter:description" content="Level 1 or Level 2? Compare CMMC requirements, assessments, scoring, and timelines, and learn how to tell which level your DoD contracts require." />
+  <meta name="twitter:image" content="https://workplaceit.net/images/workplace-it-denver-og.jpg" />
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><span>W</span>IT</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/cmmc-compliance-denver">CMMC</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span>CMMC Level 1 vs Level 2
+</div>
+
+<div class="post-hero">
+  <div class="post-category">IT Compliance</div>
+  <h1>CMMC Level 1 vs Level 2: Which One Does Your Business Need?</h1>
+  <div class="post-meta">
+    <span>October 7, 2026</span>
+    <span>•</span>
+    <span>9 min read</span>
+    <span>•</span>
+    <span>By Workplace IT</span>
+  </div>
+  <p class="post-intro">Level 1 is 15 basic safeguards and a yearly self-assessment. Level 2 is 110 NIST 800-171 controls and, for most contracts, an outside assessor. The difference comes down to one question: do you handle FCI or CUI?</p>
+</div>
+
+<div class="post-wrap">
+
+<p>When a Colorado manufacturer, engineering firm, or subcontractor first hears that a prime contractor wants them "CMMC compliant," the next question is almost always the same: <em>which level?</em> Picking the wrong one is expensive in either direction. Over-scope and you spend months building controls your contracts don't require. Under-scope and you can be ineligible for an award, or worse, signing affirmations that aren't true.</p>
+
+<p>This guide breaks down CMMC Level 1 and Level 2 side by side: what each protects, what each requires, how each is assessed, and how to tell which one your contracts actually call for.</p>
+
+<h2>The One-Sentence Difference</h2>
+
+<div class="callout">
+  <p><strong>Level 1 protects Federal Contract Information (FCI). Level 2 protects Controlled Unclassified Information (CUI).</strong> If CUI ever touches your systems, Level 1 is not enough.</p>
+</div>
+
+<p><strong>FCI</strong> is information provided by or generated for the government under a contract that isn't intended for public release: contract details, delivery schedules, internal correspondence with a contracting officer. Nearly every company with a DoD contract or subcontract has FCI.</p>
+
+<p><strong>CUI</strong> is a narrower, more sensitive category that the government has designated as requiring safeguarding: technical drawings, specifications, engineering data, export-controlled (ITAR/EAR) data, and similar information. It's usually marked "CUI" or carries a distribution statement, and it's the reason most Colorado defense suppliers land at Level 2.</p>
+
+<h2>CMMC Level 1 vs Level 2 at a Glance</h2>
+
+<table class="level-table">
+  <tr>
+    <th></th>
+    <th><span class="level-badge badge-1">Level 1</span> Foundational</th>
+    <th><span class="level-badge badge-2">Level 2</span> Advanced</th>
+  </tr>
+  <tr>
+    <td><strong>Protects</strong></td>
+    <td>Federal Contract Information (FCI)</td>
+    <td>Controlled Unclassified Information (CUI)</td>
+  </tr>
+  <tr>
+    <td><strong>Requirements</strong></td>
+    <td>15 basic safeguarding requirements from FAR 52.204-21</td>
+    <td>110 security requirements from NIST SP 800-171 Rev. 2, across 14 families</td>
+  </tr>
+  <tr>
+    <td><strong>Assessment</strong></td>
+    <td>Self-assessment</td>
+    <td>Self-assessment or third-party (C3PAO) certification, depending on the contract; most CUI contracts will require a C3PAO</td>
+  </tr>
+  <tr>
+    <td><strong>How often</strong></td>
+    <td>Every year</td>
+    <td>Every 3 years, plus an annual affirmation</td>
+  </tr>
+  <tr>
+    <td><strong>Scoring</strong></td>
+    <td>Pass/fail: all 15 must be met</td>
+    <td>Scored out of 110 using the DoD Assessment Methodology</td>
+  </tr>
+  <tr>
+    <td><strong>POA&amp;Ms allowed?</strong></td>
+    <td>No</td>
+    <td>Limited: a score of at least 88/110 earns Conditional status, and open items must close within 180 days</td>
+  </tr>
+  <tr>
+    <td><strong>Documentation</strong></td>
+    <td>Light: evidence the practices are in place</td>
+    <td>Heavy: System Security Plan (SSP), policies, procedures, and evidence for every control</td>
+  </tr>
+  <tr>
+    <td><strong>Results reported in</strong></td>
+    <td>SPRS, with a senior-official affirmation</td>
+    <td>SPRS (self-assessments) or CMMC eMASS (C3PAO), with a senior-official affirmation</td>
+  </tr>
+  <tr>
+    <td><strong>Typical timeline</strong></td>
+    <td>Weeks</td>
+    <td>3–9+ months for most small businesses</td>
+  </tr>
+</table>
+
+<h2>What CMMC Level 1 Requires</h2>
+
+<p>Level 1 is cyber hygiene. Its 15 requirements come straight from the FAR 52.204-21 clause that has been in federal contracts for years, so if you have a DoD contract, you're likely already obligated to do them. In practice, Level 1 means:</p>
+
+<ul>
+  <li>Limiting system access to authorized users, and limiting what those users can do</li>
+  <li>Controlling connections to external systems and what gets posted publicly</li>
+  <li>Identifying and authenticating users and devices before granting access</li>
+  <li>Sanitizing or destroying media that held FCI before disposal or reuse</li>
+  <li>Limiting physical access to systems and escorting visitors</li>
+  <li>Separating publicly accessible systems from internal networks</li>
+  <li>Patching flaws promptly, running malware protection, and keeping it updated with regular scans</li>
+</ul>
+
+<p>Each year, your organization performs a self-assessment against all 15 requirements, enters the result in the Supplier Performance Risk System (SPRS), and a senior official affirms that it's accurate. There's no partial credit: every requirement must be fully met. Level 1 does not allow a Plan of Action &amp; Milestones (POA&amp;M) for open gaps.</p>
+
+<h2>What CMMC Level 2 Requires</h2>
+
+<p>Level 2 is a full security program. It requires all 110 security requirements in NIST SP 800-171, organized into 14 families including access control, audit and accountability, configuration management, incident response, risk assessment, and system and communications protection. The 15 Level 1 requirements are included, so Level 2 is a superset.</p>
+
+<p>What makes Level 2 a significant lift isn't just the number of controls. It's what they demand:</p>
+
+<ul>
+  <li><strong>Multi-factor authentication</strong> for privileged accounts and for network access to all accounts</li>
+  <li><strong>FIPS-validated encryption</strong> for CUI at rest and in transit</li>
+  <li><strong>Centralized audit logging</strong> with review and retention</li>
+  <li><strong>Documented and tested incident response</strong>, not just a written plan</li>
+  <li><strong>Baseline configurations</strong> and formal change control</li>
+  <li><strong>Security awareness training</strong>, including insider threat awareness</li>
+  <li><strong>A System Security Plan (SSP)</strong> describing exactly how each control is implemented in your environment</li>
+  <li><strong>Cloud services that meet FedRAMP Moderate or equivalent</strong> wherever CUI is stored or processed (which is why many contractors move to Microsoft 365 GCC High)</li>
+</ul>
+
+<p>Level 2 is scored using the DoD Assessment Methodology: you start at 110 and subtract 1, 3, or 5 points for each unmet requirement. To reach Conditional status, you need at least 88 points, and only certain lower-weighted requirements can be left on a POA&amp;M. Those items must be closed within 180 days to reach Final status.</p>
+
+<h3>Level 2 Self-Assessment vs C3PAO Certification</h3>
+
+<p>Level 2 comes in two flavors, and the contract decides which one applies. Some solicitations allow a Level 2 self-assessment. Most contracts involving CUI that's critical to national security will require a <strong>Level 2 certification assessment</strong> performed by an authorized CMMC Third-Party Assessment Organization (C3PAO). Either way, the 110 requirements are the same; what changes is who verifies them.</p>
+
+<h2>How to Tell Which Level You Need</h2>
+
+<p>Don't guess. Look at your contracts and the data you actually receive:</p>
+
+<ol>
+  <li><strong>Check the clauses.</strong> FAR 52.204-21 alone points to FCI and Level 1. DFARS 252.204-7012 means you're expected to protect CUI under NIST 800-171. DFARS 252.204-7021 is the CMMC clause, and the solicitation will state the required level.</li>
+  <li><strong>Look at what's in your inbox.</strong> Drawings, specs, or documents marked "CUI," "Controlled," or with a distribution statement B through F are a strong signal you're handling CUI.</li>
+  <li><strong>Ask your prime.</strong> Primes are required to flow down the appropriate CMMC level to subcontractors. If they're sending you CUI, they should be telling you Level 2.</li>
+  <li><strong>Map where the data goes.</strong> If CUI lands in email, file shares, or engineering workstations, all of those systems are in scope.</li>
+</ol>
+
+<div class="callout">
+  <p><strong>A common mistake:</strong> assuming you're Level 1 because you're "just a small machine shop" or "just a subcontractor." Company size and tier don't set your level. The information does. If a prime emails you a controlled drawing, you're handling CUI.</p>
+</div>
+
+<h2>Can You Reduce Your Level 2 Scope?</h2>
+
+<p>Yes, and for small businesses it's often the smartest move. Rather than bringing your entire network up to Level 2, you can build a <strong>CUI enclave</strong>: a separate, tightly controlled environment (often Microsoft 365 GCC High with dedicated endpoints) where CUI lives and is worked on. Systems outside the enclave stay out of Level 2 scope.</p>
+
+<p>An enclave doesn't change the 110 requirements, but it shrinks the number of users, devices, and systems they apply to. That can cut both cost and assessment complexity substantially. Whether it fits depends on how many people need to touch CUI and how it flows through your business.</p>
+
+<h2>Where the Timeline Stands</h2>
+
+<p>CMMC requirements are entering DoD contracts in phases under the 48 CFR rule that took effect November 10, 2025:</p>
+
+<ul>
+  <li><strong>Phase 1 (November 10, 2025):</strong> Level 1 and Level 2 self-assessments begin appearing in solicitations</li>
+  <li><strong>Phase 2 (November 10, 2026):</strong> Level 2 C3PAO certification requirements begin appearing</li>
+  <li><strong>Phase 3 (November 10, 2027):</strong> Level 3 requirements begin appearing</li>
+  <li><strong>Phase 4 (November 10, 2028):</strong> Full implementation across applicable contracts</li>
+</ul>
+
+<p>Phase 2 is weeks away. If your contracts involve CUI and you haven't started a gap assessment, the 3–9 month path to Level 2 means you're already behind competitors who have. For a deeper look, read <a href="/blog/cmmc-level-2-deadline-2026.html">our guide to the November 2026 Level 2 deadline</a>.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Is CMMC Level 1 a stepping stone to Level 2?</h3>
+<p>In practice, yes. All 15 Level 1 requirements are included in Level 2, so meeting Level 1 is a solid foundation. But there's no requirement to certify at Level 1 first. If you handle CUI, go straight to Level 2.</p>
+
+<h3>Can I do a Level 2 self-assessment instead of hiring a C3PAO?</h3>
+<p>Only if the contract allows it. The solicitation specifies whether a Level 2 self-assessment or a C3PAO certification assessment is required. Most contracts involving CUI will require the third-party assessment as Phase 2 begins.</p>
+
+<h3>What happens if my SPRS score is below 88?</h3>
+<p>You can't achieve Conditional Level 2 status, and you won't be eligible for awards that require Level 2. You'll need to remediate gaps until you reach at least 88, with only POA&amp;M-eligible items left open, before being assessed.</p>
+
+<h3>Do I need GCC High for Level 2?</h3>
+<p>Not by name, but any cloud service storing or processing CUI must meet FedRAMP Moderate or equivalent. Microsoft 365 GCC High is the most common way small contractors meet that bar, especially when ITAR data is involved.</p>
+
+<h2>How Workplace IT Helps Colorado Contractors</h2>
+
+<p>Workplace IT is a CMMC Registered Practitioner Organization (RPO) based in downtown Denver. We help defense suppliers figure out which level they actually need, then get them there:</p>
+
+<ol>
+  <li><strong>Scoping &amp; level determination:</strong> we review your contracts and data flows to confirm Level 1 or Level 2 and define what's in scope</li>
+  <li><strong>Gap assessment:</strong> we score your environment against the applicable requirements and produce a prioritized remediation plan</li>
+  <li><strong>Remediation:</strong> MFA, encryption, logging, endpoint security, and GCC High or enclave builds, implemented by our own engineers</li>
+  <li><strong>Documentation:</strong> SSP, POA&amp;M, policies, and procedures written for how your business actually operates</li>
+  <li><strong>Assessment readiness:</strong> evidence collection and preparation for your SPRS affirmation or C3PAO assessment</li>
+</ol>
+
+<p>We work with contractors along the Front Range, including <a href="/cmmc-compliance-denver.html">Denver</a>, <a href="/cmmc-compliance-colorado-springs.html">Colorado Springs</a>, <a href="/cmmc-compliance-boulder.html">Boulder</a>, <a href="/cmmc-compliance-fort-collins.html">Fort Collins</a>, <a href="/cmmc-compliance-greeley.html">Greeley</a>, and <a href="/cmmc-compliance-pueblo.html">Pueblo</a>, plus businesses <a href="/cmmc-compliance-colorado.html">statewide across Colorado</a>.</p>
+
+  <div class="post-cta">
+    <h3>Not sure if you're Level 1 or Level 2?</h3>
+    <p>We'll review your contracts and data flows and tell you exactly which level applies and what it will take to get there. Free, no obligation.</p>
+    <a href="/cmmc-compliance-denver#contact">Get a Free CMMC Assessment</a>
+  </div>
+
+</div>
+
+<div class="related">
+  <h2>More From the Blog</h2>
+  <div class="related-grid">
+    <div class="related-card"><div class="cat">IT Compliance</div><h3>Does My Denver Business Need CMMC Certification?</h3><a href="/blog/does-my-denver-business-need-cmmc.html">Read More →</a></div>
+    <div class="related-card"><div class="cat">IT Compliance</div><h3>CMMC Level 2 Compliance: The November 2026 Deadline Is Closer Than You Think</h3><a href="/blog/cmmc-level-2-deadline-2026.html">Read More →</a></div>
+    <div class="related-card"><div class="cat">IT Compliance</div><h3>CMMC Compliance in Denver: What Colorado Defense Contractors Need to Know</h3><a href="/blog/cmmc-compliance-denver-contractors.html">Read More →</a></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <strong style="color:#fff;font-family:'Roboto',sans-serif;font-size:1.1rem;">Workplace IT</strong>
+      <p>1514 Curtis St. Suite 200<br>Denver, CO 80202<br><a href="tel:7206479900" style="color:var(--blue)">(720) 647-9900</a></p>
+    </div>
+    <div class="footer-col"><h4>Services</h4><ul>
+      <li><a href="/services/managed-it-support.html">Managed IT</a></li>
+      <li><a href="/services/cybersecurity.html">Cybersecurity</a></li>
+      <li><a href="/cmmc-compliance-denver">CMMC Compliance</a></li>
+      <li><a href="/services/voip.html">VoIP</a></li>
+      <li><a href="/services/backup-recovery.html">Backup & Recovery</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Company</h4><ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">© 2026 Workplace IT. All rights reserved. | <a href="/" style="color:var(--blue)">workplaceit.net</a></div>
+</footer>
+
+</body>
+</html>
