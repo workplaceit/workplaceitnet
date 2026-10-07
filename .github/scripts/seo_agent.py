@@ -2,7 +2,7 @@ import os, re, json, base64, urllib.request, urllib.error
 from datetime import datetime
 
 TOKEN = os.environ["GITHUB_TOKEN"]
-ANTHROPIC = os.environ["ANTHROPIC_API_KEY"]
+ANTHROPIC = os.environ.get("ANTHROPIC_API_KEY", "")
 REPO = os.environ.get("REPO", "workplaceit/workplaceitnet")
 BASE = "https://workplaceit.net"
 ISSUES = {}
@@ -51,17 +51,25 @@ def list_html(path=""):
     return items
 
 def ask_claude(prompt):
+    if not ANTHROPIC:
+        return "Skipped: ANTHROPIC_API_KEY not set."
     payload = json.dumps({
         "model": "claude-sonnet-4-6", "max_tokens": 800,
         "system": "SEO expert for Workplace IT, a Denver MSP. Be concise and actionable.",
         "messages": [{"role": "user", "content": prompt}]
     }).encode("utf-8")
     req = urllib.request.Request("https://api.anthropic.com/v1/messages", data=payload, headers={
-        "x-api-key": ANTHROPIC, "anthropic-version": "2023-06-01",
+        "x-api-key": ANTHROPIC,
+        "anthropic-version": "2023-06-01",
         "content-type": "application/json"
     })
-    with urllib.request.urlopen(req) as r:
-        return json.load(r)["content"][0]["text"]
+    try:
+        with urllib.request.urlopen(req) as r:
+            return json.load(r)["content"][0]["text"]
+    except urllib.error.HTTPError as e:
+        err_body = e.read().decode("utf-8", errors="replace")
+        print(f"Claude API error {e.code}: {err_body[:300]}")
+        return f"Claude analysis unavailable (API error {e.code}). Check ANTHROPIC_API_KEY secret."
 
 def audit_page(fname, content):
     issues = []
@@ -94,12 +102,7 @@ def check_sitemap(all_html):
     try:
         data = gh_get("sitemap.xml")
         sitemap = decode(data)
-        missing = []
-        for fname in all_html:
-            url = f"{BASE}/{fname}"
-            if url not in sitemap:
-                missing.append(fname)
-        return missing
+        return [f for f in all_html if f"{BASE}/{f}" not in sitemap]
     except Exception as e:
         print(f"Sitemap check error: {e}")
         return []
@@ -107,11 +110,11 @@ def check_sitemap(all_html):
 def main():
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
     print(f"Workplace IT SEO Agent - {now}")
+    print(f"ANTHROPIC_API_KEY set: {'Yes' if ANTHROPIC else 'NO - missing!'}")
 
     all_html = list_html()
     print(f"Found {len(all_html)} pages")
 
-    # Audit all pages
     for fname in all_html:
         try:
             data = gh_get(fname)
@@ -119,16 +122,10 @@ def main():
             issues = audit_page(fname, content)
             if issues:
                 ISSUES[fname] = issues
-                print(f"Issues in {fname}: {issues}")
         except Exception as e:
             print(f"Error {fname}: {e}")
 
-    # Check sitemap
     sitemap_missing = check_sitemap(all_html)
-    if sitemap_missing:
-        print(f"Missing from sitemap: {sitemap_missing[:5]}")
-
-    # Categorise
     auto_fixable = {k: [i for i in v if any(x in i for x in ["too long", "mismatch", "canonical"])]
                     for k, v in ISSUES.items()
                     if any(x in i for x in ["too long", "mismatch", "canonical"] for i in v)}
@@ -136,50 +133,38 @@ def main():
                      for k, v in ISSUES.items()
                      if any(x in i for x in ["MISSING", "LOW"] for i in v)}
 
-    total_issues = len(ISSUES)
-    print(f"\nSummary: {len(all_html)} pages | {total_issues} with issues | {len(manual_needed)} need manual fixes")
+    print(f"Pages with issues: {len(ISSUES)} | Need manual: {len(manual_needed)}")
 
-    # Claude analysis
-    try:
-        analysis = ask_claude(
-            f"Weekly SEO audit for workplaceit.net (Denver MSP).\n"
-            f"Date: {now} | Pages: {len(all_html)} | Pages with issues: {total_issues}\n"
-            f"Auto-fixable issues: {json.dumps(dict(list(auto_fixable.items())[:5]), indent=2)}\n"
-            f"Manual fixes needed: {json.dumps(dict(list(manual_needed.items())[:5]), indent=2)}\n"
-            f"Missing from sitemap: {sitemap_missing[:5]}\n\n"
-            "Provide: 1) Site health score 1-10 with reason "
-            "2) Top 3 priority fixes this week "
-            "3) One growth opportunity. Under 200 words."
-        )
-        print(f"\nClaude Analysis:\n{analysis}")
-    except Exception as e:
-        analysis = f"Analysis unavailable: {e}"
-        print(analysis)
+    analysis = ask_claude(
+        f"Weekly SEO audit for workplaceit.net (Denver MSP).\n"
+        f"Date:{now} Pages:{len(all_html)} Issues:{len(ISSUES)} Manual:{len(manual_needed)}\n"
+        f"Top manual issues:{json.dumps(dict(list(manual_needed.items())[:5]),indent=2)}\n"
+        f"Missing from sitemap:{sitemap_missing[:3]}\n"
+        "Give: 1) Health score 1-10 2) Top 3 fixes this week 3) One growth tip. Under 150 words."
+    )
+    print(f"\nAnalysis:\n{analysis}")
 
-    # Write report
     report = (
-        f"# SEO Audit Report - {datetime.now().strftime('%Y-%m-%d')}\n\n"
-        f"**Pages audited:** {len(all_html)} | "
-        f"**Pages with issues:** {total_issues} | "
-        f"**Need manual fixes:** {len(manual_needed)}\n\n"
+        f"# SEO Report - {datetime.now().strftime('%Y-%m-%d')}\n\n"
+        f"**Pages:** {len(all_html)} | **Issues:** {len(ISSUES)} | **Manual:** {len(manual_needed)}\n\n"
         f"## Claude's Analysis\n{analysis}\n\n"
-        f"## Auto-Fixable Issues\n"
-        + ("\n".join(f"- **{k}**: {v}" for k, v in auto_fixable.items()) or "- None")
-        + f"\n\n## Manual Fixes Needed\n"
+        f"## Needs Manual Fixes\n"
         + ("\n".join(f"- **{k}**: {v}" for k, v in manual_needed.items()) or "- None")
+        + f"\n\n## Auto-Fixable (title/desc/canonical)\n"
+        + ("\n".join(f"- **{k}**: {v}" for k, v in auto_fixable.items()) or "- None")
         + f"\n\n## Missing from Sitemap\n"
         + ("\n".join(f"- {f}" for f in sitemap_missing) or "- None")
-        + f"\n\n---\n*Generated by WIT SEO Agent - runs every Sunday 2am MT*\n"
+        + "\n\n---\n*WIT SEO Agent - runs every Sunday 2am MT*\n"
     )
 
     try:
         gh_create_or_update("seo-reports/latest.md", report,
                             f"SEO Report {datetime.now().strftime('%Y-%m-%d')}")
-        print("Report saved to seo-reports/latest.md")
+        print("Report saved!")
     except Exception as e:
-        print(f"Could not save report: {e}")
+        print(f"Report save error: {e}")
 
-    print("\nDone!")
+    print("Done!")
 
 if __name__ == "__main__":
     main()
