@@ -233,7 +233,7 @@
 
       <div class="cf-card">
         <div class="cf-heading">Submit a Referral</div>
-        <div id="cf-success" style="display:none;text-align:center;padding:2rem 1rem;">
+        <div id="rf-success" style="display:none;text-align:center;padding:2rem 1rem;">
           <div style="font-size:2.5rem;margin-bottom:1rem;">&#9989;</div>
           <h3 style="font-family:'Roboto',sans-serif;color:var(--navy);margin-bottom:.5rem;">Thank you for the referral!</h3>
           <p style="color:#555;">We'll reach out to them shortly and keep you posted. Questions? Call <a href="tel:7206479900">(720) 647-9900</a>.</p>
@@ -316,7 +316,7 @@
   </ul></div>
   <div class="footer-col"><h5>Contact</h5><ul>
     <li><a href="tel:7206479900">(720) 647-9900</a></li>
-    <li><a href="#">1514 Curtis St, Suite 200<br>Denver, CO 80202</a></li>
+    <li><a href="https://www.google.com/maps/search/?api=1&amp;query=1514+Curtis+St+Suite+200+Denver+CO+80202" target="_blank" rel="noopener">1514 Curtis St, Suite 200<br>Denver, CO 80202</a></li>
     <li><a href="mailto:info@workplaceit.net">info@workplaceit.net</a></li>
   </ul></div>
 </div>
@@ -344,7 +344,7 @@
         .then(function(r) {
           if (!r.ok) throw new Error(r.status);
           form.style.display = 'none';
-          document.getElementById('cf-success').style.display = 'block';
+          document.getElementById('rf-success').style.display = 'block';
           window.scrollTo({ top: form.parentElement.offsetTop - 100, behavior: 'smooth' });
         })
         .catch(function() {
