@@ -1385,39 +1385,50 @@
       </div>
       <div class="cf-card">
         <div class="cf-heading">Request a Free CMMC Assessment</div>
-        <form action="https://formspree.io/f/xzzeqqgj" method="POST">
+        <div id="cf-success" style="display:none;text-align:center;padding:2rem 1rem;">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">✅</div>
+          <h3 style="font-family:'Roboto',sans-serif;color:var(--navy);margin-bottom:.5rem;">Request Received!</h3>
+          <p style="color:#555;">Thanks for reaching out. A Workplace IT CMMC specialist will get back to you within one business day.</p>
+        </div>
+        <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="#contact">
+          <input type="hidden" name="form-name" value="contact" />
+          <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
           <div class="cf-row">
             <div class="cf-grp">
-              <label class="cf-lbl" for="cf-name">Full Name</label>
-              <input class="cf-inp" id="cf-name" name="name" type="text" placeholder="Jane Smith" required />
+              <label class="cf-lbl" for="fn">First Name</label>
+              <input class="cf-inp" id="fn" name="first-name" type="text" placeholder="Jane" required />
             </div>
             <div class="cf-grp">
-              <label class="cf-lbl" for="cf-company">Company</label>
-              <input class="cf-inp" id="cf-company" name="company" type="text" placeholder="Acme Defense LLC" />
+              <label class="cf-lbl" for="ln">Last Name</label>
+              <input class="cf-inp" id="ln" name="last-name" type="text" placeholder="Smith" required />
             </div>
           </div>
           <div class="cf-row">
             <div class="cf-grp">
-              <label class="cf-lbl" for="cf-email">Email</label>
-              <input class="cf-inp" id="cf-email" name="email" type="email" placeholder="jane@company.com" required />
+              <label class="cf-lbl" for="em">Email</label>
+              <input class="cf-inp" id="em" name="email" type="email" placeholder="jane@company.com" required />
             </div>
             <div class="cf-grp">
-              <label class="cf-lbl" for="cf-phone">Phone</label>
-              <input class="cf-inp" id="cf-phone" name="phone" type="tel" placeholder="(720) 555-0100" />
+              <label class="cf-lbl" for="ph">Phone</label>
+              <input class="cf-inp" id="ph" name="phone" type="tel" placeholder="(720) 555-0100" />
             </div>
+          </div>
+          <div class="cf-grp">
+            <label class="cf-lbl" for="co">Company</label>
+            <input class="cf-inp" id="co" name="company" type="text" placeholder="Acme Defense LLC" />
           </div>
           <div class="cf-grp">
             <label class="cf-lbl" for="cf-level">CMMC Level Needed</label>
-            <select class="cf-inp" id="cf-level" name="cmmc_level">
-              <option value="">Not sure yet</option>
-              <option value="level1">Level 1 — Basic (FCI only)</option>
-              <option value="level2">Level 2 — Advanced (CUI)</option>
-              <option value="level3">Level 3 — Expert</option>
+            <select class="cf-inp" id="cf-level" data-level>
+              <option value="Not sure yet">Not sure yet</option>
+              <option value="Level 1 (FCI only)">Level 1 — Basic (FCI only)</option>
+              <option value="Level 2 (CUI)">Level 2 — Advanced (CUI)</option>
+              <option value="Level 3">Level 3 — Expert</option>
             </select>
           </div>
           <div class="cf-grp">
-            <label class="cf-lbl" for="cf-msg">Tell us about your situation</label>
-            <textarea class="cf-txt" id="cf-msg" name="message" rows="4" placeholder="What contracts are you pursuing? Have you started any compliance work already?"></textarea>
+            <label class="cf-lbl" for="mg">Tell us about your situation</label>
+            <textarea class="cf-txt" id="mg" name="message" rows="4" placeholder="What contracts are you pursuing? Have you started any compliance work already?" required></textarea>
           </div>
           <button type="submit" class="cf-submit">Send My Request →</button>
         </form>
@@ -1490,5 +1501,32 @@
   }
 </script>
 
+<script>
+  (function() {
+    var form = document.getElementById('contact-form');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = form.querySelector('.cf-submit');
+      var label = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      var data = new FormData(form);
+      var lvl = form.querySelector('[data-level]');
+      data.set('message', '[From: ' + window.location.pathname + '] [CMMC level: ' + (lvl ? lvl.value : 'n/a') + ']\n' + (data.get('message') || ''));
+      fetch('/', { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams(data).toString() })
+        .then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          form.style.display = 'none';
+          document.getElementById('cf-success').style.display = 'block';
+        })
+        .catch(function() {
+          btn.textContent = label;
+          btn.disabled = false;
+          alert('Something went wrong. Please try again or call us at (720) 647-9900.');
+        });
+    });
+  })();
+</script>
 </body>
 </html>
