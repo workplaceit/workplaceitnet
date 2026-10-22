@@ -196,6 +196,24 @@
   <meta name="twitter:title" content="Structured Cabling Denver CO | Cat6 & Fiber | Workplace IT" />
   <meta name="twitter:description" content="Professional structured cabling and network wiring for Denver businesses. Cat6, fiber, low-voltage by Workplace IT." />
   <meta name="twitter:image" content="https://workplaceit.net/images/workplace-it-denver-og.jpg" />
+  <style id="mobile-fixes">
+    /* Phone layout fixes: keep content inside the screen width (no sideways scrolling) */
+    @media (max-width: 760px) {
+      [style*="grid-template-columns"] { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)) !important; }
+      [style*="grid-template-columns"] > *, .stats-strip-inner > *, .nl-layout > * { min-width: 0; }
+      .stats-strip-inner { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; row-gap: 12px; }
+      .stat-item { border-right: none !important; }
+      .nl-form { flex-wrap: wrap; }
+      .nl-input { min-width: 0; flex: 1 1 180px; }
+      .level-table, .wrap table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      img, video, iframe { max-width: 100%; }
+    }
+    @media (max-width: 600px) {
+      body > nav { padding: 0 1rem; }
+      body > nav .nav-links { gap: 1rem; }
+      body > nav .nav-links li:nth-child(1), body > nav .nav-links li:nth-child(2) { display: none; }
+    }
+  </style>
 </head>
 <body>
 <div class="top-bar"><div class="top-bar-inner">
