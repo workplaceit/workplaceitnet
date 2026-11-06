@@ -223,6 +223,10 @@
     }
 
     .hero-content { max-width: 580px; }
+    /* Cyber AB RPO badge: hero right corner */
+    .hero-badge { position: absolute; right: 32px; top: 50%; transform: translateY(-50%); width: 230px; z-index: 3; }
+    .hero-badge img { display: block; width: 100%; height: auto; }
+    @media (max-width: 960px) { .hero-badge { position: static; transform: none; width: 140px; margin-top: 32px; } }
 
     .hero-eyebrow {
       display: flex;
@@ -1066,6 +1070,9 @@
         <div><div class="hs-num">99.9%</div><div class="hs-label">Uptime Guarantee</div></div>
         <div><div class="hs-num">24/7</div><div class="hs-label">Monitoring</div></div>
       </div>
+    </div>
+    <div class="hero-badge">
+      <img src="/images/cyber-ab-rpo-badge.png" width="400" height="400" alt="The Cyber AB CMMC Certification Registered Practitioner Organization (RPO) badge" decoding="async" />
     </div>
   </div>
 </section>
