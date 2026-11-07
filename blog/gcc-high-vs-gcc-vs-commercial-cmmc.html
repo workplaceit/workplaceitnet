@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GCC High vs GCC vs Commercial M365 for CMMC | Workplace IT</title>
+  <meta name="description" content="GCC High, GCC, or commercial Microsoft 365 for CMMC? Compare who each is for, CUI and ITAR fit, and what migration involves for Colorado contractors."/>
+  <meta property="og:title" content="GCC High vs GCC vs Commercial M365 for CMMC | Workplace IT"/>
+  <meta property="og:description" content="Which Microsoft 365 cloud do defense contractors need for CMMC? A plain-language comparison of Commercial, GCC, and GCC High, plus what migration involves."/>
+  <meta property="og:url" content="https://workplaceit.net/blog/gcc-high-vs-gcc-vs-commercial-cmmc.html"/>
+  <meta property="og:type" content="article"/>
+  <link rel="canonical" href="https://workplaceit.net/blog/gcc-high-vs-gcc-vs-commercial-cmmc.html"/>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "headline": "GCC High vs GCC vs Commercial Microsoft 365: Which Do You Need for CMMC?", "description": "Which Microsoft 365 cloud do defense contractors need for CMMC? A plain-language comparison of Commercial, GCC, and GCC High, plus what migration involves.", "datePublished": "2026-11-06", "dateModified": "2026-11-06", "mainEntityOfPage": "https://workplaceit.net/blog/gcc-high-vs-gcc-vs-commercial-cmmc.html", "image": "https://workplaceit.net/images/workplace-it-denver-og.jpg", "author": {"@type": "Organization", "name": "Workplace IT"}, "publisher": {"@type": "Organization", "name": "Workplace IT", "url": "https://workplaceit.net"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I need GCC High for CMMC Level 2?", "acceptedAnswer": {"@type": "Answer", "text": "Not by name. CMMC requires that cloud services storing or processing CUI meet FedRAMP Moderate or equivalent. Microsoft recommends GCC High for organizations planning for Level 2 and above, and it is the standard choice when ITAR or EAR data is involved."}}, {"@type": "Question", "name": "Can I use commercial Microsoft 365 for CMMC?", "acceptedAnswer": {"@type": "Answer", "text": "For FCI and CMMC Level 1, commercial Microsoft 365 can work with proper configuration. It is generally not recommended for storing or processing CUI."}}, {"@type": "Question", "name": "Can I convert my existing Microsoft 365 tenant to GCC High?", "acceptedAnswer": {"@type": "Answer", "text": "No. GCC High is a separate cloud, so it requires a new tenant and a migration of users, data, and devices."}}, {"@type": "Question", "name": "Does everyone in my company need GCC High?", "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. If only part of the business handles CUI, an enclave can limit GCC High to those users and systems, as long as the boundary is clearly scoped and documented."}}]}]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--blue:#1a9fd4;--blue-dark:#1480ae;--navy:#0a1628;--white:#ffffff;--off-white:#f8f9fa;--mid-gray:#dee2e6;--text:#333;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Open Sans',sans-serif;color:var(--text);background:#fff;}
+    a{color:var(--blue);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    /* Nav */
+    nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;}
+    .nav-logo{color:#fff;font-family:'Roboto',sans-serif;font-size:1.4rem;font-weight:900;letter-spacing:1px;text-decoration:none;}
+    .nav-logo span{color:var(--blue);}
+    .nav-links{display:flex;gap:1.5rem;list-style:none;}
+    .nav-links a{color:rgba(255,255,255,0.85);font-size:.9rem;text-decoration:none;transition:color .2s;}
+    .nav-links a:hover{color:#fff;}
+    .nav-cta{background:var(--blue);color:#fff !important;padding:.4rem 1rem;border-radius:3px;}
+    /* Breadcrumb */
+    .breadcrumb{background:var(--off-white);padding:.75rem 2rem;font-size:.85rem;border-bottom:1px solid var(--mid-gray);}
+    .breadcrumb a{color:var(--blue);}
+    .breadcrumb span{color:#666;margin:0 .4rem;}
+    /* Hero */
+    .post-hero{background:linear-gradient(135deg,var(--navy) 0%,#1a3a5c 100%);padding:3.5rem 2rem;text-align:center;}
+    .post-category{display:inline-block;background:var(--blue);color:#fff;font-size:.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.3rem .8rem;border-radius:2px;margin-bottom:1rem;}
+    .post-hero h1{font-family:'Roboto',sans-serif;color:#fff;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;max-width:800px;margin:0 auto 1rem;}
+    .post-meta{color:rgba(255,255,255,0.65);font-size:.85rem;}
+    .post-meta span{margin:0 .5rem;}
+    .post-intro{color:rgba(255,255,255,0.85);font-size:1.05rem;max-width:700px;margin:1rem auto 0;line-height:1.7;}
+    /* Content */
+    .post-wrap{max-width:800px;margin:0 auto;padding:3rem 2rem;}
+    .post-wrap h2{font-family:'Roboto',sans-serif;color:var(--navy);font-size:1.4rem;font-weight:700;margin:2rem 0 .75rem;padding-bottom:.4rem;border-bottom:2px solid var(--blue);}
+    .post-wrap h3{font-family:'Roboto',sans-serif;color:var(--navy);font-size:1.1rem;font-weight:700;margin:1.5rem 0 .5rem;}
+    .post-wrap p{line-height:1.8;margin-bottom:1.2rem;color:#444;}
+    .post-wrap ul,.post-wrap ol{margin:0 0 1.2rem 1.5rem;}
+    .post-wrap ul li,.post-wrap ol li{line-height:1.8;margin-bottom:.5rem;color:#444;}
+    .post-wrap em{color:#555;}
+    /* Callout box */
+    .callout{background:#e8f6fd;border-left:4px solid var(--blue);border-radius:0 6px 6px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+    .callout p{margin:0;color:#1a3a5c;}
+    /* Level table */
+    .level-table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+    .level-table th{background:var(--navy);color:#fff;font-family:'Roboto',sans-serif;font-size:.85rem;padding:.75rem 1rem;text-align:left;}
+    .level-table td{padding:.75rem 1rem;border-bottom:1px solid var(--mid-gray);font-size:.9rem;color:#444;vertical-align:top;}
+    .level-table tr:nth-child(even) td{background:var(--off-white);}
+    .level-badge{display:inline-block;padding:.2rem .6rem;border-radius:3px;font-size:.75rem;font-weight:700;font-family:'Roboto',sans-serif;}
+    .badge-1{background:#d4edda;color:#155724;}
+    .badge-2{background:#cce5ff;color:#004085;}
+    .badge-3{background:#f8d7da;color:#721c24;}
+    /* CTA Box */
+    .post-cta{background:linear-gradient(135deg,var(--navy),#1a3a5c);color:#fff;border-radius:8px;padding:2rem;margin:3rem 0;text-align:center;}
+    .post-cta h3{font-family:'Roboto',sans-serif;font-size:1.3rem;margin-bottom:.75rem;}
+    .post-cta p{color:rgba(255,255,255,0.8);margin-bottom:1.25rem;}
+    .post-cta a{display:inline-block;background:var(--blue);color:#fff;padding:.7rem 1.8rem;border-radius:3px;font-weight:700;text-decoration:none;}
+    .post-cta a:hover{background:var(--blue-dark);}
+    /* Related */
+    .related{background:var(--off-white);padding:3rem 2rem;border-top:1px solid var(--mid-gray);}
+    .related h2{font-family:'Roboto',sans-serif;color:var(--navy);font-size:1.2rem;text-align:center;margin-bottom:1.5rem;}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;max-width:900px;margin:0 auto;}
+    .related-card{background:#fff;border-radius:6px;padding:1.25rem;border:1px solid var(--mid-gray);}
+    .related-card .cat{font-size:.75rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem;}
+    .related-card h3{font-family:'Roboto',sans-serif;font-size:.95rem;color:var(--navy);margin-bottom:.5rem;line-height:1.4;}
+    .related-card a{font-size:.85rem;color:var(--blue);font-weight:600;}
+    /* Footer */
+    footer{background:var(--navy);color:rgba(255,255,255,0.7);padding:3rem 2rem 1.5rem;}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;max-width:1200px;margin:0 auto 2rem;}
+    .footer-brand p{font-size:.88rem;line-height:1.7;margin-top:.5rem;}
+    .footer-col h4{color:#fff;font-family:'Roboto',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.5px;}
+    .footer-col ul{list-style:none;}
+    .footer-col ul li{margin-bottom:.4rem;}
+    .footer-col ul li a{color:rgba(255,255,255,0.65);font-size:.88rem;text-decoration:none;}
+    .footer-col ul li a:hover{color:#fff;}
+    .footer-bottom{text-align:center;font-size:.8rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;max-width:1200px;margin:0 auto;}
+  </style>
+  <meta property="og:image" content="https://workplaceit.net/images/workplace-it-denver-og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@WorkplaceIT" />
+  <meta name="twitter:title" content="GCC High vs GCC vs Commercial M365 for CMMC | Workplace IT" />
+  <meta name="twitter:description" content="Which Microsoft 365 cloud do defense contractors need for CMMC? A plain-language comparison of Commercial, GCC, and GCC High, plus what migration involves." />
+  <meta name="twitter:image" content="https://workplaceit.net/images/workplace-it-denver-og.jpg" />
+  <style id="mobile-fixes">
+    /* Phone layout fixes: keep content inside the screen width (no sideways scrolling) */
+    @media (max-width: 760px) {
+      [style*="grid-template-columns"] { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)) !important; }
+      [style*="grid-template-columns"] > *, .stats-strip-inner > *, .nl-layout > * { min-width: 0; }
+      .stats-strip-inner { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; row-gap: 12px; }
+      .stat-item { border-right: none !important; }
+      .nl-form { flex-wrap: wrap; }
+      .nl-input { min-width: 0; flex: 1 1 180px; }
+      .level-table, .wrap table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      img, video, iframe { max-width: 100%; }
+    }
+    @media (max-width: 600px) {
+      body > nav { padding: 0 1rem; }
+      body > nav .nav-links { gap: 1rem; }
+      body > nav .nav-links li:nth-child(1), body > nav .nav-links li:nth-child(2) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><span>W</span>IT</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/services/ai-business-automation.html">AI</a></li>
+    <li><a href="/cmmc-compliance-denver">CMMC</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span>GCC High vs GCC vs Commercial
+</div>
+
+<div class="post-hero">
+  <div class="post-category">IT Compliance</div>
+  <h1>GCC High vs GCC vs Commercial Microsoft 365: Which Do You Need for CMMC?</h1>
+  <div class="post-meta">
+    <span>November 6, 2026</span>
+    <span>•</span>
+    <span>8 min read</span>
+    <span>•</span>
+    <span>By Workplace IT</span>
+  </div>
+  <p class="post-intro">Choosing the wrong Microsoft 365 environment is one of the most expensive CMMC mistakes a defense contractor can make. The right answer depends on one thing first: what kind of data you handle.</p>
+</div>
+
+<div class="post-wrap">
+
+<p>For most small and mid-sized defense contractors, Microsoft 365 is where email, files, and collaboration live, which means it's also where Controlled Unclassified Information (CUI) ends up. Microsoft offers three main clouds for this market: Commercial, GCC (Government Community Cloud), and GCC High. They look similar to users, but they are built for very different data.</p>
+
+<h2>Start With Your Data, Not the License</h2>
+
+<p>Before comparing products, answer three questions:</p>
+<ol>
+  <li><strong>Do you only handle Federal Contract Information (FCI)?</strong> That typically points to <a href="/blog/cmmc-level-1-vs-level-2.html">CMMC Level 1</a>.</li>
+  <li><strong>Do you handle CUI?</strong> Then you're looking at CMMC Level 2, and any cloud service that stores or processes CUI must meet FedRAMP Moderate or equivalent.</li>
+  <li><strong>Is any of it export-controlled, such as ITAR or EAR data?</strong> That narrows the options further.</li>
+</ol>
+
+<h2>Side-by-Side Comparison</h2>
+
+<table class="level-table">
+  <tr><th></th><th>Commercial</th><th>GCC</th><th>GCC High</th></tr>
+  <tr><td><strong>Built for</strong></td><td>General business</td><td>Government and contractors with lower-sensitivity data</td><td>Defense contractors handling CUI and export-controlled data</td></tr>
+  <tr><td><strong>Typical CMMC fit</strong></td><td>FCI / Level 1</td><td>Some CUI scenarios, depending on your data and contracts</td><td>CUI / Level 2, and the usual choice when ITAR or EAR data is involved</td></tr>
+  <tr><td><strong>Data residency</strong></td><td>Global infrastructure</td><td>U.S.</td><td>U.S. sovereign cloud</td></tr>
+  <tr><td><strong>Support staff</strong></td><td>Global</td><td>Not limited to screened U.S. persons</td><td>Screened U.S. persons</td></tr>
+  <tr><td><strong>Eligibility check</strong></td><td>No</td><td>Yes</td><td>Yes</td></tr>
+  <tr><td><strong>Cost and app support</strong></td><td>Lowest cost, widest app support</td><td>Moderate</td><td>Highest cost, fewer compatible third-party apps</td></tr>
+</table>
+
+<p>Microsoft's own guidance recommends GCC High for organizations that are planning for or required to meet CMMC Level 2 and above, and it is the standard choice when ITAR or EAR data is in play. GCC can work in some CUI scenarios, but it is not suitable for export-controlled data, so the decision depends on exactly what you handle and what your contracts require. Microsoft's guidance in this area changes, so confirm the current documentation for your situation before you buy.</p>
+
+<h2>Commercial Microsoft 365</h2>
+
+<p>Commercial Microsoft 365 is fine for businesses that only handle FCI, and with proper configuration it can support CMMC Level 1. It is generally not where you want CUI to live. If you handle CUI today on commercial Microsoft 365, that's a gap to address before an assessment.</p>
+
+<h2>GCC</h2>
+
+<p>GCC keeps data in the U.S. and is designed for government and contractor workloads. For some organizations with CUI and no export-controlled data, it may be an option. The tradeoffs and requirements need to be reviewed against your specific contracts, which is exactly the kind of decision that's worth getting right before you migrate.</p>
+
+<h2>GCC High</h2>
+
+<p>GCC High is a separate, U.S. sovereign cloud supported by screened U.S. persons, built for defense contractors handling CUI and export-controlled data. It costs more, it requires eligibility validation, and some third-party applications don't support it. For many contractors handling CUI, it's still the clearest path to Level 2.</p>
+
+<h2>The Enclave Option</h2>
+
+<p>Not everyone in your company needs to be in GCC High. If CUI only touches part of the business, such as an engineering or contracts team, an <strong>enclave</strong> can limit the high-security environment to the people and systems that actually handle CUI. That can reduce cost and disruption. It also adds complexity, because your scoping and documentation have to clearly define the boundary.</p>
+
+<h2>What a GCC High Migration Really Involves</h2>
+
+<p>Moving to GCC High is not a license switch. It's a new tenant in a separate cloud, and your data, identities, and devices have to be moved into it. A typical project includes:</p>
+<ul>
+  <li><strong>Eligibility and licensing:</strong> validation and purchase through an authorized partner</li>
+  <li><strong>Tenant build:</strong> identity, MFA, Conditional Access, and security baselines configured from day one</li>
+  <li><strong>Device management:</strong> enrolling and securing endpoints with Intune</li>
+  <li><strong>Data migration:</strong> email, OneDrive, SharePoint, and Teams content moved from the old tenant</li>
+  <li><strong>Application review:</strong> confirming each third-party app works in GCC High, or finding alternatives</li>
+  <li><strong>Documentation:</strong> updating your SSP and policies to reflect the new environment</li>
+</ul>
+
+<div class="callout">
+  <p><strong>Plan the cutover:</strong> because it's a new tenant, users get new sign-ins and devices need to be re-enrolled. A clear cutover plan and user communication keep the business running during the move.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Do I need GCC High for CMMC Level 2?</h3>
+<p>Not by name. CMMC requires that cloud services storing or processing CUI meet FedRAMP Moderate or equivalent. Microsoft recommends GCC High for organizations planning for Level 2 and above, and it is the standard choice when ITAR or EAR data is involved.</p>
+
+<h3>Can I use commercial Microsoft 365 for CMMC?</h3>
+<p>For FCI and CMMC Level 1, commercial Microsoft 365 can work with proper configuration. It is generally not recommended for storing or processing CUI.</p>
+
+<h3>Can I convert my existing Microsoft 365 tenant to GCC High?</h3>
+<p>No. GCC High is a separate cloud, so it requires a new tenant and a migration of users, data, and devices.</p>
+
+<h3>Does everyone in my company need GCC High?</h3>
+<p>Not necessarily. If only part of the business handles CUI, an enclave can limit GCC High to those users and systems, as long as the boundary is clearly scoped and documented.</p>
+
+<h2>How Workplace IT Helps Colorado Contractors</h2>
+
+<p>Workplace IT is a CMMC Registered Practitioner Organization (RPO) based in downtown Denver. Our own engineers build GCC High tenants and migrate defense contractors into them, and we help you decide whether GCC High, GCC, or an enclave fits your data and contracts before you spend money. We support contractors across the Denver Metro area and Colorado, including <a href="/cmmc-compliance-colorado-springs.html">Colorado Springs</a>, <a href="/cmmc-compliance-boulder.html">Boulder</a>, and <a href="/cmmc-compliance-fort-collins.html">Fort Collins</a>. See our <a href="/cmmc-compliance-denver.html">CMMC compliance services</a>.</p>
+
+  <div class="post-cta">
+    <h3>Not sure which Microsoft 365 environment you need?</h3>
+    <p>We'll review your data, contracts, and current tenant and recommend the right path. Free, no obligation.</p>
+    <a href="/cmmc-compliance-denver#contact">Get a Free CMMC Assessment</a>
+  </div>
+
+</div>
+
+<div class="related">
+  <h2>More From the Blog</h2>
+  <div class="related-grid">
+    <div class="related-card"><div class="cat">IT Compliance</div><h3>CMMC Level 1 vs Level 2: Which One Does Your Business Need?</h3><a href="/blog/cmmc-level-1-vs-level-2.html">Read More →</a></div>
+    <div class="related-card"><div class="cat">IT Compliance</div><h3>Does My Denver Business Need CMMC Certification?</h3><a href="/blog/does-my-denver-business-need-cmmc.html">Read More →</a></div>
+    <div class="related-card"><div class="cat">IT Compliance</div><h3>CMMC Level 2 Compliance: The November 2026 Deadline Is Closer Than You Think</h3><a href="/blog/cmmc-level-2-deadline-2026.html">Read More →</a></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <strong style="color:#fff;font-family:'Roboto',sans-serif;font-size:1.1rem;">Workplace IT</strong>
+      <p>1514 Curtis St. Suite 200<br>Denver, CO 80202<br><a href="tel:7206479900" style="color:var(--blue)">(720) 647-9900</a></p>
+      <img src="/images/cyber-ab-rpo-badge.png" width="110" height="110" alt="The Cyber AB CMMC Certification Registered Practitioner Organization (RPO) badge" loading="lazy" decoding="async" style="display:block;width:110px;height:110px;margin-top:18px;" />
+    </div>
+    <div class="footer-col"><h4>Services</h4><ul>
+      <li><a href="/services/managed-it-support.html">Managed IT</a></li>
+      <li><a href="/services/ai-business-automation.html">AI Business Automation</a></li>
+      <li><a href="/services/cybersecurity.html">Cybersecurity</a></li>
+      <li><a href="/cmmc-compliance-denver">CMMC Compliance</a></li>
+      <li><a href="/services/voip.html">VoIP</a></li>
+      <li><a href="/services/backup-recovery.html">Backup & Recovery</a></li>
+      <li><a href="/data-cabling-denver.html">Data Cabling</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Company</h4><ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">© 2026 Workplace IT. All rights reserved. | <a href="/" style="color:var(--blue)">workplaceit.net</a></div>
+</footer>
+
+</body>
+</html>
