@@ -1,0 +1,46 @@
+name: IndexNow Ping
+
+on:
+  push:
+    branches: [main]
+    paths: ['**.html']
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Wait for Netlify deploy
+        run: sleep 150
+
+      - name: Submit changed pages to IndexNow
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then BEFORE="$AFTER~1"; fi
+          python3 - <<'EOF'
+          import json, os, subprocess, urllib.request
+          files = subprocess.run(["git", "diff", "--name-only", "--diff-filter=AM", os.environ["BEFORE"], os.environ["AFTER"], "--", "*.html"],
+                                 capture_output=True, text=True).stdout.split()
+          def url(f):
+              if f == "index.html": return "https://workplaceit.net/"
+              if f.endswith("/index.html"): return "https://workplaceit.net/" + f[:-len("index.html")]
+              return "https://workplaceit.net/" + f
+          urls = [url(f) for f in files if not f.startswith((".github/", "seo-reports/"))]
+          print("Changed pages:", *urls, sep="\n  ")
+          if not urls:
+              raise SystemExit(0)
+          body = json.dumps({"host": "workplaceit.net", "key": "workplaceit2024indexnow",
+                             "keyLocation": "https://workplaceit.net/workplaceit2024indexnow.txt",
+                             "urlList": urls[:10000]}).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body, method="POST",
+                                       headers={"Content-Type": "application/json; charset=utf-8"})
+          with urllib.request.urlopen(req, timeout=30) as r:
+              print("IndexNow response:", r.status)
+          EOF
