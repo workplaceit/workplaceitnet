@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Low-Voltage Cabling for Cameras &amp; Wi-Fi | Workplace IT</title>
+  <meta name="description" content="Planning security cameras, access control, or Wi-Fi? What Denver businesses should know about low-voltage cabling, PoE, distance limits, and security."/>
+  <meta property="og:title" content="Low-Voltage Cabling for Cameras &amp; Wi-Fi | Workplace IT"/>
+  <meta property="og:description" content="PoE, distance limits, outdoor runs, and network security: a practical guide to low-voltage cabling for cameras, access control, and Wi-Fi in Denver."/>
+  <meta property="og:url" content="https://workplaceit.net/blog/low-voltage-cabling-cameras-access-control-denver.html"/>
+  <meta property="og:type" content="article"/>
+  <link rel="canonical" href="https://workplaceit.net/blog/low-voltage-cabling-cameras-access-control-denver.html"/>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "headline": "Low-Voltage Cabling for Security Cameras, Access Control & Wi-Fi: A Guide for Denver Businesses", "description": "PoE, distance limits, outdoor runs, and network security: a practical guide to low-voltage cabling for cameras, access control, and Wi-Fi in Denver.", "datePublished": "2026-11-07", "dateModified": "2026-11-07", "mainEntityOfPage": "https://workplaceit.net/blog/low-voltage-cabling-cameras-access-control-denver.html", "image": "https://workplaceit.net/images/workplace-it-denver-og.jpg", "author": {"@type": "Organization", "name": "Workplace IT"}, "publisher": {"@type": "Organization", "name": "Workplace IT", "url": "https://workplaceit.net"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Power over Ethernet (PoE)?", "acceptedAnswer": {"@type": "Answer", "text": "PoE delivers electrical power and network data over a single Ethernet cable from a PoE switch. It lets cameras, Wi-Fi access points, and phones run without a separate power outlet at each device."}}, {"@type": "Question", "name": "How far can a security camera be from the network switch?", "acceptedAnswer": {"@type": "Answer", "text": "A standard Ethernet run is limited to 100 meters (about 328 feet), including patch cords. Longer distances need a closer network closet connected by fiber, or an outdoor-rated enclosure."}}, {"@type": "Question", "name": "Can you add cameras to our existing system?", "acceptedAnswer": {"@type": "Answer", "text": "Usually, yes. Workplace IT adds cameras to existing NVR systems, migrates older analog cameras to IP, and upgrades cabling for higher-bandwidth cameras without replacing everything unnecessarily."}}, {"@type": "Question", "name": "Should security cameras be on a separate network?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Putting cameras and door systems on their own VLAN keeps a compromised device from reaching your business systems, and makes the network easier to manage."}}]}]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--blue:#1a9fd4;--blue-dark:#1480ae;--navy:#0a1628;--white:#ffffff;--off-white:#f8f9fa;--mid-gray:#dee2e6;--text:#333;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Open Sans',sans-serif;color:var(--text);background:#fff;}
+    a{color:var(--blue);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    /* Nav */
+    nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;}
+    .nav-logo{color:#fff;font-family:'Roboto',sans-serif;font-size:1.4rem;font-weight:900;letter-spacing:1px;text-decoration:none;}
+    .nav-logo span{color:var(--blue);}
+    .nav-links{display:flex;gap:1.5rem;list-style:none;}
+    .nav-links a{color:rgba(255,255,255,0.85);font-size:.9rem;text-decoration:none;transition:color .2s;}
+    .nav-links a:hover{color:#fff;}
+    .nav-cta{background:var(--blue);color:#fff !important;padding:.4rem 1rem;border-radius:3px;}
+    /* Breadcrumb */
+    .breadcrumb{background:var(--off-white);padding:.75rem 2rem;font-size:.85rem;border-bottom:1px solid var(--mid-gray);}
+    .breadcrumb a{color:var(--blue);}
+    .breadcrumb span{color:#666;margin:0 .4rem;}
+    /* Hero */
+    .post-hero{background:linear-gradient(135deg,var(--navy) 0%,#1a3a5c 100%);padding:3.5rem 2rem;text-align:center;}
+    .post-category{display:inline-block;background:var(--blue);color:#fff;font-size:.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.3rem .8rem;border-radius:2px;margin-bottom:1rem;}
+    .post-hero h1{font-family:'Roboto',sans-serif;color:#fff;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;max-width:800px;margin:0 auto 1rem;}
+    .post-meta{color:rgba(255,255,255,0.65);font-size:.85rem;}
+    .post-meta span{margin:0 .5rem;}
+    .post-intro{color:rgba(255,255,255,0.85);font-size:1.05rem;max-width:700px;margin:1rem auto 0;line-height:1.7;}
+    /* Content */
+    .post-wrap{max-width:800px;margin:0 auto;padding:3rem 2rem;}
+    .post-wrap h2{font-family:'Roboto',sans-serif;color:var(--navy);font-size:1.4rem;font-weight:700;margin:2rem 0 .75rem;padding-bottom:.4rem;border-bottom:2px solid var(--blue);}
+    .post-wrap h3{font-family:'Roboto',sans-serif;color:var(--navy);font-size:1.1rem;font-weight:700;margin:1.5rem 0 .5rem;}
+    .post-wrap p{line-height:1.8;margin-bottom:1.2rem;color:#444;}
+    .post-wrap ul,.post-wrap ol{margin:0 0 1.2rem 1.5rem;}
+    .post-wrap ul li,.post-wrap ol li{line-height:1.8;margin-bottom:.5rem;color:#444;}
+    .post-wrap em{color:#555;}
+    /* Callout box */
+    .callout{background:#e8f6fd;border-left:4px solid var(--blue);border-radius:0 6px 6px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+    .callout p{margin:0;color:#1a3a5c;}
+    /* Level table */
+    .level-table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+    .level-table th{background:var(--navy);color:#fff;font-family:'Roboto',sans-serif;font-size:.85rem;padding:.75rem 1rem;text-align:left;}
+    .level-table td{padding:.75rem 1rem;border-bottom:1px solid var(--mid-gray);font-size:.9rem;color:#444;vertical-align:top;}
+    .level-table tr:nth-child(even) td{background:var(--off-white);}
+    .level-badge{display:inline-block;padding:.2rem .6rem;border-radius:3px;font-size:.75rem;font-weight:700;font-family:'Roboto',sans-serif;}
+    .badge-1{background:#d4edda;color:#155724;}
+    .badge-2{background:#cce5ff;color:#004085;}
+    .badge-3{background:#f8d7da;color:#721c24;}
+    /* CTA Box */
+    .post-cta{background:linear-gradient(135deg,var(--navy),#1a3a5c);color:#fff;border-radius:8px;padding:2rem;margin:3rem 0;text-align:center;}
+    .post-cta h3{font-family:'Roboto',sans-serif;font-size:1.3rem;margin-bottom:.75rem;}
+    .post-cta p{color:rgba(255,255,255,0.8);margin-bottom:1.25rem;}
+    .post-cta a{display:inline-block;background:var(--blue);color:#fff;padding:.7rem 1.8rem;border-radius:3px;font-weight:700;text-decoration:none;}
+    .post-cta a:hover{background:var(--blue-dark);}
+    /* Related */
+    .related{background:var(--off-white);padding:3rem 2rem;border-top:1px solid var(--mid-gray);}
+    .related h2{font-family:'Roboto',sans-serif;color:var(--navy);font-size:1.2rem;text-align:center;margin-bottom:1.5rem;}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;max-width:900px;margin:0 auto;}
+    .related-card{background:#fff;border-radius:6px;padding:1.25rem;border:1px solid var(--mid-gray);}
+    .related-card .cat{font-size:.75rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem;}
+    .related-card h3{font-family:'Roboto',sans-serif;font-size:.95rem;color:var(--navy);margin-bottom:.5rem;line-height:1.4;}
+    .related-card a{font-size:.85rem;color:var(--blue);font-weight:600;}
+    /* Footer */
+    footer{background:var(--navy);color:rgba(255,255,255,0.7);padding:3rem 2rem 1.5rem;}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;max-width:1200px;margin:0 auto 2rem;}
+    .footer-brand p{font-size:.88rem;line-height:1.7;margin-top:.5rem;}
+    .footer-col h4{color:#fff;font-family:'Roboto',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.5px;}
+    .footer-col ul{list-style:none;}
+    .footer-col ul li{margin-bottom:.4rem;}
+    .footer-col ul li a{color:rgba(255,255,255,0.65);font-size:.88rem;text-decoration:none;}
+    .footer-col ul li a:hover{color:#fff;}
+    .footer-bottom{text-align:center;font-size:.8rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;max-width:1200px;margin:0 auto;}
+  </style>
+  <meta property="og:image" content="https://workplaceit.net/images/workplace-it-denver-og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@WorkplaceIT" />
+  <meta name="twitter:title" content="Low-Voltage Cabling for Cameras &amp; Wi-Fi | Workplace IT" />
+  <meta name="twitter:description" content="PoE, distance limits, outdoor runs, and network security: a practical guide to low-voltage cabling for cameras, access control, and Wi-Fi in Denver." />
+  <meta name="twitter:image" content="https://workplaceit.net/images/workplace-it-denver-og.jpg" />
+  <style id="mobile-fixes">
+    /* Phone layout fixes: keep content inside the screen width (no sideways scrolling) */
+    @media (max-width: 760px) {
+      [style*="grid-template-columns"] { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)) !important; }
+      [style*="grid-template-columns"] > *, .stats-strip-inner > *, .nl-layout > * { min-width: 0; }
+      .stats-strip-inner { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; row-gap: 12px; }
+      .stat-item { border-right: none !important; }
+      .nl-form { flex-wrap: wrap; }
+      .nl-input { min-width: 0; flex: 1 1 180px; }
+      .level-table, .wrap table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      img, video, iframe { max-width: 100%; }
+    }
+    @media (max-width: 600px) {
+      body > nav { padding: 0 1rem; }
+      body > nav .nav-links { gap: 1rem; }
+      body > nav .nav-links li:nth-child(1), body > nav .nav-links li:nth-child(2) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><span>W</span>IT</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/services/ai-business-automation.html">AI</a></li>
+    <li><a href="/cmmc-compliance-denver.html">CMMC</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span>Low-Voltage Cabling Guide
+</div>
+
+<div class="post-hero">
+  <div class="post-category">Network Infrastructure</div>
+  <h1>Low-Voltage Cabling for Security Cameras, Access Control &amp; Wi-Fi: A Guide for Denver Businesses</h1>
+  <div class="post-meta">
+    <span>November 7, 2026</span>
+    <span>•</span>
+    <span>7 min read</span>
+    <span>•</span>
+    <span>By Workplace IT</span>
+  </div>
+  <p class="post-intro">Security cameras, door access readers, Wi-Fi access points, and VoIP phones all depend on the same thing: properly planned low-voltage cabling. Get it right and devices just work. Get it wrong and you're chasing dead cameras and dropped Wi-Fi.</p>
+</div>
+
+<div class="post-wrap">
+
+<p>"Low-voltage" covers the cabling that powers and connects the devices around your building rather than the outlets in the wall. For most Denver businesses that means network cabling for IP security cameras, access control readers and intercoms, wireless access points, VoIP phones, and conference room displays.</p>
+
+<p>These devices are often added one at a time, by different vendors, over several years. The result is a ceiling full of mystery cables and a network nobody fully understands. Here's what to plan for so that doesn't happen.</p>
+
+<h2>1. Power over Ethernet (PoE): One Cable, Data and Power</h2>
+
+<p>Most modern cameras, access points, and desk phones use <strong>Power over Ethernet</strong>. A single network cable carries both data and electrical power from a PoE switch, so there's no need for a power outlet at every camera or access point. That simplifies installs on ceilings, exterior walls, and parking lot poles.</p>
+
+<p>PoE comes in several power levels, defined by IEEE standards:</p>
+
+<table class="level-table">
+  <tr><th>Standard</th><th>Common name</th><th>Power at the switch port</th></tr>
+  <tr><td>802.3af</td><td>PoE</td><td>Up to 15.4 W</td></tr>
+  <tr><td>802.3at</td><td>PoE+</td><td>Up to 30 W</td></tr>
+  <tr><td>802.3bt</td><td>PoE++</td><td>Up to 60 W or 90 W</td></tr>
+</table>
+
+<p>Fixed cameras and desk phones usually fit standard PoE. Pan-tilt-zoom (PTZ) cameras, cameras with heaters for outdoor use, and newer high-performance Wi-Fi access points often need PoE+ or more. Check each device's requirement before you buy the switch.</p>
+
+<div class="callout">
+  <p><strong>Size the switch, not just the ports.</strong> Every PoE switch has a total power budget. A 24-port switch can run out of power long before it runs out of ports if you connect PTZ cameras and access points. Proper PoE switch sizing for your device count is part of the design.</p>
+</div>
+
+<h2>2. Respect the Distance Limit</h2>
+
+<p>An Ethernet run, including patch cords, is limited to 100 meters (about 328 feet). That's plenty inside most offices, but parking lots, warehouses, and detached buildings can exceed it quickly. When a device is too far from the network closet, the options are a second network closet (IDF) closer to the devices, connected back with fiber, or an outdoor-rated network enclosure. Plan this during design, not after a camera won't power up.</p>
+
+<h2>3. Choose the Right Cable</h2>
+
+<ul>
+  <li><strong>Cat6</strong> handles cameras, phones, and most access points well, and supports 10 Gigabit Ethernet up to 55 meters.</li>
+  <li><strong>Cat6A</strong> supports 10GbE up to the full 100 meters and is the better choice for new builds and for Wi-Fi access points, where speeds keep climbing.</li>
+  <li><strong>Plenum-rated cable</strong> is typically required in air-handling spaces, such as many drop ceilings.</li>
+  <li><strong>Outdoor and direct-burial cable</strong>, or conduit, is needed for exterior walls, poles, and underground runs.</li>
+</ul>
+
+<h2>4. Outdoor Cameras Need Outdoor Planning</h2>
+
+<p>Parking lots, building perimeters, loading docks, and entry points are where cameras matter most, and where installs get harder. Use weather-rated IP66/IP67 cameras, weatherproof terminations, and proper mounting. Runs across parking lots or to detached structures usually need underground conduit. Night coverage depends on cameras with IR illumination and on placement that avoids glare from lights.</p>
+
+<h2>5. Keep Cameras and Door Systems Off Your Business Network</h2>
+
+<p>Cameras, door controllers, and other smart devices are common targets for attackers because they're rarely updated. Put them on their own network segment (a VLAN) so a compromised camera can't reach your file server or workstations. Keep firmware updated, change default passwords, and only allow remote viewing through secure, tested access. This is where it helps to have the same team install your cameras and manage your network.</p>
+
+<h2>6. Access Control and Intercoms</h2>
+
+<p>Door access readers, electric locks, and intercoms need cabling to each door and a path back to the controller. Plan the door locations, controller location, and power needs with your access control vendor and general contractor early, especially in new build-outs where walls are still open.</p>
+
+<h2>7. Wi-Fi Access Points</h2>
+
+<p>Good Wi-Fi starts with access point placement, and every access point needs a cable drop, usually in the ceiling. Map coverage before running cable, include spare drops in areas where you may add access points later, and use Cat6A where possible so the cabling isn't the bottleneck when you upgrade access points.</p>
+
+<h2>8. Test, Label, and Document Everything</h2>
+
+<p>Low-voltage runs should be held to the same standard as any network cabling: certification-tested, labeled at both ends, and documented on a port map. When a camera goes offline a year from now, documentation is the difference between a five-minute fix and an afternoon tracing cables.</p>
+
+<h2>Questions to Ask Before Your Install</h2>
+<ol>
+  <li>What PoE level does each device need, and is the switch's power budget large enough?</li>
+  <li>Are any devices more than 100 meters from the network closet?</li>
+  <li>Which runs are outdoors or underground, and what cable or conduit do they need?</li>
+  <li>Will cameras and door systems be on a separate network segment?</li>
+  <li>Who supports the system after installation: firmware, storage, and remote access?</li>
+  <li>Will we get test results, labels, and a port map at the end?</li>
+</ol>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>What is Power over Ethernet (PoE)?</h3>
+<p>PoE delivers electrical power and network data over a single Ethernet cable from a PoE switch. It lets cameras, Wi-Fi access points, and phones run without a separate power outlet at each device.</p>
+
+<h3>How far can a security camera be from the network switch?</h3>
+<p>A standard Ethernet run is limited to 100 meters (about 328 feet), including patch cords. Longer distances need a closer network closet connected by fiber, or an outdoor-rated enclosure.</p>
+
+<h3>Can you add cameras to our existing system?</h3>
+<p>Usually, yes. Workplace IT adds cameras to existing NVR systems, migrates older analog cameras to IP, and upgrades cabling for higher-bandwidth cameras without replacing everything unnecessarily.</p>
+
+<h3>Should security cameras be on a separate network?</h3>
+<p>Yes. Putting cameras and door systems on their own VLAN keeps a compromised device from reaching your business systems, and makes the network easier to manage.</p>
+
+<h2>How Workplace IT Helps</h2>
+
+<p>Workplace IT handles <a href="/data-cabling-denver.html">data and low-voltage cabling in Denver</a> and across the metro area, including camera, access control, intercom, Wi-Fi, and VoIP drops. We also design, install, and support <a href="/security-cameras-denver.html">commercial security camera systems</a>, so your cameras are installed by the same team that manages your network, with proper PoE switch sizing, a separate camera VLAN, and remote access tested before we leave. For larger projects, see our <a href="/services/structured-cabling.html">structured cabling and fiber services</a> and our <a href="/blog/office-network-cabling-checklist-denver.html">office cabling checklist</a>.</p>
+
+  <div class="post-cta">
+    <h3>Planning cameras, access control, or Wi-Fi?</h3>
+    <p>We'll walk your site, map device locations and cable runs, and give you a clear, itemized quote. Free site survey.</p>
+    <a href="/data-cabling-denver.html#contact">Get a Free Site Survey</a>
+  </div>
+
+</div>
+
+<div class="related">
+  <h2>More From the Blog</h2>
+  <div class="related-grid">
+    <div class="related-card"><div class="cat">Network Infrastructure</div><h3>Moving or Building Out an Office in Denver? Your Network Cabling Checklist</h3><a href="/blog/office-network-cabling-checklist-denver.html">Read More →</a></div>
+    <div class="related-card"><div class="cat">Network Infrastructure</div><h3>Business Security Camera Installation in Denver</h3><a href="/security-cameras-denver.html">Read More →</a></div>
+    <div class="related-card"><div class="cat">Network Infrastructure</div><h3>Data Cabling Installation Denver Businesses Can Count On</h3><a href="/data-cabling-denver.html">Read More →</a></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <strong style="color:#fff;font-family:'Roboto',sans-serif;font-size:1.1rem;">Workplace IT</strong>
+      <p>1514 Curtis St. Suite 200<br>Denver, CO 80202<br><a href="tel:7206479900" style="color:var(--blue)">(720) 647-9900</a></p>
+      <img src="/images/cyber-ab-rpo-badge.png" width="110" height="110" alt="The Cyber AB CMMC Certification Registered Practitioner Organization (RPO) badge" loading="lazy" decoding="async" style="display:block;width:110px;height:110px;margin-top:18px;" />
+    </div>
+    <div class="footer-col"><h4>Services</h4><ul>
+      <li><a href="/services/managed-it-support.html">Managed IT</a></li>
+      <li><a href="/services/ai-business-automation.html">AI Business Automation</a></li>
+      <li><a href="/services/cybersecurity.html">Cybersecurity</a></li>
+      <li><a href="/cmmc-compliance-denver.html">CMMC Compliance</a></li>
+      <li><a href="/services/voip.html">VoIP</a></li>
+      <li><a href="/services/backup-recovery.html">Backup & Recovery</a></li>
+      <li><a href="/data-cabling-denver.html">Data Cabling</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Company</h4><ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">© 2026 Workplace IT. All rights reserved. | <a href="/" style="color:var(--blue)">workplaceit.net</a></div>
+</footer>
+
+</body>
+</html>
