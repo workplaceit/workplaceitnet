@@ -1,167 +1,284 @@
-import os, re, json, base64, urllib.request, urllib.error
-from datetime import datetime
+#!/usr/bin/env python3
+"""WIT SEO Agent v5
+- Audits every HTML page in the repo checkout
+- Auto-fixes safe issues in place (titles, descriptions, canonicals, og:title)
+- Pulls Ahrefs Site Audit issues + domain metrics
+- Writes seo-reports/latest.md and a dated copy
+The workflow's "Commit fixes" step pushes the changes to main.
+"""
+import os, re, json, html, urllib.request, urllib.error, urllib.parse
+from datetime import date, datetime
+from pathlib import Path
 
-TOKEN = os.environ["GITHUB_TOKEN"]
-ANTHROPIC = os.environ.get("ANTHROPIC_API_KEY", "")
-REPO = os.environ.get("REPO", "workplaceit/workplaceitnet")
+ROOT = Path(os.environ.get("SITE_ROOT", "."))
 BASE = "https://workplaceit.net"
-ISSUES = {}
+DOMAIN = "workplaceit.net"
+ANTHROPIC = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+AHREFS = os.environ.get("AHREFS_API_KEY", "").strip()
+MODEL = "claude-sonnet-4-6"
+MAX_FIXED_PAGES = 25          # safety cap per weekly run
+TITLE_MAX, DESC_MAX = 60, 155
+MIN_WORDS = 300
+SKIP_DIRS = {".git", ".github", "node_modules", "seo-reports"}
 
-def gh_get(path):
-    url = f"https://api.github.com/repos/{REPO}/contents/{path}"
-    req = urllib.request.Request(url, headers={"Authorization": f"token {TOKEN}"})
-    with urllib.request.urlopen(req) as r:
-        return json.load(r)
+ATTR_RE = re.compile(r'([\w:-]+)\s*=\s*("([^"]*)"|\'([^\']*)\')')
 
-def gh_save(path, content, msg):
-    url = f"https://api.github.com/repos/{REPO}/contents/{path}"
-    encoded = base64.b64encode(content.encode("utf-8")).decode("ascii")
-    sha = None
-    try:
-        req = urllib.request.Request(url, headers={"Authorization": f"token {TOKEN}"})
-        with urllib.request.urlopen(req) as r:
-            sha = json.load(r)["sha"]
-    except: pass
-    body = {"message": msg, "content": encoded}
-    if sha: body["sha"] = sha
-    data = json.dumps(body).encode("utf-8")
-    req = urllib.request.Request(url, data=data,
-        headers={"Authorization": f"token {TOKEN}", "Content-Type": "application/json"},
-        method="PUT")
-    with urllib.request.urlopen(req) as r:
-        return json.load(r)
 
-def decode(d):
-    return base64.b64decode(d["content"].replace("\n","").replace("\r","")).decode("utf-8", errors="replace")
+# ---------- helpers ----------
+def attrs(tag):
+    return {m.group(1).lower(): (m.group(3) if m.group(3) is not None else m.group(4))
+            for m in ATTR_RE.finditer(tag)}
 
-def list_html(path=""):
-    items = []
-    try:
-        url = f"https://api.github.com/repos/{REPO}/contents/{path}"
-        req = urllib.request.Request(url, headers={"Authorization": f"token {TOKEN}"})
-        with urllib.request.urlopen(req) as r:
-            entries = json.load(r)
-        for e in entries:
-            if e["type"] == "file" and e["name"].endswith(".html"):
-                items.append(e["path"])
-            elif e["type"] == "dir" and e["name"] not in [".git",".github","node_modules","seo-reports"]:
-                items.extend(list_html(e["path"]))
-    except Exception as ex:
-        print(f"list error {path}: {ex}")
-    return items
 
-def ask_claude(prompt):
+def find_tag(content, name, key, value):
+    """First <name ...> tag whose attribute `key` equals `value` (any attribute order)."""
+    for m in re.finditer(rf"<{name}\b[^>]*>", content, re.I):
+        a = attrs(m.group(0))
+        if a.get(key, "").strip().lower() == value:
+            return m.group(0), a
+    return None, {}
+
+
+def set_content_attr(content, tag, value):
+    esc = html.escape(value, quote=True)
+    new_tag = re.sub(r'(content\s*=\s*)("[^"]*"|\'[^\']*\')',
+                     lambda m: f'{m.group(1)}"{esc}"', tag, count=1)
+    return content.replace(tag, new_tag, 1)
+
+
+def insert_in_head(content, snippet):
+    m = re.search(r"</head>", content, re.I)
+    if not m:
+        return content
+    return content[:m.start()] + f"  {snippet}\n" + content[m.start():]
+
+
+def page_url(rel):
+    p = rel.as_posix()
+    if p == "index.html":
+        return BASE + "/"
+    if p.endswith("/index.html"):
+        return f"{BASE}/{p[:-len('index.html')]}"
+    return f"{BASE}/{p}"
+
+
+def body_words(content):
+    b = re.search(r"<body\b.*?</body>", content, re.S | re.I)
+    s = b.group(0) if b else content
+    s = re.sub(r"<(script|style|noscript)\b.*?</\1>", " ", s, flags=re.S | re.I)
+    return html.unescape(re.sub(r"<[^>]+>", " ", s)).split()
+
+
+# ---------- Claude ----------
+def claude(prompt, max_tokens=800):
     if not ANTHROPIC:
-        print("WARNING: ANTHROPIC_API_KEY not set")
-        return "No API key — skipping Claude analysis."
-    # Build request carefully
-    body = {
-        "model": "claude-sonnet-4-6",
-        "max_tokens": 500,
-        "messages": [{"role": "user", "content": prompt}]
-    }
-    data = json.dumps(body, ensure_ascii=True).encode("utf-8")
-    req = urllib.request.Request(
-        "https://api.anthropic.com/v1/messages",
-        data=data,
-        headers={
-            "x-api-key": ANTHROPIC.strip(),
-            "anthropic-version": "2023-06-01",
-            "content-type": "application/json",
-            "accept": "application/json"
-        },
-        method="POST"
-    )
+        return None
+    body = json.dumps({"model": MODEL, "max_tokens": max_tokens,
+                       "messages": [{"role": "user", "content": prompt}]}).encode()
+    req = urllib.request.Request("https://api.anthropic.com/v1/messages", data=body, method="POST",
+                                 headers={"x-api-key": ANTHROPIC, "anthropic-version": "2023-06-01",
+                                          "content-type": "application/json"})
     try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            result = json.load(r)
-            return result["content"][0]["text"]
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return json.load(r)["content"][0]["text"].strip()
     except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")
-        print(f"Claude API {e.code}: {body[:500]}")
-        return f"Claude unavailable ({e.code}): {body[:200]}"
+        print(f"Claude API {e.code}: {e.read().decode(errors='replace')[:300]}")
     except Exception as e:
         print(f"Claude error: {e}")
-        return f"Claude unavailable: {e}"
+    return None
 
-def audit_page(fname, content):
-    issues = []
-    t_m = re.search(r"<title>(.*?)</title>", content, re.DOTALL)
-    d_m = re.search(r'<meta\s+name="description"\s+content="(.*?)"', content)
-    can_m = re.search(r'<link\s+rel="canonical"\s+href="(.*?)"', content)
-    ogt_m = re.search(r'property="og:title"\s+content="(.*?)"', content)
-    rob_m = re.search(r'<meta\s+name="robots"\s+content="(.*?)"', content)
-    h1_m = re.search(r"<h1[^>]*>(.*?)</h1>", content, re.DOTALL)
-    t = t_m.group(1).strip() if t_m else ""
-    d = d_m.group(1).strip() if d_m else ""
-    robots = rob_m.group(1) if rob_m else ""
-    h1 = re.sub(r"<[^>]+>","",h1_m.group(1)).strip() if h1_m else ""
-    og_t = ogt_m.group(1) if ogt_m else ""
-    can = can_m.group(1) if can_m else ""
-    if "noindex" in robots: return []
-    if t and len(t) > 65: issues.append(f"Title too long ({len(t)})")
-    if d and len(d) > 162: issues.append(f"Desc too long ({len(d)})")
-    if og_t and t and og_t != t: issues.append("og:title mismatch")
-    if not can: issues.append("Missing canonical")
-    if not t: issues.append("MISSING TITLE")
-    if not d: issues.append("MISSING DESC")
-    if not h1: issues.append("MISSING H1")
-    wc = len(re.sub(r"<[^>]+>"," ",content).split())
-    if wc < 300: issues.append(f"LOW WORDS ({wc})")
-    return issues
 
+def rewrite(kind, current, title, text, limit):
+    prompt = (f"Write an SEO {kind} for a page on workplaceit.net (Workplace IT: Denver managed IT, "
+              f"cybersecurity, Microsoft 365 and CMMC provider). Hard limit: {limit} characters. "
+              f"Keep the page's main keyword, and 'Denver' if the current version has it. "
+              f"Return ONLY the {kind} text, no quotes or notes.\n\n"
+              f"Current {kind}: {current or '(none)'}\nPage title: {title}\n"
+              f"Page text excerpt: {' '.join(text)[:1500]}")
+    for _ in range(2):
+        out = claude(prompt, 200)
+        if out:
+            out = out.strip().strip('"').strip()
+            if 20 <= len(out) <= limit:
+                return out
+    return None
+
+
+# ---------- page audit + fix ----------
+def process(path, allow_fix):
+    rel = path.relative_to(ROOT)
+    content = path.read_text(encoding="utf-8", errors="replace")
+    original = content
+    _, robots = find_tag(content, "meta", "name", "robots")
+    if "noindex" in robots.get("content", "").lower():
+        return [], []
+
+    issues, fixes = [], []
+    words = body_words(content)
+    t_m = re.search(r"<title[^>]*>(.*?)</title>", content, re.S | re.I)
+    title = html.unescape(t_m.group(1).strip()) if t_m else ""
+    og_tag, og = find_tag(content, "meta", "property", "og:title")
+
+    # Title
+    if not title:
+        issues.append("Missing <title>")
+    elif len(title) > TITLE_MAX:
+        new = rewrite("title tag", title, title, words, TITLE_MAX) if allow_fix else None
+        if new:
+            content = content.replace(t_m.group(0), f"<title>{html.escape(new, quote=False)}</title>", 1)
+            if og_tag and html.unescape(og.get("content", "")) == title:
+                content = set_content_attr(content, og_tag, new)
+                og_tag, og = find_tag(content, "meta", "property", "og:title")
+            fixes.append(f"Title shortened ({len(title)}→{len(new)}): {new}")
+            title = new
+        else:
+            issues.append(f"Title too long ({len(title)} chars)")
+
+    # Meta description
+    d_tag, d = find_tag(content, "meta", "name", "description")
+    desc = html.unescape(d.get("content", "").strip())
+    if not desc or len(desc) > DESC_MAX:
+        new = rewrite("meta description", desc, title, words, DESC_MAX) if allow_fix else None
+        if new and d_tag:
+            content = set_content_attr(content, d_tag, new)
+            fixes.append(f"Description shortened ({len(desc)}→{len(new)})")
+        elif new:
+            content = insert_in_head(content, f'<meta name="description" content="{html.escape(new, quote=True)}">')
+            fixes.append("Description added")
+        else:
+            issues.append("Missing meta description" if not desc else f"Description too long ({len(desc)} chars)")
+
+    # Canonical
+    c_tag, _ = find_tag(content, "link", "rel", "canonical")
+    if not c_tag:
+        if allow_fix:
+            content = insert_in_head(content, f'<link rel="canonical" href="{page_url(rel)}">')
+            fixes.append(f"Canonical added: {page_url(rel)}")
+        else:
+            issues.append("Missing canonical")
+
+    # og:title must match title
+    if og_tag and title and html.unescape(og.get("content", "")) != title:
+        if allow_fix:
+            content = set_content_attr(content, og_tag, title)
+            fixes.append("og:title synced to title")
+        else:
+            issues.append("og:title doesn't match title")
+
+    # Manual-only checks
+    if not re.search(r"<h1\b", content, re.I):
+        issues.append("Missing H1")
+    if len(words) < MIN_WORDS:
+        issues.append(f"Thin content ({len(words)} words)")
+    no_alt = sum(1 for m in re.finditer(r"<img\b[^>]*>", content, re.I) if "alt" not in attrs(m.group(0)))
+    if no_alt:
+        issues.append(f"{no_alt} image(s) missing alt attribute")
+
+    if content != original:
+        path.write_text(content, encoding="utf-8")
+    return issues, fixes
+
+
+# ---------- Ahrefs ----------
+def ahrefs(endpoint, **params):
+    url = f"https://api.ahrefs.com/v3/{endpoint}?" + urllib.parse.urlencode({**params, "output": "json"})
+    req = urllib.request.Request(url, headers={"Authorization": f"Bearer {AHREFS}", "Accept": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as e:
+        print(f"Ahrefs {endpoint} {e.code}: {e.read().decode(errors='replace')[:300]}")
+    except Exception as e:
+        print(f"Ahrefs {endpoint} error: {e}")
+    return None
+
+
+def first_list(d):
+    if isinstance(d, list):
+        return d
+    if isinstance(d, dict):
+        for v in d.values():
+            if isinstance(v, list):
+                return v
+    return []
+
+
+def flat(d):
+    if not isinstance(d, dict):
+        return str(d)
+    return ", ".join(f"{k}: {v}" for k, v in d.items() if not isinstance(v, (dict, list)) and v not in (None, ""))
+
+
+def ahrefs_report():
+    if not AHREFS:
+        return "- Not configured (add the AHREFS_API_KEY repo secret)"
+    today = date.today().isoformat()
+    out = []
+    dr = ahrefs("site-explorer/domain-rating", target=DOMAIN, date=today)
+    if dr:
+        out.append(f"- Domain rating: {flat(dr.get('domain_rating', dr))}")
+    m = ahrefs("site-explorer/metrics", target=DOMAIN, date=today, mode="subdomains")
+    if m:
+        out.append(f"- Organic metrics: {flat(m.get('metrics', m))}")
+
+    projects = first_list(ahrefs("site-audit/projects"))
+    proj = next((p for p in projects if DOMAIN in json.dumps(p)), None)
+    if not proj:
+        out.append(f"- No Ahrefs Site Audit project found for {DOMAIN}")
+        return "\n".join(out)
+    out.append(f"- Site Audit project: {flat(proj)}")
+    issues = first_list(ahrefs("site-audit/issues", project_id=proj.get("project_id")))
+    print(f"Ahrefs issues returned: {len(issues)}")
+    if issues:
+        print("Sample Ahrefs issue: " + json.dumps(issues[0])[:400])
+    out.append(f"\n### Ahrefs Site Audit issues ({len(issues)})")
+    out += [f"- {flat(i)}" for i in issues[:40]] or ["- None"]
+    return "\n".join(out)
+
+
+# ---------- main ----------
 def main():
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
-    print(f"=== Workplace IT SEO Agent v4 - {now} ===")
-    print(f"API key present: {'YES' if ANTHROPIC else 'NO'}")
-    print(f"API key length: {len(ANTHROPIC)}")
+    print(f"=== Workplace IT SEO Agent v5 - {now} ===")
+    print(f"Claude key: {'YES' if ANTHROPIC else 'NO'} | Ahrefs key: {'YES' if AHREFS else 'NO'}")
 
-    all_html = list_html()
-    print(f"Found {len(all_html)} HTML pages")
+    pages = sorted(p for p in ROOT.rglob("*.html") if not SKIP_DIRS & set(p.relative_to(ROOT).parts))
+    print(f"Found {len(pages)} HTML pages")
 
-    for fname in all_html:
+    manual, fixed = {}, {}
+    for p in pages:
         try:
-            data = gh_get(fname)
-            content = decode(data)
-            issues = audit_page(fname, content)
-            if issues:
-                ISSUES[fname] = issues
+            issues, fixes = process(p, allow_fix=len(fixed) < MAX_FIXED_PAGES)
         except Exception as e:
-            print(f"Error {fname}: {e}")
+            print(f"Error {p}: {e}")
+            continue
+        rel = p.relative_to(ROOT).as_posix()
+        if issues:
+            manual[rel] = issues
+        if fixes:
+            fixed[rel] = fixes
+    print(f"Fixed: {len(fixed)} pages | Needs review: {len(manual)} pages")
 
-    manual = {k:[i for i in v if "MISSING" in i or "LOW" in i] for k,v in ISSUES.items() if any("MISSING" in i or "LOW" in i for i in v)}
-    fixable = {k:[i for i in v if "too long" in i or "mismatch" in i or "canonical" in i] for k,v in ISSUES.items() if any("too long" in i or "mismatch" in i or "canonical" in i for i in v)}
+    ahrefs_md = ahrefs_report()
 
-    print(f"Issues found: {len(ISSUES)} pages | Manual: {len(manual)} | Auto-fixable: {len(fixable)}")
-    print("Calling Claude API...")
+    analysis = claude(
+        f"SEO summary for {DOMAIN} ({now}). Pages: {len(pages)}. Auto-fixed: {json.dumps(fixed)[:1500]}. "
+        f"Needs manual review: {json.dumps(manual)[:2000]}. Ahrefs data:\n{ahrefs_md[:3000]}\n\n"
+        "Give a health score 1-10, the top 5 prioritized actions for the owner, and one tip. Under 200 words.",
+        900) or "Claude analysis unavailable this run."
 
-    summary = (
-        f"workplaceit.net SEO audit {now}. "
-        f"Pages:{len(all_html)} Issues:{len(ISSUES)} Manual:{len(manual)}. "
-        f"Top issues: {list(manual.items())[:3]}. "
-        f"Give health score 1-10, top 3 fixes, one tip. Under 100 words."
-    )
-    analysis = ask_claude(summary)
-    print(f"Analysis: {analysis}")
-
-    report = (
-        f"# SEO Report {datetime.now().strftime('%Y-%m-%d')}\n\n"
-        f"Pages:{len(all_html)} | Issues:{len(ISSUES)} | Manual:{len(manual)}\n\n"
-        f"## Analysis\n{analysis}\n\n"
-        f"## Manual Fixes Needed\n" +
-        ("\n".join(f"- **{k}**: {v}" for k,v in manual.items()) or "- None") +
-        f"\n\n## Auto-Fixable\n" +
-        ("\n".join(f"- **{k}**: {v}" for k,v in fixable.items()) or "- None") +
-        "\n\n---\n*WIT SEO Agent*\n"
-    )
-
-    try:
-        gh_save("seo-reports/latest.md", report, f"SEO Report {datetime.now().strftime('%Y-%m-%d')}")
-        print("Report saved to seo-reports/latest.md")
-    except Exception as e:
-        print(f"Report save error: {e}")
-
+    sec = lambda d: "\n".join(f"- **{k}**: " + "; ".join(v) for k, v in d.items()) or "- None"
+    report = (f"# SEO Report {date.today()}\n\n"
+              f"Pages: {len(pages)} | Auto-fixed: {len(fixed)} | Needs review: {len(manual)}\n\n"
+              f"## Analysis\n{analysis}\n\n## Auto-fixed this run\n{sec(fixed)}\n\n"
+              f"## Needs manual review\n{sec(manual)}\n\n## Ahrefs\n{ahrefs_md}\n\n---\n*WIT SEO Agent v5*\n")
+    out_dir = ROOT / "seo-reports"
+    out_dir.mkdir(exist_ok=True)
+    (out_dir / "latest.md").write_text(report, encoding="utf-8")
+    (out_dir / f"{date.today()}.md").write_text(report, encoding="utf-8")
+    print(report)
     print("=== Done ===")
+
 
 if __name__ == "__main__":
     main()
