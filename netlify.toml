@@ -47,3 +47,15 @@
   to = "/services/managed-it-support.html"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/home/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it-compliance/"
+  to = "/services/it-compliance.html"
+  status = 301
+  force = true
