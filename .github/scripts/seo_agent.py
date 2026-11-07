@@ -17,7 +17,8 @@ ANTHROPIC = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 AHREFS = os.environ.get("AHREFS_API_KEY", "").strip()
 MODEL = "claude-sonnet-4-6"
 MAX_FIXED_PAGES = 25          # safety cap per weekly run
-TITLE_MAX, DESC_MAX = 60, 155
+TITLE_MAX, DESC_MAX = 60, 160   # flag thresholds
+TITLE_TARGET, DESC_TARGET = 58, 155  # rewrite targets
 MIN_WORDS = 300
 SKIP_DIRS = {".git", ".github", "node_modules", "seo-reports"}
 
@@ -89,10 +90,10 @@ def claude(prompt, max_tokens=800):
 
 
 def rewrite(kind, current, title, text, limit):
-    prompt = (f"Write an SEO {kind} for a page on workplaceit.net (Workplace IT: Denver managed IT, "
-              f"cybersecurity, Microsoft 365 and CMMC provider). Hard limit: {limit} characters. "
-              f"Keep the page's main keyword, and 'Denver' if the current version has it. "
-              f"Return ONLY the {kind} text, no quotes or notes.\n\n"
+    prompt = (f"Shorten this web page {kind} to at most {limit} characters. RULES: use only facts, services, "
+              f"places, numbers and claims that already appear in the current {kind} or the page text excerpt; "
+              f"do NOT add new claims, statistics, organizations, programs or services; keep the main keyword "
+              f"and the city name; plain text, no quotes or notes. Return ONLY the new {kind}.\n\n"
               f"Current {kind}: {current or '(none)'}\nPage title: {title}\n"
               f"Page text excerpt: {' '.join(text)[:1500]}")
     for _ in range(2):
@@ -123,7 +124,7 @@ def process(path, allow_fix):
     if not title:
         issues.append("Missing <title>")
     elif len(title) > TITLE_MAX:
-        new = rewrite("title tag", title, title, words, TITLE_MAX) if allow_fix else None
+        new = rewrite("title tag", title, title, words, TITLE_TARGET) if allow_fix else None
         if new:
             content = content.replace(t_m.group(0), f"<title>{html.escape(new, quote=False)}</title>", 1)
             if og_tag and html.unescape(og.get("content", "")) == title:
@@ -138,9 +139,12 @@ def process(path, allow_fix):
     d_tag, d = find_tag(content, "meta", "name", "description")
     desc = html.unescape(d.get("content", "").strip())
     if not desc or len(desc) > DESC_MAX:
-        new = rewrite("meta description", desc, title, words, DESC_MAX) if allow_fix else None
+        new = rewrite("meta description", desc, title, words, DESC_TARGET) if allow_fix else None
         if new and d_tag:
             content = set_content_attr(content, d_tag, new)
+            ogd_tag, ogd = find_tag(content, "meta", "property", "og:description")
+            if ogd_tag and html.unescape(ogd.get("content", "")) == desc:
+                content = set_content_attr(content, ogd_tag, new)
             fixes.append(f"Description shortened ({len(desc)}→{len(new)})")
         elif new:
             content = insert_in_head(content, f'<meta name="description" content="{html.escape(new, quote=True)}">')
@@ -228,11 +232,13 @@ def ahrefs_report():
         return "\n".join(out)
     out.append(f"- Site Audit project: {flat(proj)}")
     issues = first_list(ahrefs("site-audit/issues", project_id=proj.get("project_id")))
-    print(f"Ahrefs issues returned: {len(issues)}")
-    if issues:
-        print("Sample Ahrefs issue: " + json.dumps(issues[0])[:400])
-    out.append(f"\n### Ahrefs Site Audit issues ({len(issues)})")
-    out += [f"- {flat(i)}" for i in issues[:40]] or ["- None"]
+    rank = {"Error": 0, "Warning": 1, "Notice": 2}
+    live = sorted((i for i in issues if (i.get("crawled") or 0) > 0),
+                  key=lambda i: (rank.get(i.get("importance"), 3), -(i.get("crawled") or 0)))
+    print(f"Ahrefs issues: {len(live)} affecting pages (of {len(issues)} checks)")
+    out.append(f"\n### Ahrefs Site Audit issues affecting pages ({len(live)})")
+    out += [f"- **{i.get('importance')}** · {i.get('name')} ({i.get('category')}): "
+            f"{i.get('crawled')} URL(s), change {i.get('change', 0):+}" for i in live] or ["- None"]
     return "\n".join(out)
 
 
