@@ -59,3 +59,9 @@
   to = "/services/it-compliance.html"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/cmmc-compliance-denver"
+  to = "/cmmc-compliance-denver.html"
+  status = 301
+  force = true

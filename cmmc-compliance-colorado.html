@@ -130,6 +130,22 @@
       body > nav .nav-links li:nth-child(1), body > nav .nav-links li:nth-child(2) { display: none; }
     }
   </style>
+  <style id="lp-conversion">
+    /* Landing-page conversion tweaks: mobile call bar, shorter hero on phones */
+    .lp-callbar { display: none; }
+    .lp-mobile-only { display: none; }
+    @media (max-width: 760px) {
+      .lp-hide-mobile, .lp-desktop-only, .top-bar { display: none !important; }
+      .lp-mobile-only { display: block; }
+      .lp-hero { padding-top: 36px !important; padding-bottom: 36px !important; min-height: 0 !important; }
+      .lp-hero .page-hero-inner { padding-top: 32px; padding-bottom: 32px; }
+      .lp-callbar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 300; gap: 8px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: #0b1a2b; box-shadow: 0 -4px 16px rgba(0,0,0,0.25); }
+      .lp-callbar a { flex: 1; text-align: center; font-family: Roboto, sans-serif; font-weight: 700; font-size: 0.95rem; padding: 13px 8px; border-radius: 6px; text-decoration: none; }
+      .lp-callbar .lp-call { background: #1a9fd4; color: #fff; }
+      .lp-callbar .lp-quote { background: #fff; color: #0b1a2b; }
+      body { padding-bottom: 76px; }
+    }
+  </style>
 </head>
 <body>
 <div class="top-bar"><div class="top-bar-inner">
@@ -153,7 +169,7 @@
   <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
 </div></nav>
 
-<div style="background:var(--light-gray);border-bottom:1px solid var(--mid-gray);padding:12px 0;">
+<div class="lp-hide-mobile" style="background:var(--light-gray);border-bottom:1px solid var(--mid-gray);padding:12px 0;">
   <div class="container" style="font-size:0.82rem;color:var(--text-muted);">
     <a href="/" style="color:var(--blue);">Home</a> <span style="margin:0 8px;">&rsaquo;</span>
     <a href="/cmmc-compliance-denver.html" style="color:var(--blue);">CMMC Compliance</a> <span style="margin:0 8px;">&rsaquo;</span>
@@ -162,14 +178,18 @@
 </div>
 
 <!-- HERO -->
-<section style="background:var(--navy);position:relative;overflow:hidden;padding:88px 0 80px;">
+<section class="lp-hero" style="background:var(--navy);position:relative;overflow:hidden;padding:56px 0 64px;">
   <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(26,159,212,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(26,159,212,0.08) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;"></div>
   <div class="container" style="position:relative;z-index:1;">
     <div style="max-width:760px;">
-      <div style="display:inline-block;background:rgba(26,159,212,0.15);border:1px solid rgba(26,159,212,0.35);color:var(--blue);font-family:Roboto,sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:6px 18px;border-radius:3px;margin-bottom:24px;">CMMC Compliance · Colorado Statewide</div>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;">
+        <img src="/images/cyber-ab-rpo-badge.png" width="64" height="64" alt="The Cyber AB CMMC Certification Registered Practitioner Organization (RPO) badge" decoding="async" style="display:block;width:64px;height:64px;flex:none;" />
+        <div style="font-family:Roboto,sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fff;line-height:1.4;">Cyber AB Registered Practitioner Organization (RPO)<br class="lp-hide-mobile"><span class="lp-hide-mobile" style="color:var(--blue);">CMMC Compliance · Colorado Statewide</span></div>
+      </div>
       <h1 style="font-family:Roboto,sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#fff;line-height:1.1;margin:0 0 20px;">CMMC Compliance Services for <em style="color:var(--blue);font-style:normal;">Colorado Defense Contractors</em></h1>
-      <p style="font-size:1.05rem;color:rgba(255,255,255,0.72);line-height:1.8;margin:0 0 28px;">Colorado is one of the most defense-dense states in the country. From Denver and Colorado Springs to Fort Collins and Grand Junction, thousands of Colorado businesses are in the DoD supply chain — and CMMC compliance is coming for all of them. Workplace IT provides statewide CMMC compliance services for Colorado contractors of every size.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+      <p class="lp-desktop-only" style="font-size:1.05rem;color:rgba(255,255,255,0.78);line-height:1.75;margin:0 0 24px;"><strong style="color:#fff;">CMMC Phase 2 began November 10, 2026.</strong> DoD contracts involving CUI can now require a Level 2 certification assessed by a C3PAO. Workplace IT is a Cyber AB Registered Practitioner Organization helping Colorado defense contractors get assessment-ready, from Denver and Colorado Springs to Fort Collins and Grand Junction.</p>
+      <p class="lp-mobile-only" style="font-size:1rem;color:rgba(255,255,255,0.78);line-height:1.6;margin:0 0 22px;"><strong style="color:#fff;">CMMC Phase 2 began Nov 10, 2026.</strong> Get assessment-ready with a Cyber AB RPO.</p>
+      <div class="lp-hide-mobile" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;">
         <div style="background:rgba(26,159,212,0.12);border:1px solid rgba(26,159,212,0.3);border-radius:6px;padding:7px 14px;font-family:Roboto,sans-serif;font-size:0.78rem;font-weight:700;color:var(--blue);">Statewide Coverage</div>
         <div style="background:rgba(26,159,212,0.12);border:1px solid rgba(26,159,212,0.3);border-radius:6px;padding:7px 14px;font-family:Roboto,sans-serif;font-size:0.78rem;font-weight:700;color:var(--blue);">Free Gap Assessment</div>
         <div style="background:rgba(26,159,212,0.12);border:1px solid rgba(26,159,212,0.3);border-radius:6px;padding:7px 14px;font-family:Roboto,sans-serif;font-size:0.78rem;font-weight:700;color:var(--blue);">NIST 800-171 Experts</div>
@@ -469,5 +489,9 @@
   document.querySelector('.hamburger').addEventListener('click',function(){const nl=document.querySelector('.nav-links');const isOpen=nl.style.display==='flex';nl.style.cssText=isOpen?'':'display:flex;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:#fff;padding:16px 32px 24px;border-bottom:2px solid #e8ecef;gap:4px;z-index:199;box-shadow:0 8px 24px rgba(0,0,0,0.1);';});
   function toggleFaq(el){const a=el.nextElementSibling,o=el.classList.contains('open');document.querySelectorAll('.faq-q').forEach(q=>q.classList.remove('open'));document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));if(!o){el.classList.add('open');a.classList.add('open');}}
 </script>
+<div class="lp-callbar" role="region" aria-label="Contact Workplace IT">
+  <a class="lp-call" href="tel:7206479900">&#128222; Call Now</a>
+  <a class="lp-quote" href="#contact">Free Assessment</a>
+</div>
 </body>
 </html>

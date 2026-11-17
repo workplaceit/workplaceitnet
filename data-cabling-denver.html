@@ -149,6 +149,22 @@
       body > nav .nav-links li:nth-child(1), body > nav .nav-links li:nth-child(2) { display: none; }
     }
   </style>
+  <style id="lp-conversion">
+    /* Landing-page conversion tweaks: mobile call bar, shorter hero on phones */
+    .lp-callbar { display: none; }
+    .lp-mobile-only { display: none; }
+    @media (max-width: 760px) {
+      .lp-hide-mobile, .lp-desktop-only, .top-bar { display: none !important; }
+      .lp-mobile-only { display: block; }
+      .lp-hero { padding-top: 36px !important; padding-bottom: 36px !important; min-height: 0 !important; }
+      .lp-hero .page-hero-inner { padding-top: 32px; padding-bottom: 32px; }
+      .lp-callbar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 300; gap: 8px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: #0b1a2b; box-shadow: 0 -4px 16px rgba(0,0,0,0.25); }
+      .lp-callbar a { flex: 1; text-align: center; font-family: Roboto, sans-serif; font-weight: 700; font-size: 0.95rem; padding: 13px 8px; border-radius: 6px; text-decoration: none; }
+      .lp-callbar .lp-call { background: #1a9fd4; color: #fff; }
+      .lp-callbar .lp-quote { background: #fff; color: #0b1a2b; }
+      body { padding-bottom: 76px; }
+    }
+  </style>
 </head>
 <body>
 <div class="top-bar"><div class="top-bar-inner">
@@ -173,7 +189,7 @@
   <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
 </div></nav>
 
-<div style="background:var(--light-gray);border-bottom:1px solid var(--mid-gray);padding:12px 0;">
+<div class="lp-hide-mobile" style="background:var(--light-gray);border-bottom:1px solid var(--mid-gray);padding:12px 0;">
   <div class="container" style="font-size:0.82rem;color:var(--text-muted);">
     <a href="/" style="color:var(--blue);">Home</a>
     <span style="margin:0 8px;">&rsaquo;</span>
@@ -183,14 +199,15 @@
   </div>
 </div>
 
-<section style="background:var(--navy);position:relative;overflow:hidden;padding:80px 0 72px;">
+<section class="lp-hero" style="background:var(--navy);position:relative;overflow:hidden;padding:64px 0 64px;">
   <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(26,159,212,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(26,159,212,0.08) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;"></div>
   <div class="container" style="position:relative;z-index:1;">
     <div style="max-width:720px;">
-      <div style="display:inline-block;background:rgba(26,159,212,0.15);border:1px solid rgba(26,159,212,0.35);color:var(--blue);font-family:Roboto,sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:6px 18px;border-radius:3px;margin-bottom:24px;">Data Cabling &amp; Network Wiring · Denver, CO</div>
-      <h1 style="font-family:Roboto,sans-serif;font-size:clamp(2rem,4vw,2.9rem);font-weight:900;color:#fff;line-height:1.15;margin:0 0 20px;">Data Cabling Installation <em style="color:var(--blue);font-style:normal;">Denver Businesses</em> Can Count On</h1>
-      <p style="font-size:1.05rem;color:rgba(255,255,255,0.7);line-height:1.75;margin:0 0 28px;">From a single network drop to a full office build-out, Workplace IT's certified data cabling team handles Cat6, Cat6A, fiber optic, and low-voltage wiring for Denver businesses of every size. Clean installs. Tested runs. Documentation included.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+      <div style="display:inline-block;background:rgba(26,159,212,0.15);border:1px solid rgba(26,159,212,0.35);color:var(--blue);font-family:Roboto,sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:6px 18px;border-radius:3px;margin-bottom:24px;" class="lp-hide-mobile">Data Cabling, Low-Voltage &amp; Network Wiring · Denver, CO</div>
+      <h1 style="font-family:Roboto,sans-serif;font-size:clamp(2rem,4vw,2.9rem);font-weight:900;color:#fff;line-height:1.15;margin:0 0 20px;">Data Cabling &amp; Low-Voltage Installation <em style="color:var(--blue);font-style:normal;">Denver Businesses</em> Can Count On</h1>
+      <p class="lp-desktop-only" style="font-size:1.05rem;color:rgba(255,255,255,0.7);line-height:1.75;margin:0 0 28px;">From a single network drop to a full office build-out, Workplace IT's certified data cabling team handles Cat6, Cat6A, fiber optic, and low-voltage wiring for Denver businesses of every size. Clean installs. Tested runs. Documentation included.</p>
+      <p class="lp-mobile-only" style="font-size:1rem;color:rgba(255,255,255,0.75);line-height:1.6;margin:0 0 22px;">Cat6, fiber, cameras and access control. Clean, tested, documented installs.</p>
+      <div class="lp-hide-mobile" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
         <div class="cbadge">Cat6 &amp; Cat6A</div>
         <div class="cbadge">Fiber Optic</div>
         <div class="cbadge">Low-Voltage</div>
@@ -535,5 +552,9 @@
   });
 </script>
 <script>function toggleFaq(el){const a=el.nextElementSibling,o=el.classList.contains('open');document.querySelectorAll('.faq-q').forEach(q=>q.classList.remove('open'));document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));if(!o){el.classList.add('open');a.classList.add('open');}}</script>
+<div class="lp-callbar" role="region" aria-label="Contact Workplace IT">
+  <a class="lp-call" href="tel:7206479900">&#128222; Call Now</a>
+  <a class="lp-quote" href="#contact">Free Quote</a>
+</div>
 </body>
 </html>
