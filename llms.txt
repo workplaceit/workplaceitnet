@@ -1,0 +1,28 @@
+# Workplace IT
+
+> Workplace IT (WIT) is a Denver, Colorado managed IT and cybersecurity provider for businesses with 20-200 employees, and a Cyber AB Registered Practitioner Organization (RPO) that helps defense contractors prepare for CMMC Level 1 and Level 2. Business clients only; no residential work.
+
+- Address: 1514 Curtis St., Suite 200, Denver, CO 80202
+- Phone: (720) 647-9900
+- Email: info@workplaceit.net
+- Service area: Denver Metro area and Colorado
+- Hours: Monday-Friday, 8am-5pm Mountain Time; 24/7 monitoring
+- Support: under 1-hour average response time, local Denver engineers, flat-rate monthly pricing
+
+## Services
+
+- [Managed IT Support](https://workplaceit.net/services/managed-it-support.html): 24/7 monitoring, helpdesk, patching, vCIO for Denver businesses
+- [Cybersecurity](https://workplaceit.net/services/cybersecurity.html): endpoint protection, security operations, email security
+- [CMMC Compliance in Denver](https://workplaceit.net/cmmc-compliance-denver.html): CMMC Level 1 and 2 gap assessments, remediation, C3PAO preparation
+- [CMMC Compliance across Colorado](https://workplaceit.net/cmmc-compliance-colorado.html): statewide CMMC services for defense contractors
+- [Microsoft 365 GCC High Migration](https://workplaceit.net/services/gcc-high-migration.html): GCC High tenant builds and commercial-to-GCC High migrations
+- [IT Compliance](https://workplaceit.net/services/it-compliance.html): SSP, POA&M and policy documentation for NIST SP 800-171 and other frameworks
+- [Data Cabling Denver](https://workplaceit.net/data-cabling-denver.html): Cat6, fiber and low-voltage installation for businesses
+- [Security Cameras Denver](https://workplaceit.net/security-cameras-denver.html): business video surveillance
+- [Backup & Recovery](https://workplaceit.net/services/backup-recovery.html), [VoIP](https://workplaceit.net/services/voip.html), [Cloud Management](https://workplaceit.net/services/cloud-management.html), [AI Business Automation](https://workplaceit.net/services/ai-business-automation.html)
+
+## Resources
+
+- [GCC High vs GCC vs Commercial for CMMC](https://workplaceit.net/blog/gcc-high-vs-gcc-vs-commercial-cmmc.html)
+- [Blog](https://workplaceit.net/blog/)
+- [Contact](https://workplaceit.net/#contact)
