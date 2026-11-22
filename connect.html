@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let's Talk About Your IT | Workplace IT</title>
+  <meta name="description" content="Connect with Workplace IT, Denver's managed IT and CMMC compliance partner." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://workplaceit.net/connect.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #1a9fd4;
+      --blue-dark:  #1480ae;
+      --blue-deep:  #0d5c7a;
+      --navy:       #0a1628;
+      --light-gray: #f4f6f8;
+      --mid-gray:   #e8ecef;
+      --text:       #333;
+      --text-light: #666;
+      --text-muted: #999;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      background: #fff;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; }
+
+    /* ===================== TOP BAR ===================== */
+    .top-bar {
+      background: var(--blue);
+      color: #fff;
+      padding: 9px 0;
+      font-size: 0.8rem;
+    }
+    .top-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .top-bar-item { display: flex; align-items: center; gap: 8px; }
+    .tbi-icon { font-size: 0.9rem; opacity: 0.85; }
+
+    /* ===================== NAV ===================== */
+    .main-nav {
+      background: #fff;
+      border-bottom: 1px solid var(--mid-gray);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .logo-mark {
+      font-family: 'Roboto', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--blue);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .logo-mark span { color: var(--text); }
+    .logo-sub {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-top: -2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 3px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links .btn-nav {
+      background: var(--blue);
+      color: #fff;
+      border-radius: 3px;
+      transition: background 0.2s;
+    }
+    .nav-links .btn-nav:hover { background: var(--blue-dark); color: #fff; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .hamburger:hover span { background: var(--blue); }
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--navy);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-color: var(--navy);
+      background-image:
+        linear-gradient(rgba(26,159,212,0.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,159,212,0.18) 1px, transparent 1px),
+        linear-gradient(rgba(26,159,212,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,159,212,0.06) 1px, transparent 1px);
+      background-size: 40px 40px, 40px 40px, 200px 200px, 200px 200px;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(26,159,212,0.55) 1.5px, transparent 1.5px);
+      background-size: 40px 40px;
+      background-position: -1px -1px;
+      opacity: 0.35;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 65% 90% at 20% 50%, rgba(20,128,174,0.7) 0%, transparent 70%);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(20,128,174,0.92) 0%,
+        rgba(26,159,212,0.80) 40%,
+        rgba(26,159,212,0.25) 65%,
+        transparent 80%
+      );
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 90px 32px;
+      width: 100%;
+    }
+    .hero-content { max-width: 620px; }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: rgba(255,255,255,0.5);
+      flex-shrink: 0;
+    }
+    .hero-h1 {
+      font-family: 'Roboto', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 900;
+      color: #fff;
+      text-transform: uppercase;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+    .hero-p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.82);
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 36px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-pill-white {
+      padding: 12px 34px;
+      background: #fff;
+      color: var(--blue-dark);
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      border: 2px solid #fff;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-pill-white:hover { background: transparent; color: #fff; }
+    .btn-pill-outline {
+      padding: 12px 34px;
+      background: transparent;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      border: 2px solid rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+    .btn-pill-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+    /* ===================== BREADCRUMB ===================== */
+    .breadcrumb {
+      background: var(--light-gray);
+      border-bottom: 1px solid var(--mid-gray);
+      padding: 12px 32px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .breadcrumb-inner { max-width: 1200px; margin: 0 auto; }
+    .breadcrumb a { color: var(--blue); }
+    .breadcrumb a:hover { color: var(--blue-dark); }
+    .breadcrumb span { margin: 0 8px; }
+
+    /* ===================== SECTIONS ===================== */
+    .section { padding: 80px 32px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .section-h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      color: var(--navy);
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .section-lead {
+      font-size: 1rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      max-width: 680px;
+      margin-bottom: 48px;
+    }
+
+    /* ===================== WHAT IS CMMC ===================== */
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    @media (max-width: 760px) { .what-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+    .what-body p {
+      color: var(--text-light);
+      line-height: 1.82;
+      margin-bottom: 18px;
+    }
+    .what-body strong { color: var(--text); }
+
+    .level-cards { display: flex; flex-direction: column; gap: 16px; }
+    .level-card {
+      border: 1px solid var(--mid-gray);
+      border-radius: 6px;
+      padding: 24px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .level-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--blue);
+    }
+    .level-card.level-2::before { background: var(--navy); }
+    .level-card.level-3::before { background: #e25c2a; }
+    .level-tag {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+    .level-2 .level-tag { color: var(--navy); }
+    .level-3 .level-tag { color: #e25c2a; }
+    .level-card h4 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .level-card p { font-size: 0.85rem; color: var(--text-light); line-height: 1.65; }
+
+    /* ===================== WHO NEEDS IT ===================== */
+    .needs-bg { background: var(--light-gray); }
+    .needs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 760px) { .needs-grid { grid-template-columns: 1fr; } }
+    .needs-card {
+      background: #fff;
+      border: 1px solid var(--mid-gray);
+      border-radius: 6px;
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .needs-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #e4f4fb;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 16px;
+    }
+    .needs-card h3 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .needs-card p { font-size: 0.85rem; color: var(--text-light); line-height: 1.7; }
+
+    /* ===================== SERVICES ===================== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 700px) { .services-grid { grid-template-columns: 1fr; } }
+    .svc-card {
+      border: 1px solid var(--mid-gray);
+      border-radius: 6px;
+      padding: 32px 28px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .svc-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); border-color: var(--blue); }
+    .svc-num {
+      font-family: 'Roboto', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--mid-gray);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .svc-card h3 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .svc-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.72; }
+
+    /* ===================== PROCESS ===================== */
+    .process-bg { background: var(--navy); }
+    .process-bg .section-h2 { color: #fff; }
+    .process-bg .section-lead { color: rgba(255,255,255,0.6); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      position: relative;
+    }
+    @media (max-width: 860px) { .process-steps { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .process-steps { grid-template-columns: 1fr; } }
+    .process-step {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 36px 28px;
+      position: relative;
+    }
+    .step-num {
+      font-family: 'Roboto', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: rgba(26,159,212,0.25);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step-title {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .step-desc { font-size: 0.84rem; color: rgba(255,255,255,0.5); line-height: 1.72; }
+
+    /* ===================== WHY US ===================== */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (max-width: 760px) { .why-grid { grid-template-columns: 1fr; gap: 32px; } }
+    .why-list { list-style: none; margin-top: 24px; }
+    .why-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--mid-gray);
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+    .why-list li:first-child { border-top: 1px solid var(--mid-gray); }
+    .why-check {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .stat-box {
+      background: var(--light-gray);
+      border-radius: 8px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Roboto', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+      display: block;
+    }
+    .stat-lbl {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 6px;
+      display: block;
+    }
+
+    /* ===================== FAQ ===================== */
+    .faq-bg { background: var(--light-gray); }
+    .faq-list { max-width: 820px; margin: 0 auto; }
+    .faq-item {
+      background: #fff;
+      border: 1px solid var(--mid-gray);
+      border-radius: 6px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      text-align: left;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--blue); }
+    .faq-arrow {
+      font-size: 1.1rem;
+      color: var(--blue);
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s;
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.78;
+      padding: 0 24px;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
+
+    /* ===================== CTA BAND ===================== */
+    .cta-band {
+      background: #1e2d3d;
+      padding: 72px 32px;
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #fff;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+    .cta-band p { color: rgba(255,255,255,0.6); font-size: 0.95rem; margin-bottom: 30px; }
+
+    /* ===================== CONTACT ===================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 56px;
+      align-items: start;
+    }
+    @media (max-width: 780px) { .contact-grid { grid-template-columns: 1fr; } }
+    .cd-list { display: flex; flex-direction: column; }
+    .cd-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--mid-gray);
+    }
+    .cd-item:first-child { border-top: 1px solid var(--mid-gray); }
+    .cd-ico {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: #e4f4fb;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .cd-lbl { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 3px; }
+    .cd-val { font-size: 0.9rem; color: var(--text); line-height: 1.6; }
+    .cd-val a { color: var(--blue); transition: color 0.2s; }
+    .cd-val a:hover { color: var(--blue-dark); }
+    .cf-card {
+      background: #fff;
+      border: 1px solid var(--mid-gray);
+      border-radius: 6px;
+      padding: 36px 32px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+    }
+    .cf-heading {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--blue);
+      margin-bottom: 24px;
+    }
+    .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 560px) { .cf-row { grid-template-columns: 1fr; } }
+    .cf-grp { margin-bottom: 14px; }
+    .cf-lbl { display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-light); margin-bottom: 5px; }
+    .cf-inp, .cf-txt {
+      width: 100%;
+      padding: 11px 14px;
+      background: var(--light-gray);
+      border: 1px solid var(--mid-gray);
+      border-radius: 4px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      outline: none;
+      resize: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .cf-inp:focus, .cf-txt:focus { border-color: var(--blue); background: #fff; }
+    .cf-inp::placeholder, .cf-txt::placeholder { color: #b0b8c0; }
+    .cf-submit {
+      width: 100%;
+      padding: 13px;
+      background: var(--blue);
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .cf-submit:hover { background: var(--blue-dark); }
+
+    /* ===================== FOOTER ===================== */
+    .footer {
+      background: #13202d;
+      color: rgba(255,255,255,0.5);
+      padding: 64px 32px 28px;
+    }
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 28px;
+    }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-logo { font-family: 'Roboto', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--blue); letter-spacing: -0.02em; }
+    .footer-logo span { color: #fff; }
+    .footer-logo-sub { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); display: block; margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.38); line-height: 1.82; max-width: 270px; margin-top: 10px; }
+    .footer-socials { display: flex; gap: 8px; margin-top: 18px; }
+    .fsoc {
+      width: 34px; height: 34px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .fsoc:hover { border-color: var(--blue); background: var(--blue); color: #fff; }
+    .footer-col h5 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--blue);
+      display: inline-block;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 9px; }
+    .footer-col a { font-size: 0.85rem; color: rgba(255,255,255,0.42); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--blue); }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.22);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.22); margin-left: 16px; transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--blue); }
+
+    @media (max-width: 680px) {
+      .section { padding: 64px 20px; }
+      .hero-inner { padding: 72px 20px; }
+      .top-bar-inner { gap: 20px; }
+      .nav-inner { padding: 0 20px; }
+      .footer { padding: 56px 20px 24px; }
+      .cf-card { padding: 28px 20px; }
+      .breadcrumb { padding: 12px 20px; }
+    }
+  </style>
+  <meta property="og:image" content="https://workplaceit.net/images/workplace-it-denver-og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <style id="mobile-fixes">
+    /* Phone layout fixes: keep content inside the screen width (no sideways scrolling) */
+    @media (max-width: 760px) {
+      [style*="grid-template-columns"] { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)) !important; }
+      [style*="grid-template-columns"] > *, .stats-strip-inner > *, .nl-layout > * { min-width: 0; }
+      .stats-strip-inner { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; row-gap: 12px; }
+      .stat-item { border-right: none !important; }
+      .nl-form { flex-wrap: wrap; }
+      .nl-input { min-width: 0; flex: 1 1 180px; }
+      .level-table, .wrap table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      img, video, iframe { max-width: 100%; }
+    }
+    @media (max-width: 600px) {
+      body > nav { padding: 0 1rem; }
+      body > nav .nav-links { gap: 1rem; }
+      body > nav .nav-links li:nth-child(1), body > nav .nav-links li:nth-child(2) { display: none; }
+    }
+  </style>
+
+  <style>
+    .cx-wrap{background:var(--light-gray);padding:60px 20px 80px}
+    .cx-card{max-width:680px;margin:0 auto;background:#fff;border-radius:10px;box-shadow:0 8px 30px rgba(10,22,40,.08);padding:40px}
+    .cx-kicker{font-family:'Roboto',sans-serif;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:var(--blue);font-weight:700}
+    .cx-card h1{font-family:'Roboto',sans-serif;color:var(--navy);font-size:2rem;margin:8px 0 10px;line-height:1.2}
+    .cx-lead{color:var(--text-light);margin-bottom:22px;line-height:1.6}
+    .cx-rep{display:none;background:#eef7fc;border-left:3px solid var(--blue);padding:10px 14px;border-radius:4px;font-size:.92rem;color:var(--navy);margin-bottom:20px}
+    .cx-steps{display:flex;gap:8px;margin-bottom:24px}
+    .cx-steps span{flex:1;height:5px;border-radius:3px;background:var(--mid-gray)}
+    .cx-steps span.on{background:var(--blue)}
+    .cx-q{margin-bottom:20px}
+    .cx-q > label,.cx-q legend{display:block;font-weight:600;color:var(--navy);margin-bottom:8px;font-size:.95rem}
+    .cx-q fieldset{border:0}
+    .cx-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .cx-opts label{display:flex;align-items:center;gap:8px;border:1px solid var(--mid-gray);border-radius:6px;padding:10px 12px;cursor:pointer;font-size:.92rem;color:var(--text)}
+    .cx-opts label:hover{border-color:var(--blue)}
+    .cx-opts input{accent-color:var(--blue)}
+    .cx-skip{display:block;text-align:center;margin-top:14px;color:var(--text-muted);font-size:.85rem}
+    .cx-done{display:none;text-align:center;padding:20px 0}
+    .cx-done .ico{font-size:2.6rem;margin-bottom:12px}
+    .cx-done h2{font-family:'Roboto',sans-serif;color:var(--navy);margin-bottom:10px}
+    .cx-done p{color:var(--text-light);line-height:1.6}
+    @media(max-width:600px){.cx-card{padding:26px 20px}.cx-opts{grid-template-columns:1fr}.cx-card h1{font-size:1.6rem}}
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-item"><span class="tbi-icon">📍</span> 1514 Curtis St. Suite 200, Denver CO 80202</div>
+    <div class="top-bar-item"><span class="tbi-icon">✉️</span> info@workplaceit.net</div>
+    <div class="top-bar-item"><span class="tbi-icon">📞</span> (720) 647-9900</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="main-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div>
+        <div class="logo-mark">W<span>IT</span></div>
+        <span class="logo-sub">Workplace IT</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/services/ai-business-automation.html">AI</a></li>
+      <li><a href="/cmmc-compliance-denver.html">CMMC</a></li>
+      <li><a href="/#testimonials">Testimonials</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#contact" class="btn-nav">Contact Us</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="cx-wrap">
+  <div class="cx-card">
+    <div class="cx-kicker">Workplace IT</div>
+    <h1>Let's talk about your IT.</h1>
+    <p class="cx-lead">Tell us a little about you and your business. It takes about a minute.</p>
+    <div class="cx-rep" id="cx-rep"></div>
+    <div class="cx-steps"><span class="on" id="st1"></span><span id="st2"></span></div>
+
+    <!-- STEP 1: contact capture (submits on its own) -->
+    <form id="cx-contact" name="connect-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/connect.html">
+      <input type="hidden" name="form-name" value="connect-contact" />
+      <input type="hidden" name="subject" value="New card lead" />
+      <input type="hidden" name="referred-by" value="" />
+      <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+      <div class="cf-row">
+        <div class="cf-grp"><label class="cf-lbl" for="cx-fn">First Name</label><input class="cf-inp" id="cx-fn" name="first-name" type="text" autocomplete="given-name" required /></div>
+        <div class="cf-grp"><label class="cf-lbl" for="cx-ln">Last Name</label><input class="cf-inp" id="cx-ln" name="last-name" type="text" autocomplete="family-name" required /></div>
+      </div>
+      <div class="cf-row">
+        <div class="cf-grp"><label class="cf-lbl" for="cx-em">Email</label><input class="cf-inp" id="cx-em" name="email" type="email" autocomplete="email" required /></div>
+        <div class="cf-grp"><label class="cf-lbl" for="cx-ph">Phone</label><input class="cf-inp" id="cx-ph" name="phone" type="tel" autocomplete="tel" required /></div>
+      </div>
+      <div class="cf-grp"><label class="cf-lbl" for="cx-co">Company</label><input class="cf-inp" id="cx-co" name="company" type="text" autocomplete="organization" required /></div>
+      <button type="submit" class="cf-submit">Next →</button>
+    </form>
+
+    <!-- STEP 2: qualifying questions -->
+    <form id="cx-qualify" name="connect-qualify" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/connect.html" style="display:none">
+      <input type="hidden" name="form-name" value="connect-qualify" />
+      <input type="hidden" name="subject" value="Card lead details" />
+      <input type="hidden" name="referred-by" value="" />
+      <input type="hidden" name="contact-name" value="" />
+      <input type="hidden" name="email" value="" />
+      <input type="hidden" name="phone" value="" />
+      <input type="hidden" name="company" value="" />
+      <input type="hidden" name="qualified" value="" />
+      <input type="hidden" name="it-headaches" value="" />
+      <input type="hidden" name="compliance-needs" value="" />
+      <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+      <div class="cx-q"><fieldset><legend>How many employees does your company have?</legend>
+        <div class="cx-opts"><label><input type="radio" name="employees" value="1–9" required> 1–9</label><label><input type="radio" name="employees" value="10–24" required> 10–24</label><label><input type="radio" name="employees" value="25–49" required> 25–49</label><label><input type="radio" name="employees" value="50–99" required> 50–99</label><label><input type="radio" name="employees" value="100–200" required> 100–200</label><label><input type="radio" name="employees" value="200+" required> 200+</label></div></fieldset></div>
+      <div class="cx-q"><label for="cx-ind">What industry are you in?</label>
+        <select class="cf-inp" id="cx-ind" name="industry" required>
+          <option value="">Select one…</option>
+          <option>Defense / Aerospace / Manufacturing</option><option>Professional Services (legal, accounting, consulting)</option>
+          <option>Healthcare</option><option>Construction / Engineering</option><option>Financial Services</option>
+          <option>Nonprofit</option><option>Retail / Hospitality</option><option>Other</option>
+        </select></div>
+      <div class="cx-q"><fieldset><legend>What are your biggest IT headaches? <span style="font-weight:400;color:var(--text-muted)">(select all that apply)</span></legend>
+        <div class="cx-opts"><label><input type="checkbox" data-group="it-headaches" value="Slow or unreliable IT support"> Slow or unreliable IT support</label><label><input type="checkbox" data-group="it-headaches" value="Security / ransomware worries"> Security / ransomware worries</label><label><input type="checkbox" data-group="it-headaches" value="Downtime or slow systems"> Downtime or slow systems</label><label><input type="checkbox" data-group="it-headaches" value="Microsoft 365 / email issues"> Microsoft 365 / email issues</label><label><input type="checkbox" data-group="it-headaches" value="Outdated computers or network"> Outdated computers or network</label><label><input type="checkbox" data-group="it-headaches" value="No dedicated IT person"> No dedicated IT person</label><label><input type="checkbox" data-group="it-headaches" value="Unreliable backups"> Unreliable backups</label><label><input type="checkbox" data-group="it-headaches" value="Other"> Other</label></div></fieldset></div>
+      <div class="cx-q"><fieldset><legend>Any compliance requirements? <span style="font-weight:400;color:var(--text-muted)">(select all that apply)</span></legend>
+        <div class="cx-opts"><label><input type="checkbox" data-group="compliance-needs" value="CMMC / NIST 800-171"> CMMC / NIST 800-171</label><label><input type="checkbox" data-group="compliance-needs" value="HIPAA"> HIPAA</label><label><input type="checkbox" data-group="compliance-needs" value="PCI"> PCI</label><label><input type="checkbox" data-group="compliance-needs" value="SOC 2"> SOC 2</label><label><input type="checkbox" data-group="compliance-needs" value="Cyber insurance requirements"> Cyber insurance requirements</label><label><input type="checkbox" data-group="compliance-needs" value="None / not sure"> None / not sure</label></div></fieldset></div>
+      <div class="cx-q"><fieldset><legend>What's your timeline?</legend>
+        <div class="cx-opts"><label><input type="radio" name="timeline" value="ASAP" required> ASAP</label><label><input type="radio" name="timeline" value="1–3 months" required> 1–3 months</label><label><input type="radio" name="timeline" value="3–6 months" required> 3–6 months</label><label><input type="radio" name="timeline" value="Just exploring" required> Just exploring</label></div></fieldset></div>
+      <div class="cx-q"><label for="cx-notes">Anything else we should know? <span style="font-weight:400;color:var(--text-muted)">(optional)</span></label>
+        <textarea class="cf-txt" id="cx-notes" name="notes" rows="3"></textarea></div>
+      <button type="submit" class="cf-submit">Submit →</button>
+      <a href="#" class="cx-skip" id="cx-skip">Skip for now</a>
+    </form>
+
+    <div class="cx-done" id="cx-done">
+      <div class="ico">✅</div>
+      <h2 id="cx-done-h">Thanks! We'll be in touch.</h2>
+      <p id="cx-done-p"></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">W<span>IT</span></div>
+      <span class="footer-logo-sub">Workplace IT</span>
+      <p>Denver's proactive IT partner. We keep your business secure, compliant, and running at full speed — so you don't have to think about technology.</p>
+      <img src="/images/cyber-ab-rpo-badge.png" width="110" height="110" alt="The Cyber AB CMMC Certification Registered Practitioner Organization (RPO) badge" loading="lazy" decoding="async" style="display:block;width:110px;height:110px;margin-top:18px;" />
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/workplaceitco/" class="fsoc" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+        <a href="https://www.linkedin.com/company/front-range-workplaceit" class="fsoc" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="/cmmc-consultant-denver.html">CMMC Consultant Denver</a></li>
+        <li><a href="/cmmc-compliance-colorado.html">CMMC Colorado</a></li>
+        <li><a href="/#services">Managed IT Support</a></li>
+        <li><a href="/services/ai-business-automation.html">AI Business Automation</a></li>
+        <li><a href="/#services">Cybersecurity</a></li>
+        <li><a href="/cmmc-compliance-denver.html">CMMC Compliance</a></li>
+        <li><a href="/#services">Video Surveillance</a></li>
+        <li><a href="/#services">VoIP Services</a></li>
+        <li><a href="/#services">Backup &amp; Recovery</a></li>
+        <li><a href="/#services">SaaS Licensing</a></li>
+        <li><a href="/#services">Cloud Management</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="/#about">About Us</a></li>
+        <li><a href="/#values">Our Values</a></li>
+        <li><a href="/#testimonials">Testimonials</a></li>
+        <li><a href="/#newsletter">Newsletter</a></li>
+        <li><a href="/#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:7206479900">(720) 647-9900</a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&amp;query=1514+Curtis+St+Suite+200+Denver+CO+80202" target="_blank" rel="noopener">1514 Curtis St, Suite 200<br>Denver, CO 80202</a></li>
+        <li><a href="mailto:info@workplaceit.net">info@workplaceit.net</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Workplace IT. All rights reserved.</span>
+    <div>
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/privacy-policy.html#sms-terms">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var REPS={jason:'Jason Canon',justin:'Justin Pascarella',rebecca:'Rebecca Chorn',michael:'Michael Hovseth'};
+  var slug=(new URLSearchParams(location.search).get('rep')||'').toLowerCase();
+  var rep=REPS[slug]||(slug?slug:'Direct / no card');
+  var first=REPS[slug]?REPS[slug].split(' ')[0]:null;
+  if(first){var r=document.getElementById('cx-rep');r.textContent='Great meeting you! '+first+' will personally follow up.';r.style.display='block';}
+  document.querySelectorAll('input[name="referred-by"]').forEach(function(i){i.value=rep;});
+  var c=document.getElementById('cx-contact'), q=document.getElementById('cx-qualify');
+  function post(form){return fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()}).then(function(r){if(!r.ok)throw new Error(r.status);});}
+  function done(h,p){q.style.display='none';c.style.display='none';document.getElementById('cx-done-h').textContent=h;document.getElementById('cx-done-p').textContent=p;document.getElementById('cx-done').style.display='block';document.getElementById('st2').className='on';window.scrollTo({top:0,behavior:'smooth'});}
+  function fail(btn,label){btn.textContent=label;btn.disabled=false;alert('Something went wrong. Please try again or call us at (720) 647-9900.');}
+  var who=first||'Our team';
+  c.addEventListener('submit',function(e){
+    e.preventDefault();var btn=c.querySelector('button'),label=btn.textContent;btn.textContent='Saving...';btn.disabled=true;
+    var co=c.company.value.trim(), nm=c['first-name'].value.trim()+' '+c['last-name'].value.trim();
+    c.subject.value='New card lead ('+rep+'): '+nm+' - '+co;
+    post(c).then(function(){
+      q['contact-name'].value=nm;q.email.value=c.email.value;q.phone.value=c.phone.value;q.company.value=co;
+      c.style.display='none';q.style.display='block';document.getElementById('st2').className='on';window.scrollTo({top:0,behavior:'smooth'});
+    }).catch(function(){fail(btn,label);});
+  });
+  document.getElementById('cx-skip').addEventListener('click',function(e){e.preventDefault();done('Thanks! We have your info.',who+' will reach out within one business day.');});
+  q.addEventListener('submit',function(e){
+    e.preventDefault();var btn=q.querySelector('button'),label=btn.textContent;btn.textContent='Sending...';btn.disabled=true;
+    ['it-headaches','compliance-needs'].forEach(function(g){q[g].value=[].map.call(q.querySelectorAll('input[data-group="'+g+'"]:checked'),function(x){return x.value;}).join(', ')||'None selected';});
+    var small=q.employees.value==='1–9';
+    q.qualified.value=small?'NO - under 10 employees':'Yes';
+    q.subject.value=(small?'[Under 10] ':'')+'Card lead details ('+rep+'): '+q['contact-name'].value+' - '+q.company.value;
+    post(q).then(function(){
+      if(small) done('Thanks for the info!','Our managed IT plans are built for businesses with 10 or more employees, but we\'ll review what you shared and reach out if we can help or point you to a good fit.');
+      else done('Thanks! We\'ll be in touch.',who+' will reach out within one business day to set up a quick call.');
+    }).catch(function(){fail(btn,label);});
+  });
+})();
+</script>
+
+</body>
+</html>
